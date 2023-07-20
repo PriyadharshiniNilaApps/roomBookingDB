@@ -1,0 +1,485 @@
+.roombookingform1div
+{
+    height: 789px;
+    width: 1583px;
+    left: 0px;
+    top: -1px;
+    border-radius: 0px;
+    position: absolute;
+    background: #D6D190;
+}
+.roombookingform2div
+{
+    width: 1403px;
+  
+    position: absolute;
+ 
+    height: 635px;
+    background: #F5F5F5;
+    border-radius: 20px;
+    left: 93px;
+    top: 75px;
+    top: 74px;
+}
+
+.roombookingformheading
+{
+    font-family: Quando;
+    font-size: 23px;
+    font-weight: 400;
+    text-align: center;
+    height: 29px;
+    width: 325px;
+    color: #8E1414;
+    text-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    position: absolute;
+    top: 19px;
+    left: 609px;
+}
+.labelstyle
+{
+width: 345px;
+height: 18px;
+font-family: 'Quando';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+color: #000000;
+
+}
+.inputboxstyle
+{
+width: 290px;
+height: 35px;
+background: #D9D9D9;
+border: 3px solid rgba(98, 98, 98, 0.54);
+box-shadow: 0px 2px 7px #D5D5D5;
+border-radius: 8px;
+}
+#namerow
+{
+    position: absolute;
+    top: 106px;
+    left: 432px;
+}
+#namecolumn
+{
+    left: 245px;
+}
+#genderrow
+{ 
+    position: absolute;
+    top: 200px;
+    left: 435px;
+}
+#gendercolumn
+{
+    left: 165px;
+}
+#emailrow
+{ 
+    position: absolute;
+    top: 297px;
+    left: 437px;
+}
+ #emailcolumn
+{
+    left: 165px;
+} 
+#idtyperow
+{     position: absolute;
+    top: 399px;
+    left: 442px;
+}
+ #idtypecolumn
+{
+    left: 172px;
+} 
+.button
+{
+    position: absolute;
+padding: 4px ;
+height: 32px;
+background: #626262;
+border-radius: 20px;
+color: white;
+border: 1px solid #626262;
+
+}
+.validationtext
+{
+    width: 291px;
+    height: 18px;
+    font-family: 'Quando';
+    font-weight: 400;
+    font-size: 14px;
+    color: #8E1414;
+    position: absolute;
+}
+/* end of form1 */
+
+#roomtype
+{
+    top: 144px;
+    position: absolute;
+    left: 423px;
+}
+#roomsize
+{
+    top: 126px;
+    position: absolute;
+    left: 870px;
+}
+#checkindaterow
+{ 
+    position: absolute;
+    top: 228px;
+    left: 423px;
+}
+#checkindatecolumn
+{
+    left: 202px;
+}
+#Expectedcheckoutdaterow
+{
+    position: absolute;
+    top: 91px;
+    left: 19px;
+}
+#Expectedcheckoutdatecolumn
+{
+    left: 450px;
+    position: absolute;
+}
+#checkbox
+{
+ font-family: 'Quando';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 140%;
+color: #3B4256;
+position: absolute;
+top: 135px;
+left: 20px;
+
+}
+.checkbox
+{
+    width: 18px;
+height: 18px;
+}
+#cateringtyperow
+{
+    margin-top: 300px;
+}
+#cateringtypecolumn
+{
+    left: 198px;
+}
+#form2button1
+{
+    width: 116px;
+    top: 93px;
+    left: 283px;
+    position: absolute;
+    padding: 4px ;
+    height: 32px;
+    background: #626262;
+    border-radius: 20px;
+    color: white;
+    border: 1px solid #626262;
+
+}
+
+#form2button2
+{ width: 153px;
+    left: 464px;
+    top: 93px;
+    position: absolute; 
+    padding: 4px ;
+    height: 32px;
+    background: #626262;
+    border-radius: 20px;
+    border: 1px solid #626262;
+    color: white;
+}
+#modalbody
+{
+position: absolute;
+    left: 58px;
+    top: 80px;
+}
+.modalinputbox
+{
+ position: absolute;
+background: #D9D9D9;
+border: 3px solid rgba(98, 98, 98, 0.54);
+box-shadow: 0px 2px 7px #D5D5D5;
+border-radius: 8px;
+
+}
+table
+{
+ position: absolute;
+ top: 100px;
+ height: 436px;  
+background: #FFFFFF;
+box-shadow: 0px 0px 0px 1px rgba(152, 161, 178, 0.1);
+border-radius: 8px;
+}
+#search
+{
+padding: 6px 12px;
+position: absolute;
+width: 320px;
+height: 32px;
+left: 76px;
+top: 16px;
+background: #FFFFFF;
+box-shadow:  0px 0px 0px 1px rgba(104, 113, 130, 0.16);
+border-radius: 6px;
+border: 1px solid white;
+}
+
+#modalfooterviewdetail
+{
+    height: 300px;
+    margin-top: 40px;
+}
+#closedetails
+{
+    margin-top: 398px;
+}
+#viewdetailsmodalbody
+{
+    margin-top: -56px;
+    height: 519px;
+}
+#id-2.ng-invalid
+{
+    background: #F2C6C6;
+    border: 1px solid #8E1414;
+} 
+#id-3.ng-invalid
+{
+    background: #D9D9D9;
+    border: 3px solid rgba(98, 98, 98, 0.54);
+   
+} 
+.id-2.ng-invalid
+{
+    background: #F2C6C6;
+    border: 1px solid #8E1414;
+} 
+
+.arrow-down:after,.arrow-up:after{
+    content: ' ';
+    position: relative;
+    left: 2px;
+    border: 5px solid transparent;
+   }
+   
+   .arrow-down:after{
+    top: 12px;
+    border-top-color: black;
+   }
+   
+   .arrow-up:after{
+    bottom: 10px;
+    border-bottom-color: black;
+   }
+   #savemodelbody
+   {
+    width: 298px;
+    height: 168px;
+    margin-top: 231px;
+    margin-left: 219px;
+   }
+    #savedata
+   {
+    width: 116px;
+    padding: 4px;
+    height: 32px;
+    background: #626262;
+    border-radius: 20px;
+    color: white;
+    border: 1px solid #626262;
+    margin-top: -50px;
+    margin-left: 447px;
+} 
+
+
+#backbtn
+{
+    width: 116px;
+    padding: 4px;
+    height: 32px;
+    background: #626262;
+    border-radius: 20px;
+    color: white;
+    border: 1px solid #626262;
+    margin-top: -50px;
+    margin-left: -334px;
+}
+#createbookingdiv
+{       background: #D9D9D9;
+    border: 10px solid #D9D9D9;
+    height: 344px;
+    width: 212px;
+    margin-top: 122px;
+    margin-left: 80px;
+    border-radius: 10px;
+}
+#viewbooking
+{    margin-top: 68px;
+    margin-left: 6px;
+    font-family: Quando;
+    font-size: 17px;
+    font-weight: 400;
+    text-align: center;
+    height: 29px;
+  
+    color: #8E1414;
+    text-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    border: none;
+    background: none;
+  
+}
+#createbooking
+{
+    margin-top: 20px;
+    margin-left: 5px;
+    font-family: Quando;
+    font-size: 17px;
+    font-weight: 400;
+    text-align: center;
+    height: 29px;
+    color: #8E1414;
+    text-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+#charges
+{
+    margin-top: 67px;
+    margin-left: 8px;
+    background: none;
+    font-family: Quando;
+    font-size: 17px;
+    font-weight: 400;
+    text-align: center;
+    height: 29px;
+    
+    border: none;
+    color: #8E1414;
+    text-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    cursor: pointer;
+}
+
+
+
+
+.ui-datepicker .ui-datepicker-header {
+    width: 294px;
+    background: red;
+    top: -39px;
+    left: -6px;
+    
+}
+ .ui-widget-content .ui-state-default {
+
+    color: black;
+}
+
+
+.ui-datepicker table {
+    width: 290px;
+    
+    font-size: .9em;
+    border-collapse: collapse;
+    margin: 0 0 0.4em;
+    top: -1px;
+    left: 1px;
+}
+
+.scrollleft{
+    display: block;   
+    overflow-x: scroll; 
+    max-width: 1000px; 
+    overflow-y: hidden; 
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover
+{
+   
+    background-color: black;
+    border-color: black;
+}
+.pagination>li>a {
+    color: black;
+    border: none;
+}
+#usertextdiv
+{
+    border: 1px solid #e49f20;
+    height: 63px;
+    background: #ba8585;
+    position: absolute;
+    left: 302px;
+    top: 47px;
+    width: 154px;
+    color: #090808;
+    border-radius: 5px;
+}
+ .ui-dialog-titlebar {
+    background: #1f70b6;
+    border: black;
+}
+.filterdialogbox
+{ animation-name: moving;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    width: 375px;
+    padding: 1px;
+    border: 1px solid black;
+    background-color: #7c7d7e;
+    margin-left: 687px;
+    margin-top: 78px;
+}
+.dialogboxheader
+{background-color: #6d84b4;
+    font-size: 20px;
+    margin: 10px 10px 0px 10px;
+    color: white;
+    padding: 10px;
+}
+
+.dialogboxbody
+{
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    padding: 10px;
+    margin: 0px 10px 0px 10px;
+
+}
+.dialogboxfooter
+{
+    background-color: #f2f2f2;
+    text-align: right;
+    padding: 10px;
+    margin:0px 10px 10px 10px;
+}
+
+.btn:focus,.btn:active:focus {
+    outline: none;
+}
+
+
+
+@keyframes moving
+{
+    0% {top: 0px;}
+    100% {top: 140px;}
+}
