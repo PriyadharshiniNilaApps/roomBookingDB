@@ -1,0 +1,52 @@
+th{
+    text-align: center; 
+}
+
+td,th{
+    padding: 5px;
+}
+
+label{
+    font: 18px sans-serif;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.form-control {
+    text-align: left;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.form-control input,
+.form-control select,
+.form-control textarea {
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 8px;
+    width: 50%;        
+}
+
+.form-control input[type="radio"],
+.form-control input[type="checkbox"] {
+    display: inline;
+    width: auto;
+}
+
+button {
+    font-size: 21px;
+    display: block;
+    margin: 16px 0px;
+}
+
+
+        
+    
+      
+        
+       
+       
+      
+       
+
+
