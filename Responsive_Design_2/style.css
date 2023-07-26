@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat;
+    font-size: 24px;
+}
+
+hr {
+    height: 24px;
+}
+
+.navbar {
+    background-color: #1C294A;
+    justify-content: space-between;
+    padding: 100px;
+    align-items: center;
+    display: flex;
+    height: 120px;
+    width: 100%;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+li {
+    list-style: none;
+    padding-left: 40px;
+}
+
+.menu {
+    display: flex;
+}
+
+
+input[type=checkbox] {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    
+}
+
+
+@media only screen and (max-width: 1194px) {
+    .menu {
+        display: none;
+        background-color: #1C294A;
+        position: absolute;
+        right: 0;
+        left: 0;
+        text-align: center;
+        margin-top: 20px;
+        padding: 20px 0;
+    }
+
+    li {
+        padding: 20px 0px;
+    }
+    hr {
+        display: none;
+    }
+
+    input[type=checkbox]:checked~.menu{
+        display: block;
+    } 
+    
+    .hamburger  {
+        display: block;
+    }
+}
+
+
+@media only screen and (max-width: 375px) {
+    .menu {
+        display: none;
+        background-color: #1C294A;
+        position: absolute;
+        right: 0;
+        left: 0;
+        text-align: center;
+        margin-top: 20px;
+        padding: 20px 0;
+    }
+
+    li {
+        padding: 20px 0px;
+    }
+
+    hr {
+        display: none;
+    }
+
+
+    input[type=checkbox]:checked~.menu{
+        display: block;
+    } 
+    
+    .hamburger  {
+        display: block;
+    }
+}
+
+.home{
+    height: 862px;
+    padding: 0px 100px 0px 100px;
+    background-image: linear-gradient(#0A183D, #0A183DE5);
+}
