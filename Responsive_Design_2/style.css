@@ -34,11 +34,11 @@ a {
 
 li {
     list-style: none;
-    padding-left: 40px;
     display: flex;
 }
 
 .menu {
+    column-gap: 40px;
     display: flex;
 }
 
@@ -51,67 +51,79 @@ input[type=checkbox] {
     
 }
 
-@media only screen and (max-width: 1430px) {
-    .menu {
-        display: none;
-        background-color: #1C294A;
-        position: absolute;
-        right: 0;
-        left: 0;
-        text-align: center;
-        margin-top: 20px;
-        padding: 20px 0;
-    }
-
-    li {
-        padding: 20px 0px;
-    }
-
-    hr {
-        display: none;
-    }
-
-    input[type=checkbox]:checked~.menu{
-        display: block;
-    } 
-    
-    .hamburger  {
-        display: block;
-    }
+strong{
+    color:#E80451;
 }
 
-
-@media only screen and (max-width: 375px) {
-    .menu {
-        display: none;
-        background-color: #1C294A;
-        position: absolute;
-        right: 0;
-        left: 0;
-        text-align: center;
-        margin-top: 20px;
-        padding: 20px 0;
-    }
-
+@media only screen and (max-width: 375px), only screen and (max-width: 1430px){
     li {
-        padding: 20px 0px;
+       display: none;
     }
 
-    hr {
+    .home-frame-2{
         display: none;
     }
 
-    input[type=checkbox]:checked~.menu{
-        display: block;
-    } 
-    
-    .hamburger  {
-        display: block;
+    .home-sub-frame-1{
+        flex-direction: column;
     }
 }
 
 .home{
     height: 862px;
     padding: 0px 100px 0px 100px;
-    background-image: linear-gradient(#0A183D, #0A183DE5);
+    background-image: linear-gradient(to top,#0A183D 100% , #0A183D 90%);
+    width: 100%;
+    display:flex;
+    align-items: center;
+    color: white;
+    gap:50px;
+
 }
+
+.home-frame-1  h1{
+    font-weight: 600;
+    font-size: 68px;
+    line-height: 95px;
+}
+.home-frame-1 > p{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 36px;
+    letter-spacing: 4%;
+}
+
+.home-frame-1{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    row-gap:30px;
+ 
+}
+
+.home-sub-frame-1{
+    display: flex;
+    width:100%;
+    column-gap:30px;
+ 
+}
+.home-frame-2{
+   width: 100%;
+   padding:10px;
+}
+
+.btn{
+    border-radius: 32px;
+    padding:20px;
+    font-size:18px;
+    line-height: 21.94px;
+    font-weight: 600;
+}
+
+.btn-1{
+    background: #E80451;
+}
+
+.btn-2{
+    background: #1C294A;
+}  
