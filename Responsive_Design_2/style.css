@@ -7,16 +7,19 @@
 body {
     font-family: Montserrat;
     font-size: 24px;
+    font-weight: bold;   
 }
 
-hr {
-    height: 24px;
+.verticalLine {
+    border-left: 1px solid #ffffff;
+    height: 30px;
+    margin:0px 8px;
 }
 
 .navbar {
     background-color: #1C294A;
     justify-content: space-between;
-    padding: 100px;
+    padding: 0px 100px 0px 100px;
     align-items: center;
     display: flex;
     height: 120px;
@@ -32,12 +35,12 @@ a {
 li {
     list-style: none;
     padding-left: 40px;
+    display: flex;
 }
 
 .menu {
     display: flex;
 }
-
 
 input[type=checkbox] {
     display: none;
@@ -48,8 +51,7 @@ input[type=checkbox] {
     
 }
 
-
-@media only screen and (max-width: 1194px) {
+@media only screen and (max-width: 1430px) {
     .menu {
         display: none;
         background-color: #1C294A;
@@ -64,6 +66,7 @@ input[type=checkbox] {
     li {
         padding: 20px 0px;
     }
+
     hr {
         display: none;
     }
@@ -97,7 +100,6 @@ input[type=checkbox] {
     hr {
         display: none;
     }
-
 
     input[type=checkbox]:checked~.menu{
         display: block;

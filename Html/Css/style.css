@@ -1,3 +1,7 @@
+table, th, td{
+    border: 1px solid #000000;
+}
+
 th{
     text-align: center; 
 }
@@ -19,8 +23,7 @@ label{
 }
 
 .form-control input,
-.form-control select,
-.form-control textarea {
+.form-control select{
     border: 1px solid black;
     border-radius: 2px;
     padding: 8px;
