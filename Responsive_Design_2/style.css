@@ -62,11 +62,11 @@ strong {
     padding: 10px;
     width: 100%;
 }
-.home-frame-1 h1, .about-frame-1 h1, .pages h1{
+.home-frame-1 h1, .about-frame-1 h1, .pages h1, .news-frame-1 h1{
     font-size: 68px;
     line-height: 95px;
 }
-.home-frame-1 p, .about-frame-2-sub-frame-1 p{
+.home-frame-1 p, .about-frame-2-sub-frame-1 p, .news-frame-1-sub-frame p{
     font-size: 18px;
     line-height: 36px;
     letter-spacing: 0.75px;
@@ -96,68 +96,6 @@ button{
     background: #1C294A;
 }
 
-@media only screen and (min-width: 1194px) {
-    .home {
-        padding: 0px 100px 0px 100px;
-    }
-}
-
-@media only screen and (max-width: 1194px) {
-    .navbar{
-        padding:0px 50px 0px 50px;
-    }
-
-    li {
-        display: none;
-    }
-
-    .home-frame-2 {
-        display: none;
-    }
-
-    .navbar {
-        background-color: #08192D;;
-    }
-
-    .home {
-        padding: 0px 270px 0px 50px;
-    }
-}
-
-@media only screen and (max-width: 375px) {
-    .navbar{
-        padding:0px 20px 0px 20px;
-    }
-
-    .home{
-        height:692px;
-    }
-    .home-frame-1-sub-frame-1, .about-frame-1{
-      flex-direction: column;
-      row-gap:10px;
-    }
-
-    .home-frame-1 h1, .about-frame-1 h1{
-        font-size: 28px;
-        line-height: 36px;
-    }
-
-    .home-frame-1 p, .about-frame-2 p{
-        font-size: 14px;
-        line-height: 30px;
-    }
-
-    .btn {
-        font-size: 16px;
-
-        line-height: 19.5px;
-    }
-
-    .home {
-        padding: 0px 20px 0px 20px;
-    }
-}
-
 .about{
     padding: 100px 50px 100px 50px;
     gap: 10px;
@@ -168,8 +106,8 @@ button{
     gap: 50px;
 }
 
-.about-frame-1 h1{
-    width: 100%;
+.about-frame-1 h1,.news-frame-1 h1{
+    width: 80%;
 }
 
 .about-frame-2{
@@ -179,12 +117,13 @@ button{
     row-gap:20px;
 }
 
-.about-frame-2-sub-frame-1{
+.about-frame-2-sub-frame-1, .news-frame-1-sub-frame{
     padding:10px;
     gap:10px;
 }
 
-.pages, .news{
+
+.pages, .news, .contact{
     width: 100%;
     padding: 100px;
     display: flex;
@@ -193,30 +132,28 @@ button{
     color: white;
 }
 
-.pages{
+.pages, .contact{
     background: #1C294A;
 }
 
+.news{
+    color: #000000;
+}
 
 .pages-frame{
     width:100%;
-    height: 308.94px;
     display: flex;
     gap:50px;
 }
 
 .pages-frame-sub-frame{
     width: 100%;
-    height: 69.65px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
 .pages-frame-sub-frame-group{
-    height: 72.73px;
-    width: 80px; 
-    gap:10px;
     position: relative;
    
 }
@@ -252,3 +189,89 @@ button{
 }
 
 
+
+@media only screen and (min-width: 1194px) {
+    .home {
+        padding: 0px 100px 0px 100px;
+    }
+}
+
+@media only screen and (max-width: 1194px) {
+    .navbar{
+        padding:0px 50px 0px 50px;
+    }
+
+    li {
+        display: none;
+    }
+
+    .home-frame-2 {
+        display: none;
+    }
+
+    .navbar {
+        background-color: #08192D;;
+    }
+
+    .home {
+        padding: 0px 270px 0px 50px;
+    }
+
+    .pages{
+        padding: 100px 50px 100px 50px;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .navbar{
+        padding:0px 20px 0px 20px;
+    }
+
+    .home{
+        height:692px;
+    }
+    .home-frame-1-sub-frame-1, .about-frame-1{
+      flex-direction: column;
+      row-gap:10px;
+    }
+
+    .home-frame-1 h1, .about-frame-1 h1, .pages h1{
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .home-frame-1 p, .about-frame-2 p, .pages-frame-sub-frame p{
+        font-size: 14px;
+        line-height: 30px;
+    }
+
+    .btn {
+        font-size: 16px;
+
+        line-height: 19.5px;
+    }
+
+    .home {
+        padding: 0px 20px 0px 20px;
+    }
+
+    .pages{
+      padding: 50px 20px 50px 20px;
+    }
+
+    .pages-frame{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.news-frame-2{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.news-frame-2 img{
+    
+}
