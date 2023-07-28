@@ -1,2 +1,0 @@
-# StayFlex
-Trainees project
