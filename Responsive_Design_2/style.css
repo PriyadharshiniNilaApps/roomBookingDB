@@ -38,7 +38,7 @@ a {
     align-items: center;
 }
 
-strong {
+label {
     color: #E80451;
 }
 
@@ -195,11 +195,8 @@ section ul li{
         background-color: #08192D;
     }
 
-    .nav-tabs li {
+    .nav-tabs li  hide{
         display: none;
-    }
-
-    .hide{
         display: none;
     }
 
@@ -219,12 +216,7 @@ section ul li{
 
     .frame-8{
         padding: 0px 50px 0 50px;
-    }
-
-    .{
-       
-    }
-   
+    }   
 }
 
 @media only screen and (max-width: 375px) {
