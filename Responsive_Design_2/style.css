@@ -195,8 +195,7 @@ section ul li{
         background-color: #08192D;
     }
 
-    .nav-tabs li  hide{
-        display: none;
+    .nav-tabs li, .hide{
         display: none;
     }
 
