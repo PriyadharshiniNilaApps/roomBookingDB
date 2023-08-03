@@ -4,4 +4,24 @@
 
 .welcome-home .message {
     font-size: 2rem;
+} 
+
+body{
+    font-family: Quando !important;
+   
+}
+
+div h1{
+    font-size: 32px;
+    font-weight: 400px;
+    line-height: 40px;
+    letter-spacing: 0em;
+    color: #009A61;
+    margin-top: 50px;
+
+}
+
+
+.tabs{
+    
 }

@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html >
+<html>
 
 <head>
+    <meta charset="utf-8" />
     <title>AngularJS Controllers and Routing</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Priyadharshini">
+    <meta name="description" description="StayFlex Motel Management Project Assessment">
     <link rel="stylesheet" href="app/style/css/style.css">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Quando'>
     <!-- Include AngularJS library -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <!-- Include AngularJS ngRoute module -->
@@ -14,6 +18,9 @@
     <script src="app/app.js"></script>
     <!-- Include separate controller files -->
     <script src="app/controller/homeController.js"></script>
+    <script src="app/controller/loginController.js"></script>
+    <script src="app/controller/registerController.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body ng-app="myApp">
@@ -24,4 +31,4 @@
     <div ng-view></div>
 </body>
 
-</html>
+</html> 
