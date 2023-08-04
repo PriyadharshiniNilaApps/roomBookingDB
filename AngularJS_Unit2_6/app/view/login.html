@@ -1,37 +1,37 @@
 <div class="container-fluid">
-    <h1 class="text-center mt-200">Login</h1>
+    <h1 class="text-center">Login</h1>
     <div class="row align-items-center">
-        <div class="col-6">
-        <img class="w-75 h-75 p-100" src="app/style/images/login.svg" alt="login image"> 
+        <div class="col-6 hide">
+            <img class="w-80 h-80" src="app/style/images/login.svg" alt="login image"> 
         </div>
-        <div class="col-6">
-            <div class="login-form">
-            <div class="nav nav-pills flex">
-                <a class="nav-item nav-link active" href="#">Owner</a>
-                <a class="nav-item nav-link" href="#">Customer</a>
-            </div>
-            <form autocomplete="off" id="form">
+        <div class="col-6 d-flex flex-column" >
+            <div class="col-8 d-flex flex-column">
+                <div class="btn-group btn-group-toggle horizontal-flex" data-toggle="buttons">
+                    <label class="btn active w-50">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked> Owner
+                    </label>
+                    <label class="btn w-50 ">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> Customer
+                    </label>
+                </div>
+            
                 <div class="form-group">
                     <label for="username"> Username </label>
-                    <input type="text" class="form-control"
-                        id="username" 
-                        aria-describedby="usernameInputField">
+                    <input type="text" class="form-control" id="username" placeholder="Enter Username" aria-describedby="usernameInputField">
                 </div>
                 <div class="form-group">
                     <label for="password">Password </label>
-                    <input type="password"
-                        class="form-control" id="password"
-                        name="password"
-                        aria-describedby="passwordInputField">
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">
-                    SIGN IN</button>  
-            </form>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" aria-describedby="passwordInputField">
+                </div>   
+                <div class="text-center"> 
+                <button type="submit" class="btn btn-format ">SIGN IN</button>      
+                </div> 
             </div>
+            <div class="d-block"> Don't have an account? <a href=""> Sign Up </a></div>
         </div>
-    </div>
-    <div class="text-center">
-        Don't have an account? <a href=""> Sign Up
-        </a>
-    </div>
+
+ 
 </div>
+
+</div>
+
