@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col-lg-6 hide">
+            <h1 class="text-center">Register</h1>
+            <img class="w-80 h-80" src="app/style/images/register.svg" alt="register image"> 
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12  col-xl-12 d-flex flex-column" >
+            <div class="col-lg-8  col-md-6   col-sm-12  col-xl-12 col-xl-12 d-flex flex-column">
+                <div class="btn-group btn-group-toggle horizontal-flex" data-toggle="buttons">
+                    <label class="btn active w-50">
+                        <input type="radio" name="options" id="option1" autocomplete="off" checked  value="Owner" required> Owner
+                    </label>
+                    <label class="btn w-50 ">
+                        <input type="radio" name="options" id="option2" autocomplete="off" value="Customer" required> Customer
+                    </label>
+                </div>
+                <form onsubmit="validateRegisterForm()">
+                    <div class="form-group">
+                        <label for="username"> Username </label>
+                        <input type="text"  minlength="4"  class="form-control" id="username" placeholder="Enter Username" aria-describedby="usernameInputField" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailid"> Email ID</label>
+                        <input type="email" class="form-control" id="emailid" placeholder="Enter E-mail" aria-describedby="emailIdInputField" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phonenumber"> Phone Number</label>
+                        <input type="text" pattern="[0-9]{10}" class="form-control" id="phonenumber" placeholder="Enter Phone Number" aria-describedby="phoneNumberInputField" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password </label>
+                        <input type="password" minlength="6" class="form-control" id="password" name="password" placeholder="Enter Password" aria-describedby="passwordInputField" required>
+                    </div>   
+                    <div class="form-group">
+                        <label for="reenterpassword"> Re-Enter Password </label>
+                        <input type="password" minlength="6"  class="form-control" id="reenterpassword" placeholder="Enter Re-Enter Password" aria-describedby="reEnterPasswordInputField" required>
+                    </div>
+                    <div class="text-center"> 
+                        <button type="submit" class="btn btn-format " >Sign Up</button>      
+                    </div> 
+                </form>
+            </div>
+        </div>
+        <div class="d-block text-center"> Already Have an account?  <a href="#!/login"> Sign In </a></div>
+    </div>
+    <div class="modal text-center" id="authentication" tabindex="-1" role="dialog" aria-labelledby="#user-authentication" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body d-flex flex-column">
+                    <div>
+                        <img  src="app/style/images/success.svg" alt="authentication successfull image">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><img src="app/style/images/close.svg" alt="close button image"></span>
+                        </button>
+                    </div>
+                    <p id="message"></p>
+                    <div>
+                        <button type="button" class="btn btn-format" onclick="navigate()" class="close" data-dismiss="modal" >Sign in</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,5 +1,21 @@
 app.controller('loginController', ['$scope', function ($scope) {
-    // Your home controller logic goes here
+   
 }]);
+
+//Validating Login Form
+function validateLoginForm() {
+    const message = document.getElementById('message');
+    const username =document.getElementById('username');
+    const password = document.getElementById('password');
+    const userType = document.querySelector("input[name='options']:checked");
+    if (username.value == "" || password.value == "") {
+        alert("Enter all data");
+    }else{
+        message.innerText = `${userType.value} - ${username.value} Sign In Successfully`;
+        $('#authentication').modal("show");
+    }  
+}
+ 
+
 
 

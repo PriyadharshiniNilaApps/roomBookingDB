@@ -11,7 +11,7 @@ body{
    
 }
 
-div h1{
+div > h1{
     font-size: 32px;
     line-height: 40px;
     color: #009A61;
@@ -23,9 +23,10 @@ label{
     line-height: 17.5px;
 }
 
-img{
-    margin-top: 75px;
-    margin-left: 100px;
+.w-80{
+   margin-top:40px;
+   margin-left: 40px;
+ 
 }
 
 .form-control{
@@ -61,7 +62,7 @@ font-family: Outfit;
     background-color: #009A61;
     border-color: #009A61;
     color:#ffffff;
-font-family: IBM Plex Sans;
+    font-family: IBM Plex Sans;
 
 }
 
@@ -74,8 +75,13 @@ a{
 }
 
 @media only screen and (max-width:480px){
-    .hide{
+    div > img{
     display: none;
     }
 }
- 
+
+@media only screen and (max-width:768px){
+    div > img{
+    display: none;
+    }
+}
