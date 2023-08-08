@@ -12,7 +12,7 @@ function validateLoginForm() {
         alert("Enter all data");
     }else{
         message.innerText = `${userType.value} - ${username.value} Sign In Successfully`;
-        $('#authentication').modal("show");
+       $('#authentication').modal("show");
     }  
 }
  

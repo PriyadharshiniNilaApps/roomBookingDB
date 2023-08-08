@@ -1,46 +1,54 @@
 <div class="container-fluid">
     <h1 class="text-center">Login</h1>
-    <div class="row align-items-center">
-        <div class="col-6 hide">
-            <img class="w-80 h-80" src="app/style/images/login.svg" alt="login image"> 
+    <div class="row margin align-items-center">
+        <div class="col-6">
+            <img class="w-80 h-80 "  src="app/style/images/login.svg" alt="login image"> 
         </div>
-        <div class="col-6 d-flex flex-column" >
-            <div class="col-8 d-flex flex-column">
-                <div class="btn-group btn-group-toggle horizontal-flex" data-toggle="buttons">
-                    <label class="btn active w-50">
+    
+            <div class="col-6 d-flex flex-column  align-items-center"  >
+                <div class="col-8 d-flex flex-column"  id="gap">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn vertical-center active w-50">
                         <input type="radio" name="options" id="option1" value="Owner" autocomplete="off" checked> Owner
                     </label>
-                    <label class="btn w-50 ">
+                    <label class="btn vertical-center w-50 ">
                         <input type="radio" name="options" id="option2"  value="Customer"  autocomplete="off"> Customer
                     </label>
                 </div>
-                <form id="form" onsubmit="validateLoginForm()">
-                    <div class="form-group">
-                        <label for="username"> Username </label>
+                <form class="d-flex flex-column" id="form-gap" onsubmit="validateLoginForm()">
+                    <div class="">
+                        <label class="m-0" for="username"> Username </label>
                         <input type="text" minlength="4" class="form-control" id="username" placeholder="Enter Username" aria-describedby="usernameInputField">
                     </div>
                     <div class="form-group">
-                        <label for="password">Password </label>
+                        <label class="m-0"  for="password">Password </label>
                         <input type="password" minlength="6" class="form-control" id="password" name="password" placeholder="Enter Password" aria-describedby="passwordInputField">
                     </div>   
                     <div class="text-center">  
                         <button type="submit" id="submit" class="btn btn-format ">SIGN IN</button>      
                     </div> 
-                </form>
+                </form>  
+                   
             </div>
-            <div class="d-block"> Don't have an account? <a href="#!/register"> Sign Up </a></div>
+            <div class="text-center"> 
+                Dont have an account? <a href="#!/register"> Sign Up </a>
+            </div> 
+           
         </div>
-    </div>
-  
+
     <div class="modal text-center" id="authentication" tabindex="-1" role="dialog" aria-labelledby="#user-authentication" aria-hidden="true" >
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <img  src="app/style/images/success.svg" alt="authentication successfull image">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><img src="app/style/images/close.svg" alt="close button image"></span>
                     </button>
-                    <p id="message">Yes</p>
+                    <div class="d-flex flex-column " id="form1">
+                        <div>
+                            <img  src="app/style/images/success.svg" alt="authentication successfull image">
+                        </div>
+                        <p id="message"></p>
+                    </div>
                 </div>
             </div>
         </div>
