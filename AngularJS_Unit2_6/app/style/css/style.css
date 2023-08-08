@@ -10,115 +10,111 @@
 
 .welcome-home .message {
     font-size: 2rem;
-} 
-
-body{
-    font-family: Quando; 
 }
 
-div > h1{
+body {
+    font-family: Quando;
+}
+
+div>h1 {
     font-size: 32px;
     line-height: 40px;
     color: #009A61;
-    margin-top:68px;
+    margin-top: 68px;
 }
 
-label, .form-control{
+
+label, .form-control {
     font-size: 14px;
     line-height: 17.5px;
 }
 
-.margin{
-    margin:45px 60px; 
+#margin {
+    margin: 45px 60px;
 }
 
-.form-control{
-border-radius: 10px;
-border: 3px solid #626262;
-box-shadow: 0px 2px 7px 0px #D5D5D5;
+.form-control {
+    border-radius: 10px;
+    border: 3px solid #626262;
+    box-shadow: 0px 2px 7px 0px #D5D5D5;
 }
 
 .vertical-center {
     display: flex;
     align-items: center;
     justify-content: space-around;
-  }
+}
 
-.btn-group{
+.btn-group {
     border-radius: 8px;
-    border:1px solid #009A61;
+    border: 1px solid #009A61;
     font-weight: bold;
 }
- 
-.btn-group .btn.active{
-background-color: #009A61;
-color: #ffffff;
+
+.btn-group .btn.active {
+    background-color: #009A61;
+    color: #ffffff;
 }
 
-.btn-group .btn{
-width: 139px;
-height: 52px;
-font-weight: bold;
-font-family: Outfit;
+.btn-group .btn {
+    width: 139px;
+    height: 52px;
+    font-weight: bold;
+    font-family: Outfit;
 }
- 
-.btn-format{
-    width:192px;
-    height:53px;
+
+.btn-format {
+    width: 192px;
+    height: 53px;
     border-radius: 20px;
-    padding:4px 16px 4px 16px;
+    padding: 4px 16px 4px 16px;
     background-color: #009A61;
     border-color: #009A61;
-    color:#ffffff;
+    color: #ffffff;
     font-family: IBM Plex Sans;
 
 }
 
 
-a{
-    color:#009A61;
+a {
+    color: #009A61;
 }
 
-#gap{
-    gap:39px;    
+#gap, #form-gap {
+    gap: 39px;
 }
 
-#form-gap{
-    gap:39px;
+#form1 {
+    gap: 24px;
+    padding: 36px 40px;
 }
 
-#form1{
-    gap:24px;
-    padding: 36px 40px; 
+#authentication {
+    font-family: Inter;
+    border-radius: 8px;
+    border: 1px solid #DEE2E6;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: left;
+    color: #54595E;
 }
 
-#authentication{
-  font-family: Inter;
-  border-radius: 8px;
-  border: 1px solid #DEE2E6;
-  font-size:20px;
-  line-height: 24px;
-  text-align: left;
-  color: #54595E;
-}
+@media only screen and (max-width:480px) {
+    div>img {
+        display: none;
+    }
 
-@media only screen and (max-width:480px){
-    div > img{
-    display: none;
-    }  
-
-    .row{
+    .row {
         margin: 15px 20px;
     }
 }
 
-@media only screen and (max-width:767px){
-    div > img{
-    display: none;
+@media only screen and (max-width:767px) {
+    div>img {
+        display: none;
     }
 
-    .row{
+    .row {
         margin: 30px 30px;
     }
 }
-
