@@ -20,5 +20,5 @@ function validateRegisterForm(){
 
 //Pop-up Navigation
 function navigate(){
-    window.location.href="#!/login";
+    window.location.href="#/login";
 }

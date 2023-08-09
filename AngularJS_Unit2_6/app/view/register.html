@@ -2,8 +2,8 @@
     <div class="d-flex vertical-center" id="row-gap-1">
         <div class=" d-flex flex-column">
         <h1 class="text-center m-0" >Registration</h1>
-        <div>
-            <img class="w-100 h-100" src="app/style/images/register.svg" alt="register image"> 
+        <div> 
+            <img class="w-100 h-100" id="hide" src="app/style/images/register.svg" alt="register image"> 
         </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-8 " >
@@ -27,7 +27,7 @@
                     </div>
                     <div class="form-group">
                         <label for="phonenumber"> Phone Number</label>
-                        <input type="text" pattern="[0-9]{10}" class="form-control" id="phonenumber" placeholder="Enter Phone Number" aria-describedby="phoneNumberInputField" required>
+                        <input type="text" oninput="this.value = this.value.replace(/\D+/g, '')"  pattern="[0-9]{10}" class="form-control" id="phonenumber" placeholder="Enter Phone Number" aria-describedby="phoneNumberInputField" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password </label>
@@ -46,7 +46,7 @@
     </div>
     <div class="col-lg-5 offset-lg-1 text-center"> 
         Already Have an account? 
-        <a href="#!/login"> Sign In </a>
+        <a href="#/login"> Sign In </a>
     </div>
 </div>
 <div class="modal text-center" id="authentication-success" tabindex="-1" role="dialog" aria-labelledby="#authentication-success" aria-hidden="true">
@@ -55,7 +55,7 @@
             <div class="modal-body">
                 <div class="d-flex flex-column " id="modal-gap">
                     <div>
-                        <img  src="app/style/images/success.svg" alt="authentication successfull image">
+                        <img  id="change-size" src="app/style/images/success.svg" alt="authentication successfull image">
                     </div>
                     <p id="message"></p>
                     <div>

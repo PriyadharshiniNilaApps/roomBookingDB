@@ -7,7 +7,8 @@ app.controller('mainCtrl', ['$scope', function ($scope) {
 }]);
 
 app.config(['$locationProvider', function ($locationProvider) {
-    $locationProvider.hashPrefix();
+    $locationProvider.hashPrefix('');
+
 
 }]);
 // Configure the routes
