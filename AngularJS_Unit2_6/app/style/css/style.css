@@ -29,10 +29,6 @@ label, .form-control {
     line-height: 17.5px;
 }
 
-#margin {
-    margin: 45px 60px;
-}
-
 .form-control {
     border-radius: 10px;
     border: 3px solid #626262;
@@ -72,24 +68,35 @@ label, .form-control {
     border-color: #009A61;
     color: #ffffff;
     font-family: IBM Plex Sans;
-
 }
-
 
 a {
     color: #009A61;
 }
 
-#gap, #form-gap {
+.form-gap {
     gap: 39px;
 }
 
+.form-gap-1 {
+    gap: 23px;
+}
+
+#row-gap{
+    gap:100px;
+    margin:40px 40px 0px 80px;
+}
+
+#row-gap-1{
+    gap:80px;
+    margin:90px 30px 0px 30px; 
+}
 #form1 {
     gap: 24px;
     padding: 36px 40px;
 }
 
-#authentication {
+#authentication-success {
     font-family: Inter;
     border-radius: 8px;
     border: 1px solid #DEE2E6;
@@ -99,22 +106,39 @@ a {
     color: #54595E;
 }
 
-@media only screen and (max-width:480px) {
-    div>img {
-        display: none;
-    }
 
-    .row {
-        margin: 15px 20px;
+@media only screen and (max-width:1024px) {
+    
+    .col-lg-5{
+        margin: 33px 0px;
     }
 }
 
-@media only screen and (max-width:767px) {
-    div>img {
+@media only screen and (max-width:768px) {
+    div img{
+        width: 80%;
+        height: 80%;
+    }      
+    .col-lg-5{
+        margin: 33px 0px;
+    }
+}
+
+
+@media only screen and (max-width:480px) {
+    div img, .col-6{
         display: none;
     }
 
-    .row {
-        margin: 30px 30px;
+    #row-gap-1, #row-gap{
+        flex-direction: column;
+        gap:39px;
+        margin: 30px;
     }
+
+    .form-gap-1, .form-gap{
+        gap:33px;
+    }
+
+    
 }

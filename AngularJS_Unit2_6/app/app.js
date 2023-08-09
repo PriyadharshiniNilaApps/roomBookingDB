@@ -6,6 +6,10 @@ app.controller('mainCtrl', ['$scope', function ($scope) {
     // Your home controller logic goes here
 }]);
 
+app.config(['$locationProvider', function ($locationProvider) {
+    $locationProvider.hashPrefix();
+
+}]);
 // Configure the routes
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider

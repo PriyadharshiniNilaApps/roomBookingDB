@@ -11,8 +11,8 @@ function validateLoginForm() {
     if (username.value == "" || password.value == "") {
         alert("Enter all data");
     }else{
-        message.innerText = `${userType.value} - ${username.value} Sign In Successfully`;
-       $('#authentication').modal("show");
+        message.innerText = userType.value +  ' - ' + username.value + ' ' + "Sign In Successfully";
+       $('#authentication-success').modal("show");
     }  
 }
  

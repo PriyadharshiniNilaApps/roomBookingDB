@@ -14,7 +14,7 @@ function validateRegisterForm(){
         alert("Password doesn't match!");
     }else{
         message.innerText = `${userType.value} - ${username.value} Sign Up Successfully`;
-        $('#authentication').modal("show");
+        $('#authentication-success').modal("show");
     }  
 }
 
