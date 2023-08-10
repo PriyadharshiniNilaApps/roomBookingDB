@@ -61,6 +61,11 @@ label, .form-control {
     font-family: Outfit;
 }
 
+.btn-format:hover{
+    color: #fff;
+    background-color: #00c57d;
+}
+
 .btn-format {
     width: 192px;
     height: 53px;
@@ -74,6 +79,12 @@ label, .form-control {
 
 a {
     color: #009A61;
+}
+
+
+a:hover{
+    text-decoration: none;
+    color: #00c57d;
 }
 
 .form-gap {
@@ -109,6 +120,11 @@ a {
     color: #54595E;
 }
 
+#change-size{
+    width:25%;
+   height: 25% ;
+}
+
 .col-lg-5{
     margin-top: 33px;
     margin-bottom: 33px;
@@ -138,11 +154,6 @@ a {
     
     #hide{
         display: none;
-    }
-
-    #change-size{
-         width:25%;
-        height: 25% ;
     }
 
     #row-gap-1, #row-gap{
