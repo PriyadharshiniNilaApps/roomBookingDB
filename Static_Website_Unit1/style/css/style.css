@@ -7,15 +7,16 @@
 body {
     font-family: Montserrat;
     font-weight: 600;
-    
+    overflow-y: scroll;
+    overflow-x:hidden;
 }
 
-.verticalLine {
+#verticalLine {
     border-left: 1px solid #ffffff;
     height: 30px;
 }
 
-.navbar {
+#navbar {
     background-color: #1C294A;
     justify-content: space-between;
     padding: 0px 100px 0px 100px;
@@ -30,7 +31,7 @@ a {
     color:white;
 }
 
-.nav-tabs{
+#nav-tabs{
     list-style: none;
     column-gap: 40px;
     display: flex;
@@ -43,33 +44,39 @@ a {
     color: #E80451;
 }
 
-.home {
+#home {
     height: 862px;
     background-image: linear-gradient(to top, #0A183D 100%, #0A183D 90%);
     display: flex;
     align-items: center;
-    color:white;
+    color: #D9D9D9;
     gap: 150px;
 }
 
 .layout{
     width:100%;
     display: flex;
-    
     padding:100px;
     gap:50px;
 }
 
-.layout-background-blue{
-    color: #000000;
+.layout-background-white{
+    color: #000000;;
 }
 
-.layout-background-white{
+.layout-background-white p{
+    color:#777777;
+}
+
+.layout-background-blue p{
+    color: #D9D9D9;
+}
+.layout-background-blue{
   color:#ffffff;
   background: #1C294A;
 }
 
-.sub-layout-3{
+.layout-flex-direction-column{
     flex-direction: column;
 }
 
@@ -110,11 +117,14 @@ a {
     width:100%;
 }
 
+.w-75{
+    width:75%;
+}
+
 .frame-10{
     padding: 100px 10px 100px 10px;
     gap: 10px;
-    align-items: center;
-}
+} 
 
 h1, h1 > p{
     font-size: 68px;
@@ -122,12 +132,13 @@ h1, h1 > p{
 }
 
 p{
+  
     font-size: 18px;
     line-height: 36px;
     letter-spacing: 0.75px;
 }
 
-.sub-layout-1 p{
+.layout-background-white p{
     color: #777777;
 }
 
@@ -142,12 +153,12 @@ button{
     color: white;
 }
 
-.btn-1 {
+.btn-color-1 {
     background: #E80451;
 }
 
-.btn-2 {
-    background: #1C294A;
+.btn-color-2 {
+    background: #383B70;
 }
 
 h6{
@@ -156,23 +167,27 @@ h6{
     letter-spacing: 0.75px;
 }
 
-.border{
+.border-50{
     border-radius: 50px;
 }
 
-.border-1{
+.border-50-percentage{
     border-radius: 50%;
 }
-
-.list{
+#list{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     gap: 29px;
 }
 
-.list li{
+#list li{
     list-style-image: url("/Static_Website_Unit1/style/images/image13.svg");
+   
+}
+
+li p{
+    position: relative;
+    right:-20px;
 }
 
 .footer{
@@ -185,23 +200,26 @@ section ul li{
 }
 
 @media only screen and (min-width: 1024px) {
-    .home {
+    #home {
         padding: 0px 100px 0px 100px;
     }
    
 }
 
 @media only screen and (max-width: 1024px) {
-    .navbar{
+   
+    
+    
+    #navbar{
         padding:0px 50px 0px 50px;
         background-color: #08192D;
     }
 
-    .nav-tabs li, #hide{
+    #nav-tabs li, #hide{
         display: none;
     }
 
-    .home {
+    #home {
         padding: 0px 270px 0px 50px;
     }
 
@@ -211,6 +229,14 @@ section ul li{
       
     }
 
+    .frame-10{
+        padding: 250px 0px 250px 0px;
+    } 
+
+    #list{
+       
+        gap: 19px;
+    }
 
     .border{
         width: 200px;
@@ -218,17 +244,28 @@ section ul li{
       
     }
 
-    .frame-8{
+    .w-75{
+        width: 75%;
+    }
+
+    .space-between{
         padding: 0px 50px 0 50px;
     }   
 
-    .btn-2{
+    .btn-color-2{
         background:linear-gradient(to top, #0A183D 100%, #0A183D 90%) ;
     }
 }
 
 @media only screen and (max-width: 480px) {
-    .navbar{
+    img{
+        width: 100%;
+        height:100%;
+    }
+
+    
+  
+    #navbar{
         background-color: #1C294A;
         padding:0px 20px 0px 20px;
     }
@@ -248,7 +285,7 @@ section ul li{
         line-height: 19.5px;
     }
 
-    .home {
+    #home {
         padding: 0px 20px 0px 20px;
         height:692px;
     }
@@ -266,13 +303,10 @@ section ul li{
         flex-direction: column;
     }
 
-    .frame-8{
+    .space-between{
         gap: 20px;
     }
 }
 
 
 
-#Extra{
-
-}
