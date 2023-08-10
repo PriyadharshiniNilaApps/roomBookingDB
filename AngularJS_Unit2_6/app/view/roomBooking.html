@@ -1,0 +1,97 @@
+<div class="container-fluid container-center">
+    <div>
+    <h1 class="text-center">Room booking details</h1>
+    <div class="">
+        <form autocomplete="off" class="d-flex " onsubmit="validateLoginForm()">
+            <div class=" col-4 d-flex flex-column">
+            <div class="form-group">
+                <label class="m-0" for="name"> Name </label>
+                <input type="text"  class="form-control" id="name" placeholder="Enter Full Name" aria-describedby="nameInputField">
+            </div>
+            <div class="form-group">
+                <label class="m-0"  for="gender"> Gender </label>
+                <input class="form-control" id="gender" name="gender" placeholder="Choose Gender" aria-describedby="genderInputField">
+            </div>   
+            <div class="form-group">
+                <label for="email-id"> Email ID</label>
+                <input type="email" class="form-control" id="email-id" placeholder="Enter E-mail Address" aria-describedby="emailIdInputField" required>
+            </div>
+            <div class="form-group">
+                <label for="id-type"> ID Type</label>
+                <input class="form-control" id="id-type" placeholder="Choose Government ID Type" aria-describedby="idTypeInputField" required>
+            </div>
+            <div class="text-center">  
+                <button type="submit" id="submit" class="btn">Next</button>      
+            </div>
+        </div>
+        <div  class=" col-4 d-flex flex-column">
+            <div class="form-group">
+                <label for="age"> Age</label>
+                <input type="number" class="form-control" id="age" placeholder="Enter Age" aria-describedby="ageInputField" required>
+            </div>
+            <div class="form-group">
+                <label for="purpose"> Purpose</label>
+                <input type="text" class="form-control" id="purpose" placeholder="Enter Purpose of Booking" aria-describedby="purposeInputField" required>
+            </div>
+            <div class="form-group">
+                <label for="phonenumber"> Phone Number</label>
+                <input type="text" maxlength="10" oninput="this.value = this.value.replace(/\D+/g, '')"  pattern="[0-9]{10}" class="form-control" id="phonenumber" placeholder="Enter Phone Number" aria-describedby="phoneNumberInputField" required>
+            </div>
+            <div class="form-group">
+                <label for="id-number"> ID Number</label>
+                <input type="text" class="form-control" id="id-number" placeholder="Enter Government ID Number" aria-describedby="emailIdInputField" required>
+            </div>
+            <div class="text-center">  
+                <button type="submit" id="submit" class="btn">View Booking</button>      
+            </div> 
+        </div>
+        </form>   
+    </div>
+    <div>
+        <h1 class="text-center">Additional Requirements</h1>
+        <div class="">
+            <form autocomplete="off" class="d-flex " onsubmit="validateLoginForm()">
+                <div class=" col-4 d-flex flex-column">
+                  
+                <div class="form-group d-flex">
+                    <label>Room Type</label>
+             
+                    <input type="radio"  id="room-type1"  name="room-type" value="AC" aria-describedby="roomType1InputField"> AC
+                    
+                    <input type="radio"  id="room-type2" name="room-type" value="NON - AC" aria-describedby="roomType2InputField"> Non - AC
+                   
+             
+                </div>
+                <div class="form-group">
+                    <label class="m-0"  for="check-in-date"> Check-In Date</label>
+                    <input type="date" class="form-control" id="check-in-date" placeholder="Choose Check-In Date" aria-describedby="checkInDateInputField">
+                </div>   
+                <div class="form-group">
+                    <label for="expected-check-out-date"> Expected Check-Out Date</label>
+                    <input type="date" class="form-control" id="expected-check-out-date" placeholder="Choose Expected Check-Out date" aria-describedby="expectedCheckOutDateInputField" required>
+                </div>
+                <div class="form-group">
+                    <label for="services-provided"> Services Provider</label>
+                    <input type="checkbox" id="services-provided" aria-describedby="servicesProvider1InputField" required> Catering
+                    <input type="checkbox" id="services-provided" aria-describedby="servicesProvided2InputField" required> Laundry services
+                </div>
+            </div>
+            <div  class=" col-4 d-flex flex-column">
+                <div class="form-group">
+                    <label for="room-size"> Purpose</label>
+                    <input class="form-control" id="room-size" placeholder="Choose Room size" aria-describedby="roomSizeInputField" required>
+                </div>
+                <div class="form-group">
+                    <label class="m-0"  for="check-in-time"> Check-In Date</label>
+                    <input type="time" class="form-control" id="check-in-time" placeholder="Choose Check-In Time" aria-describedby="checkIntimeInputField">
+                </div>  
+                <div class="form-group">
+                    <label for="expected-check-out-time"> Expected Check-Out Date</label>
+                    <input type="time" class="form-control" id="expected-check-out-time" placeholder="Choose Expected Check-Out time" aria-describedby="expectedCheckOuttimrInputField" required>
+                </div>
+            </div>
+            </form>   
+        </div>
+</div>
+
+</div>

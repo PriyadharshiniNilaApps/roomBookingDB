@@ -26,6 +26,10 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'app/view/home.html',
             controller: 'homeController'
         })
+        .when('/roomBooking',{
+            templateUrl: 'app/view/roomBooking.html',
+            controller: 'roomBookingController'
+        })
         .otherwise({ redirectTo: '/login' });
     console.log($routeProvider);
 

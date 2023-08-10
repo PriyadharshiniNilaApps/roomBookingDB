@@ -13,9 +13,8 @@ function validateLoginForm() {
     }else{
         message.innerText = userType.value +  ' - ' + username.value + ' ' + "Sign In Successfully";
        $('#authentication-success').modal("show");
+     
     }  
 }
  
-
-
 
