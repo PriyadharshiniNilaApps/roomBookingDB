@@ -39,7 +39,7 @@ a {
     align-items: center;
 }
 
-label {
+#color{
     color: #E80451;
 }
 
@@ -49,10 +49,10 @@ label {
     display: flex;
     align-items: center;
     color:white;
-    gap: 50px;
+    gap: 150px;
 }
 
-.menu-layout{
+.layout{
     width:100%;
     display: flex;
     
@@ -60,11 +60,11 @@ label {
     gap:50px;
 }
 
-.sub-layout-1{
+.layout-background-blue{
     color: #000000;
 }
 
-.sub-layout-2{
+.layout-background-white{
   color:#ffffff;
   background: #1C294A;
 }
@@ -73,40 +73,40 @@ label {
     flex-direction: column;
 }
 
-.frame-1 {
+.vertical-flex {
     display: flex;
     flex-direction: column;
 }
 
-.frame-2{
+.horizontal-flex{
     display: flex;
 }
 
-.frame-3{
+.gap-50{
     gap:50px;
 }
 
-.frame-4{
+.gap-30{
     gap:30px;
 }
 
-.frame-5{
+.gap-20{
     gap:20px;
 }
 
-.frame-6{
+.gap-10{
     gap:10px;
 }
 
-.frame-7{
+.pad-10{
     padding:10px;
 }
 
-.frame-8{
+.space-between{
     justify-content: space-between;
 }
 
-.frame-9{
+.w-100{
     width:100%;
 }
 
@@ -116,7 +116,7 @@ label {
     align-items: center;
 }
 
-h1{
+h1, h1 > p{
     font-size: 68px;
     line-height: 95px;
 }
@@ -184,19 +184,20 @@ section ul li{
   color:#777777
 }
 
-@media only screen and (min-width: 1194px) {
+@media only screen and (min-width: 1024px) {
     .home {
         padding: 0px 100px 0px 100px;
     }
+   
 }
 
-@media only screen and (max-width: 1194px) {
+@media only screen and (max-width: 1024px) {
     .navbar{
         padding:0px 50px 0px 50px;
         background-color: #08192D;
     }
 
-    .nav-tabs li, .hide{
+    .nav-tabs li, #hide{
         display: none;
     }
 
@@ -204,9 +205,12 @@ section ul li{
         padding: 0px 270px 0px 50px;
     }
 
-    .menu-layout{
+    .layout{
         padding: 100px 50px 100px 50px;
+      
+      
     }
+
 
     .border{
         width: 200px;
@@ -217,9 +221,13 @@ section ul li{
     .frame-8{
         padding: 0px 50px 0 50px;
     }   
+
+    .btn-2{
+        background:linear-gradient(to top, #0A183D 100%, #0A183D 90%) ;
+    }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 480px) {
     .navbar{
         background-color: #1C294A;
         padding:0px 20px 0px 20px;
@@ -245,11 +253,16 @@ section ul li{
         height:692px;
     }
 
-    .menu-layout{
+    .layout{
       padding: 50px 20px 50px 20px;
+    
     }
 
-    .frame-2{
+    .pad-10{
+        padding:10px 15px 10px 10px;
+    }
+
+    .horizontal-flex{
         flex-direction: column;
     }
 
@@ -260,4 +273,6 @@ section ul li{
 
 
 
+#Extra{
 
+}
