@@ -1,97 +1,171 @@
 <div class="container-fluid container-center">
     <div>
-    <h1 class="text-center">Room booking details</h1>
-    <div class="">
-        <form autocomplete="off" class="d-flex " onsubmit="validateLoginForm()">
-            <div class=" col-4 d-flex flex-column">
-            <div class="form-group">
-                <label class="m-0" for="name"> Name </label>
-                <input type="text"  class="form-control" id="name" placeholder="Enter Full Name" aria-describedby="nameInputField">
-            </div>
-            <div class="form-group">
-                <label class="m-0"  for="gender"> Gender </label>
-                <input class="form-control" id="gender" name="gender" placeholder="Choose Gender" aria-describedby="genderInputField">
-            </div>   
-            <div class="form-group">
-                <label for="email-id"> Email ID</label>
-                <input type="email" class="form-control" id="email-id" placeholder="Enter E-mail Address" aria-describedby="emailIdInputField" required>
-            </div>
-            <div class="form-group">
-                <label for="id-type"> ID Type</label>
-                <input class="form-control" id="id-type" placeholder="Choose Government ID Type" aria-describedby="idTypeInputField" required>
-            </div>
-            <div class="text-center">  
-                <button type="submit" id="submit" class="btn">Next</button>      
-            </div>
-        </div>
-        <div  class=" col-4 d-flex flex-column">
-            <div class="form-group">
-                <label for="age"> Age</label>
-                <input type="number" class="form-control" id="age" placeholder="Enter Age" aria-describedby="ageInputField" required>
-            </div>
-            <div class="form-group">
-                <label for="purpose"> Purpose</label>
-                <input type="text" class="form-control" id="purpose" placeholder="Enter Purpose of Booking" aria-describedby="purposeInputField" required>
-            </div>
-            <div class="form-group">
-                <label for="phonenumber"> Phone Number</label>
-                <input type="text" maxlength="10" oninput="this.value = this.value.replace(/\D+/g, '')"  pattern="[0-9]{10}" class="form-control" id="phonenumber" placeholder="Enter Phone Number" aria-describedby="phoneNumberInputField" required>
-            </div>
-            <div class="form-group">
-                <label for="id-number"> ID Number</label>
-                <input type="text" class="form-control" id="id-number" placeholder="Enter Government ID Number" aria-describedby="emailIdInputField" required>
-            </div>
-            <div class="text-center">  
-                <button type="submit" id="submit" class="btn">View Booking</button>      
-            </div> 
-        </div>
-        </form>   
-    </div>
-    <div>
-        <h1 class="text-center">Additional Requirements</h1>
+        <h1 class="text-center">Room booking details</h1>
         <div class="">
-            <form autocomplete="off" class="d-flex " onsubmit="validateLoginForm()">
+            <form autocomplete="off" class="d-flex ">
                 <div class=" col-4 d-flex flex-column">
-                  
-                <div class="form-group d-flex">
-                    <label>Room Type</label>
-             
-                    <input type="radio"  id="room-type1"  name="room-type" value="AC" aria-describedby="roomType1InputField"> AC
-                    
-                    <input type="radio"  id="room-type2" name="room-type" value="NON - AC" aria-describedby="roomType2InputField"> Non - AC
-                   
-             
+                    <div class="form-group">
+                        <label class="m-0" for="name"> Name </label>
+                        <input type="text" class="form-control" id="name" ng-model="fullname" placeholder="Enter Full Name" aria-describedby="nameInputField" required>
+                        <p ng-show="fullname | customValidator "> {{ validationStatus }}</p>
+                    </div>
+                    <div class="form-group">
+                        <label class="m-0"  for="gender"> Gender </label>
+                        <select class="form-control" id="gender" ng-model="gender" aria-describedby="genderInputField" required>
+                            <option value="" disabled selected hidden>Choose Gender</option>
+                            <option value="{{ i }}" ng-repeat="i in genders"> {{ i }}
+                        </select>
+                    </div>   
+                    <div class="form-group">
+                        <label class="m-0" for="email-id"> Email ID</label>
+                        <input type="email" class="form-control" id="email-id" mg-model="email" placeholder="Enter E-mail Address" aria-describedby="emailIdInputField" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="m-0" for="idtype"> ID Type</label>
+                        <select class="form-control" id="idtype" ng-model="idtype" aria-describedby="idTypeInputField" required>
+                            <option value="" disabled selected hidden>Choose Government ID Type</option>
+                            <option value="Aadhar card">Aadhar card
+                            <option value="Voter ID">Voter ID
+                            <option value="PAN CARD">PAN CARD
+                            <option value="Driving Licence">Driving Licence
+                        </select>
+                    </div>
+                    <div class="text-center">  
+                        <button type="submit" id="submit" class="btn btn-format">Next</button>      
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="m-0"  for="check-in-date"> Check-In Date</label>
-                    <input type="date" class="form-control" id="check-in-date" placeholder="Choose Check-In Date" aria-describedby="checkInDateInputField">
-                </div>   
-                <div class="form-group">
-                    <label for="expected-check-out-date"> Expected Check-Out Date</label>
-                    <input type="date" class="form-control" id="expected-check-out-date" placeholder="Choose Expected Check-Out date" aria-describedby="expectedCheckOutDateInputField" required>
+                <div  class=" col-4 d-flex flex-column">
+                    <div class="form-group">
+                        <label class="m-0" or="age"> Age</label>
+                        <input type="number" class="form-control" id="age" ng-model="age" placeholder="Enter Age" aria-describedby="ageInputField" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="m-0" for="purpose"> Purpose</label>
+                        <input type="text" class="form-control" id="purpose" ng-model="purpose" placeholder="Enter Purpose of Booking" aria-describedby="purposeInputField" required>
+                    </div>
+                    <div class="form-group">
+                        <label  class="m-0" for="phonenumber"> Phone Number</label>
+                        <input type="text" maxlength="10" oninput="this.value = this.value.replace(/\D+/g, '')"  ng-model="phonenumber" pattern="[0-9]{10}" class="form-control" id="phonenumber" placeholder="Enter Phone Number" aria-describedby="phoneNumberInputField" required>
+                    </div>
+                    <div class="form-group">
+                        <label  class="m-0" for="idnumber"> ID Number</label>
+                        <input type="number" class="form-control" id="idnumber" ng-model="idnumber" placeholder="Enter Government ID Number" aria-describedby="emailIdInputField" required>
+                    </div>
+                    <div class="text-center">  
+                        <button type="submit" id="submit" class="btn btn-format">View Booking</button>      
+                    </div> 
                 </div>
-                <div class="form-group">
-                    <label for="services-provided"> Services Provider</label>
-                    <input type="checkbox" id="services-provided" aria-describedby="servicesProvider1InputField" required> Catering
-                    <input type="checkbox" id="services-provided" aria-describedby="servicesProvided2InputField" required> Laundry services
-                </div>
-            </div>
-            <div  class=" col-4 d-flex flex-column">
-                <div class="form-group">
-                    <label for="room-size"> Purpose</label>
-                    <input class="form-control" id="room-size" placeholder="Choose Room size" aria-describedby="roomSizeInputField" required>
-                </div>
-                <div class="form-group">
-                    <label class="m-0"  for="check-in-time"> Check-In Date</label>
-                    <input type="time" class="form-control" id="check-in-time" placeholder="Choose Check-In Time" aria-describedby="checkIntimeInputField">
-                </div>  
-                <div class="form-group">
-                    <label for="expected-check-out-time"> Expected Check-Out Date</label>
-                    <input type="time" class="form-control" id="expected-check-out-time" placeholder="Choose Expected Check-Out time" aria-describedby="expectedCheckOuttimrInputField" required>
-                </div>
-            </div>
             </form>   
         </div>
+        <div class="">
+            <h1 class="text-center">Additional Requirements</h1>
+            <div class="">
+                <form autocomplete="off" class="d-flex " >
+                    <div  class=" col-12 d-flex flex-column">
+                        <div class="col-12 d-flex">
+                            <div class="col-4 d-flex flex-column">
+                                <div class="form-group d-flex">
+                                    <label class="m-0" for="roomtype">Room Type</label>
+                                    <input  type="radio" ng-model="roomtype1" value="AC" aria-describedby="roomType1InputField"> AC
+                                    <input type="radio" ng-model="roomtype2" value="NON - AC" aria-describedby="roomType2InputField"> Non - AC
+                                </div>
+                                <div class="form-group">
+                                    <label class="m-0"  for="checkindate"> Check-In Date</label>
+                                    <input class="form-control" id="checkindate" ng-model="checkindate" onfocus="{this.type = 'date'}" onblur="this.type= 'text'" placeholder="Choose Check-In Date" aria-describedby="checkInDateInputField">
+                                </div>   
+                                <div class="form-group">
+                                    <label class="m-0"  for="expectedcheckoutdate"> Expected Check-Out Date</label>
+                                    <input class="form-control" id="expectedcheckoutdate"  ng-model="expectedcheckoutdate" onfocus="{this.type = 'date'}" onblur="this.type= 'text'" placeholder="Choose Expected Check-Out date" aria-describedby="expectedCheckOutDateInputField" required>
+                                </div>
+                            </div>
+                            <div  class=" col-4 d-flex flex-column">
+                                <div class="form-group">
+                                    <label class="m-0" for="room-size"> Purpose</label>
+                                    <select class="form-control" ng-model="room-size" aria-describedby="roomSizeInputField" required>
+                                        <option value="" disabled selected hidden>Choose Room size</option>
+                                        <option value="1 bed room">1 bed room
+                                        <option value="2 bed room">2 bed room
+                                        <option value="3 bed room">3 bed room
+                                        <option value="4 bed room">4 bed room
+                                    </select>     
+                                </div>
+                                <div class="form-group">
+                                    <label class="m-0"  for="checkintime"> Check-In Time</label>
+                                    <input class="form-control" id="checkintime" ng-model="checkintime" onfocus="{this.type = 'time'}" onblur="this.type= 'text'" placeholder="Choose Check-In time" aria-describedby="checkInTimeInputField">
+                                </div>   
+                                <div class="form-group">
+                                    <label class="m-0"  for="expectedcheckouttime"> Expected Check-Out Date</label>
+                                    <input class="form-control" id="expectedcheckouttime"  ng-model="expectedcheckouttime" onfocus="{this.type = 'time'}" onblur="this.type= 'text'" placeholder="Choose Expected Check-Out time" aria-describedby="expectedCheckOutTimeInputField" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex">
+                        <div class="form-group">
+                            <label class="m-0"> Services Provider</label>
+                            <div>
+                                <input type="checkbox" ng-model="servicesprovided1" aria-describedby="servicesProvider1InputField" > Catering
+                                <input type="checkbox" ng-model="servicesprovided2" aria-describedby="servicesProvided2InputField" > Laundry services
+                            </div>
+                            <div class="d-flex">
+                                <div ng-show="servicesprovided1" >
+                                <label class="m-0" for="careringType"> Catering Type</label>
+                                <select class="form-control" id="cateringType" ng-model="cateringType" aria-describedby="cateringTypeInputField" required>
+                                    <option value="" disabled selected hidden>Choose Catering Type</option>
+                                    <option value="{{ i }}" ng-repeat="i in cateringTypes"> {{ i }}
+                                </select>
+                            </div>
+                            <div  ng-show="servicesprovided2" >
+                                <label class="m-0" for="laundryType"> Laundry Type</label>
+                                <select class="form-control" id="laundryType" ng-model="laundryType" aria-describedby="laundryInputField" required>
+                                    <option value="" disabled selected hidden>Choose Laundry Type</option>
+                                    <option value="{{ i }}" ng-repeat="i in laundryTypes"> {{ i }}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>  
+            </div>
+        </div>
+    </div>
 </div>
+<div class="modal " id="charges" tabindex="-1" role="dialog" aria-labelledby="#charges" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+           <div class="modal-body">
+                <h5 class="modal-title text-center" id="exampleModalLabel">Charges</h5>
+         
+                <div class="d-flex flex-column " id="modal-gap">
+                    <form autocomplete="off"  class="d-flex flex-column form-gap-1">
+                        <div class="form-group d-flex ">
+                            <label for="roomCharges"> Room charges  </label>
+                            <input type="number" class="form-control" id="roomCharges" aria-describedby="roomChargesInputField" required>
+                        </div>
+                        <div class="form-group d-flex">
+                            <label for="cateringCharges"> Catering charges </label>
+                            <input type=" number" class="form-control" id="cateringCharges" aria-describedby="cateringChargesInputField" required>
+                        </div>
+                        <div class="form-group d-flex">
+                            <label for="laundryCharges"> Laundry charge</label>
+                            <input type="number" oninput="this.value = this.value.replace(/\D+/g, '')"  pattern="[0-9]{10}" class="form-control" aria-describedby="laundryChargeInputField" required>
+                        </div>
+                        <div class="form-group d-flex">
+                            <label for="taxAmount"> Tax Amount(18%) </label>
+                            <input type="number"  class="form-control" id="taxAmount" aria-describedby="taxAmountInputField" required>
+                        </div>   
+                        <div class="form-group d-flex">
+                            <label for="totalCost"> Total cost </label>
+                            <input type="number"  class="form-control" id="totalAmount" aria-describedby="totalCostInputField" required>
+                        </div>
+                        <div class="text-center d-flex"> 
+                            <button type="submit" class="btn btn-format" >Submit</button> 
+                            <button type="cancel" class="btn btn-format" >Cancel</button>      
+                       
+                        </div> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
 
-</div>
+
