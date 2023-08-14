@@ -14,6 +14,7 @@ body {
 #verticalLine {
     border-left: 1px solid #ffffff;
     height: 30px;
+    display: block;
 }
 
 #navbar {
@@ -89,8 +90,13 @@ a {
     display: flex;
 }
 
+
 .gap-50{
     gap:50px;
+}
+
+.gap-150{
+    gap:150px;
 }
 
 .gap-30{
@@ -106,19 +112,48 @@ a {
 }
 
 .pad-10{
+    
     padding:10px;
 }
 
-.space-between{
-    justify-content: space-between;
+#ml-20{
+   margin-right:100px;
 }
 
+#mr-20{
+    margin-left:200px;
+}
+
+.gap-18{
+    gap:18px;
+}
+.space-between{
+    justify-content: space-between;
+    /* align-items: center; */
+  
+}
+
+.align-center{
+    align-items: center;
+}
+
+.vertical-center{
+    vertical-align: middle;
+}
 .w-100{
     width:100%;
 }
 
 .w-75{
     width:75%;
+}
+
+#footer-size{
+  font-size:12px;
+  line-height: 14px;
+  letter-spacing: -2%;
+  color:#777777;
+
 }
 
 .frame-10{
