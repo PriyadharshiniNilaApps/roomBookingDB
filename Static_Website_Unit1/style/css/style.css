@@ -11,10 +11,19 @@ body {
     overflow-x:hidden;
 }
 
-#verticalLine {
+#verticalLine{
     border-left: 1px solid #ffffff;
     height: 30px;
-    display: block;
+
+}
+
+.hamburger {
+    display: none;
+    
+}
+
+input[type=checkbox] {
+    display: none;
 }
 
 #navbar {
@@ -129,7 +138,8 @@ a {
 }
 .space-between{
     justify-content: space-between;
-    /* align-items: center; */
+    align-items: center;
+    vertical-align: middle;
   
 }
 
@@ -239,8 +249,7 @@ section ul li{
 
 
 #wrap{
-     
-    flex-flow: row wrap;
+ flex-flow: row wrap;
   
     
 }
@@ -254,12 +263,19 @@ section ul li{
 .gap-100{
     gap:150px;
 }
+.img-size{
+    width: 50%;
+    height:50%;
+}
+
 @media only screen and (min-width: 1200px) {
     #home {
         padding: 0px 100px 0px 100px;
     }
    
+   
 }
+
 
 @media only screen and (max-width: 1200px) {
     .img-size{
@@ -272,6 +288,7 @@ section ul li{
         align-items: center;
         
     }
+
     .tab{
         display: flex;
         gap:50px;
@@ -292,9 +309,9 @@ section ul li{
         background-color: #08192D;
     }
 
-    #nav-tabs li, #hide{
+    #hide, #nav-tabs{
         display: none;
-    }
+    } 
 
     #home {
         padding: 0px 270px 0px 50px;
@@ -340,6 +357,16 @@ section ul li{
      #mr-20{
          margin-left:275px;
      }
+}
+
+@media only screen and (max-width:768px){
+    .horizontal-flex{
+        flex-direction: column;
+    }
+    .img-size{
+        width: 50%;
+        height:50%;
+    }
 }
 
 @media only screen and (max-width: 480px) {
