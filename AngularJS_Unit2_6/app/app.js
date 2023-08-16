@@ -13,6 +13,10 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'app/view/home.html',
             controller: 'homeController'
         })
+        .when('/availability', {
+            templateUrl: 'app/view/availabilityTemplate.html',
+            controller: 'availabilityController'
+        })
         .otherwise({ redirectTo: '/home' });
     console.log($routeProvider);
 
