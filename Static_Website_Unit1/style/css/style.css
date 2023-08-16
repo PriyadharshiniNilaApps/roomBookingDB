@@ -84,8 +84,7 @@ h6 label {
     ;
 }
 
-.layout-background-white p,
-section ul li {
+.layout-background-white p, section ul li {
     color: #777777;
 }
 
@@ -228,12 +227,7 @@ ul {
         padding: 0px 100px 0px 100px;
     }
 }
-
-<<<<<<< HEAD
-@media only screen and (max-width: 1024px) {
-    #navbar{
-        padding:0px 50px 0px 50px;
-=======
+  
 @media only screen and (max-width: 1200px) {
     #wrap {
         flex-flow: column wrap;
@@ -267,18 +261,21 @@ ul {
         transition: all .3s ease;
     }
 
-    .hamburger {
+    #hamburger {
         display: block;
         color: #ffffff;
     }
 
-    #menu-toggle:checked~#nav-tabs {
+    #menu-toggle ~ #nav-tabs {
+        display: none;
+    }
+
+    #menu-toggle:checked ~ #nav-tabs {
         display: flex;
     }
 
     #navbar {
         padding: 0px 50px 0px 50px;
->>>>>>> b7ce3fde45df1b403b47b974d7fc73605b846f6f
         background-color: #08192D;
     }
 
@@ -365,6 +362,10 @@ ul {
     #navbar {
         background-color: #1C294A;
         padding: 0px 20px 0px 20px;
+    }
+
+    #nav-tabs{
+        background-color: #1C294A;
     }
 
     h1 {
