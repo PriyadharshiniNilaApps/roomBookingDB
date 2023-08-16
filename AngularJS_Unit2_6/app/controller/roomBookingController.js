@@ -22,7 +22,7 @@ app.controller('roomBookingController',['$scope', function ($scope) {
     ];
 
     $scope.validationStatus = '';
-    $('#charges').modal("show");
+    // $('#charges').modal("show");
   
 }]).filter('customValidator', function() {
     return function(input){
