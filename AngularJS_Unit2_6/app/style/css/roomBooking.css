@@ -14,7 +14,7 @@ span{
      
 }
 
-div>h1{
+ng-form > h1{
     font-size: 23px;
     line-height: 28.75px;
     text-align: center;
@@ -79,9 +79,9 @@ div>h1{
     }
 }
 
-input.ng-invalid , select.ng-invalid{
+/* input.ng-invalid , select.ng-invalid{
     background: linear-gradient(0deg, #F2C6C6, #F2C6C6), linear-gradient(0deg, #8E1414, #8E1414);
     border: 3px solid rgba(142, 20, 20, 1);
     box-shadow: 0px 2px 7px 0px rgba(213, 213, 213, 1);
-}
+} */
 

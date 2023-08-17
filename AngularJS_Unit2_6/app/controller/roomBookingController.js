@@ -1,4 +1,14 @@
-app.controller('roomBookingController',['$scope', function ($scope, emailService) {
+app.service('EmailService', function(){
+    this.validEmail = function(email){
+        var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailPattern.test(email);
+    }
+    this.remaining = function(purpose){
+        return 50 - purpose.length + ' characters remaining';    
+    }
+})
+
+app.controller('roomBookingController',['$scope', 'EmailService', function ($scope, EmailService) {
     $scope.genders = [
         'Male',
         'Female',
@@ -28,12 +38,40 @@ app.controller('roomBookingController',['$scope', function ($scope, emailService
     ];  
 
     $scope.email = '';
-    $scope.err = false;
-    $scope.isValidEmail = function(){
-        $scope.err = emailService.isValidEmail1($scope.email);
+    $scope.emailError = false;
+
+     $scope.isValidEmail = function(){
+        $scope.emailError = false;
+        if($scope.email && !EmailService.validEmail($scope.email)){
+            $scope.emailError = true;
+        }
+    }
+
+    $scope.purpose = '';
+    $scope.purposeText = false;
+
+    $scope.remainingCharacters = function(){
+           $scope.purposeText = true;
+           $scope.validationStatus =  EmailService.remaining($scope.purpose); 
+           console.log($scope.validationStatus);
+    }
+
+    $scope.clear = function(){
+        $scope.purposeText = false;
+    }
+
+    $scope.myForm = {};
+    $scope.roomBookingDetailsForm = false;
+    
+    $scope.submitForm = function(){
+        if($scope.subForm1.$valid){
+            console.log("Valid")
+            $scope.roomBookingDetailsForm = true;
+
+        }
     }
 }])
-.filter('customValidator', function() {
+.filter('onlyAlphabets', function() {
     return function(input,scope){
         
         if (!(/^[a-zA-Z()]+$/.test(input))) { 
@@ -47,24 +85,21 @@ app.controller('roomBookingController',['$scope', function ($scope, emailService
    
    
 })
-.filter('remainingValue', function(){
+
+
+.filter('alphaNumerics', function() {
     return function(input,scope){
-        if(!input || input === ''){
-            scope.remaining = '';
-            return false;
-        }else{
-        scope.remaining = 50 - input.length + ' characters remaining';
-        return true;
-        }
         
-    }
-})
-.service('emailService', function(){
-    this.isValidEmail1 = function(email){
-       
-        var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        return emailPattern.test(email);
-    }
+        if (!(/^[\w]+$/.test(input))) { 
+            scope.validationStatus = 'Name must be alphabets';
+            return true;
+        }
+
+         scope.validationStatus = '';
+        return false;
+    };
+   
+   
 })
 
 
