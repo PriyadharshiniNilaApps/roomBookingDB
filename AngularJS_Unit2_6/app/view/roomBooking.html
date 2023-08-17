@@ -1,9 +1,10 @@
 <link rel="stylesheet" href="app/style/css/roomBooking.css">
 <div class="container-fluid container-center-1">
-    <form  autocomplete="off" novalidate class="d-flex flex-column " name="myForm">
-        <ng-form ng-hide="roomBookingDetailsForm" name="subForm1" ng-submit="submitForm()" novalidate>
+    <form  autocomplete="off" novalidate class="d-flex flex-column gap-25" name="myForm" ng-submit="submitForm1()">
+        <ng-form ng-hide="roomBookingDetailsForm" name="subForm1" novalidate>
+            <div class="d-flex flex-column gap-25">
             <h1 class="text-center">Room booking details</h1>
-            <div  class="d-flex justify-content-around" id="flex">
+            <div  class="d-flex justify-content-around gap-25" id="flex">
                 <div class=" col-lg-4 col-md-6 col-sm-8 d-flex flex-column">
                     <div class="form-group">
                         <label class="m-0" for="name"> Name </label>
@@ -60,20 +61,31 @@
                         <span ng-show="subForm1.$submitted && subForm1.idnumber.$error.required">ID number is required</span>
                     </div>
                 </div>
-            </div>   
+            </div> 
+            </div>  
         </ng-form> 
-        <ng-form ng-if="roomBookingDetailsForm" >
+        <ng-form ng-if="roomBookingDetailsForm"  name="subForm2"  novalidate>
+            <div class="d-flex flex-column gap-25">
             <h1 class="text-center">Additional Requirements</h1>
-            <div class="d-flex">
-                <div class="col-4 d-flex flex-column">
-                    <div class="form-group d-flex">
-                        <label class="m-0" for="roomtype">Room Type</label>
-                        <input type="radio" ng-model="roomtype1" value="AC" aria-describedby="roomType1InputField"> AC
-                        <input type="radio" ng-model="roomtype2" value="NON - AC" aria-describedby="roomType2InputField"> Non- AC
+            <div class="d-flex justify-content-around " id="flex">
+                <div class="col-lg-4 col-md-6 col-sm-8 d-flex flex-column">
+                    <div class="form-group ">
+                        <label class="m-0" for="roomtype">Room type</label>
+                        <div class="d-flex gap-100 " ng-init="roomtype='AC'">
+                            <div class="form-check " >
+                                <input type="radio" class="form-check-input" ng-model="roomtype" value="AC" aria-describedby="roomType1InputField" >
+                                <label class="form-check-label">  AC </label>
+                              </div>
+                              <div class="form-check">
+                                <input type="radio" class="form-check-input" ng-model="roomtype" value="NON - AC" aria-describedby="roomType2InputField"> 
+                                <label class="form-check-label" for="radio2"> Non- AC </label>
+                              </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="m-0" for="checkindate"> Check-In Date</label>
-                        <input class="form-control" id="checkindate" ng-model="checkindate" onfocus="{this.type = 'date'}" onblur="this.type= 'text'"  placeholder="Choose Check-In Date" aria-describedby="checkInDateInputField">
+                        <input class="form-control" name="checkindate" id="checkindate" ng-model="checkindate" onfocus="{this.type = 'date'}" onblur="this.type= 'text'"  placeholder="Choose Check-In Date" aria-describedby="checkInDateInputField" required>
+                        <span ng-show="subForm2.$submitted && subForm2.checkindate.$error.required">Room check-in date must be choosen</span>
                     </div>
                     <div class="form-group">
                         <label class="m-0" for="expectedcheckoutdate"> Expected Check-Out Date </label>
@@ -81,49 +93,65 @@
                     </div>
                     <div class="form-group">
                         <label class="m-0"> Services Provider</label>
-                        <div>
-                            <input type="checkbox" ng-model="servicesprovided1" aria-describedby="servicesProvider1InputField"> Catering
-                            <input type="checkbox" ng-model="servicesprovided2" aria-describedby="servicesProvided2InputField"> Laundry services
+                        <div class="d-flex gap-100 ">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" ng-model="servicesprovided1" aria-describedby="servicesProvider1InputField" >
+                            <label class="form-check-label">Catering</label>
                         </div>
-                        <div class="d-flex">
-                            <div ng-show="servicesprovided1">
-                                <label class="m-0" for="careringType"> Catering Type </label>
-                                <select class="form-control" id="cateringType" ng-model="cateringType" aria-describedby="cateringTypeInputField">
-                                    <option value disabled selected hidden> Choose Catering Type </option>
-                                    <option value="{{ i }}" ng-repeat="i in cateringTypes"> {{ i }}
-                                </select>
-                            </div>
-                            <div ng-show="servicesprovided2">
-                                <label class="m-0" for="laundryType"> Laundry Type</label>
-                                <select class="form-control" id="laundryType" ng-model="laundryType" aria-describedby="laundryInputField">
-                                    <option value disabled selected hidden>Choose Laundry Type</option>
-                                        <option value="{{ i }}" ng-repeat="i in laundryTypes">{{ i }}
-                                </select>
-                            </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" ng-model="servicesprovided2" aria-describedby="servicesProvided2InputField">
+                            <label class="form-check-label">Laundry services</label>
                         </div>
+                        </div>
+                    </div>
+                    
+                    <div ng-show="servicesprovided1">
+                        <label class="m-0" for="cateringType"> Catering Type </label>
+                        <select class="form-control" name="catering" id="cateringType" ng-model="cateringType" aria-describedby="cateringTypeInputField" required>
+                            <option value disabled selected hidden> Choose Catering Type </option>
+                            <option value="{{ i }}" ng-repeat="i in cateringTypes"> {{ i }}
+                        </select>
+                        <span ng-show="subForm2.$submitted && subForm2.catering.$error.required">Catering type must be chosen</span>
                     </div>
                 </div>      
-                <div class=" col-4 d-flex flex-column">
+                <div class="col-lg-4 col-md-6 col-sm-8 d-flex flex-column">
                     <div class="form-group">
-                        <label class="m-0" for="room-size"> Purpose</label>
-                        <select class="form-control" ng-model="room_size" aria-describedby="roomSizeInputField">
-                            <option value disabled selected hidden>Choose Room size</option>
-                            <option value="1 bed room">1 bed room
-                            <option value="2 bed room">2 bed room
-                            <option value="3 bed room">3 bed room
-                            <option value="4 bed room">4 bed room
-                        </select>
+                        <label class="m-0" >  Room Size</label>
+                        <custom-dropdown template="choose a size" temp="template1" id="name"
+                        label="Room Size"
+                        options="roomSizes" selected-option="selectedOption"></custom-dropdown>
+                        <span ng-show="subForm2.$submitted && subForm2.roomSize.$error.required">Room size must be choosen</span>
                     </div>
+                     
+                 
                     <div class="form-group">
                         <label class="m-0" for="checkintime"> Check-In Time</label>
-                        <input class="form-control" id="checkintime" ng-model="checkintime" onfocus="{this.type = 'time'}" onblur="this.type= 'text'" placeholder="Choose Check-In time" aria-describedby="checkInTimeInputField">
+                        <input class="form-control" name="checkintime" id="checkintime" ng-model="checkintime" onfocus="{this.type = 'time'}" onblur="this.type= 'text'" placeholder="Choose Check-In time" aria-describedby="checkInTimeInputField" required>
+                        <span ng-show="subForm2.$submitted && subForm2.checkintime.$error.required">Room check-in time must be choosen</span>
+                 
                     </div>
                     <div class="form-group">
                         <label class="m-0" for="expectedcheckouttime"> Expected Check-Out Date </label>
                         <input class="form-control" id="expectedcheckouttime" ng-model="expectedcheckouttime" onfocus="{this.type = 'time'}" onblur="this.type= 'text'" placeholder="Choose Expected Check-Out time" aria-describedby="expectedCheckOutTimeInputField">
                     </div>
+                   
+                    <div ng-show="servicesprovided2" >
+                        <label class="m-0" for="laundryType"> Laundry Type</label>
+                        <select class="form-control" name="laundryType" id="laundryType" ng-model="laundryType" aria-describedby="laundryInputField" required>
+                            <option value disabled selected hidden>Choose Laundry Type</option>
+                                <option value="{{ i }}" ng-repeat="i in laundryTypes">{{ i }}
+                        </select>
+                        <span ng-show="subForm2.$submitted && subForm2.laundryType.$error.required">Laundry type must be chosen</span>
+                     
+                    </div>
+                   
                 </div>
+              
             </div> 
+         
+             
+            </div>
+        </div>
         </ng-form>                
         <div class="text-center d-flex justify-content-center form-gap-2">
             <button type="submit" ng-click="submitForm()" class="btn btn-format btn-format-1">Next</button>
@@ -157,16 +185,18 @@
                                     <input type="number" class="form-control " id="totalAmount"
                                         aria-describedby="totalCostInputField">
                                 </div>
-                             </form>   
+                                <div class="text-center d-flex form-gap-3 justify-content-center">
+                                    <button type="submit" class="btn btn-format btn-format-1">Submit</button>
+                                    <button type="cancel" class="btn btn-format btn-format-1">Cancel</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="text-center d-flex form-gap-3 justify-content-center">
-            <button type="submit" class="btn btn-format btn-format-1">Submit</button>
-            <button type="cancel" class="btn btn-format btn-format-1">Cancel</button>
-        </div>
     </form>
 </div>
+
+        
 

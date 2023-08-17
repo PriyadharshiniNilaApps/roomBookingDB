@@ -8,7 +8,7 @@ app.service('EmailService', function(){
     }
 })
 
-app.controller('roomBookingController',['$scope', 'EmailService', function ($scope, EmailService) {
+app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', function ($scope, EmailService,$timeout) {
     $scope.genders = [
         'Male',
         'Female',
@@ -37,6 +37,15 @@ app.controller('roomBookingController',['$scope', 'EmailService', function ($sco
 
     ];  
 
+    $scope.roomSizes = [
+        '1 bed room',
+        '2 bed room',
+        '3 bed room',
+        '4 bed room'
+    ]
+
+
+
     $scope.email = '';
     $scope.emailError = false;
 
@@ -61,15 +70,22 @@ app.controller('roomBookingController',['$scope', 'EmailService', function ($sco
     }
 
     $scope.myForm = {};
-    $scope.roomBookingDetailsForm = false;
-    
-    $scope.submitForm = function(){
+    $scope.roomBookingDetailsForm = true;
+
+
+
+      $scope.submitForm = function(){
         if($scope.subForm1.$valid){
             console.log("Valid")
-            $scope.roomBookingDetailsForm = true;
-
+                $timeout(function () {
+                    $scope.roomBookingDetailsForm = true;
+             }, 2000);  
         }
     }
+
+    $scope.template1 = "Choose a Room size"
+    $scope.name = "roomSize"
+
 }])
 .filter('onlyAlphabets', function() {
     return function(input,scope){
@@ -86,7 +102,6 @@ app.controller('roomBookingController',['$scope', 'EmailService', function ($sco
    
 })
 
-
 .filter('alphaNumerics', function() {
     return function(input,scope){
         
@@ -102,7 +117,22 @@ app.controller('roomBookingController',['$scope', 'EmailService', function ($sco
    
 })
 
-
-
+.directive('customDropdown', function () {
+    return {
+        restrict: 'E',
+        scope: {
+            id: '=',
+            temp: '=',
+            options: '=',
+            selectedOption: '='
+        },
+        template: `
+                <select  class="form-control"  name="{{ id }}" ng-model="selectedOption" required>
+                    <option value="" disabled hidden selected>{{ temp }}</option>
+                    <option ng-repeat="option in options" value="{{ option }}">{{ option }}</option>
+                </select>
+        `
+    };
+})
 
 

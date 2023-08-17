@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="progressBarApp">
+<head>
+    <title>Timeout Progress Bar with Function Duration in AngularJS</title>
+    <style>
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #f4f4f4;
+            position: relative;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #4caf50;
+            transition: width 0.3s ease-in-out;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="ProgressBarController">
+        <custom-progress-bar
+            function-to-timeout="exampleFunction"
+            progress-duration="5000"
+        ></custom-progress-bar>
+    </div>
+
+    <script>
+        angular.module('progressBarApp', [])
+            .directive('customProgressBar', function ($timeout) {
+                return {
+                    restrict: 'E',
+                    scope: {
+                        functionToTimeout: '=',
+                        progressDuration: '@'
+                    },
+                    template: `
+                        <div class="progress-bar">
+                            <div class="progress" style="width: {{ progressValue }}%;"></div>
+                        </div>
+                    `,
+                    link: function (scope, element, attrs) {
+                        scope.progressValue = 0;
+                        const timeoutValue = scope.progressDuration / 100;
+
+                        function updateProgress() {
+                            scope.progressValue += 1;
+                            if (scope.progressValue < 100) {
+                                $timeout(updateProgress, timeoutValue);
+                            }
+                        }
+
+                        // Execute the function and calculate the timeout duration
+                        const startTime = Date.now();
+                        scope.functionToTimeout();
+                        const endTime = Date.now();
+                        const functionDuration = endTime - startTime;
+
+                        // Set progress duration based on function duration
+                        const adjustedDuration = Math.max(functionDuration, scope.progressDuration);
+                        scope.progressDuration = adjustedDuration;
+
+                        // Start updating the progress
+                        $timeout(updateProgress, timeoutValue);
+                    }
+                };
+            })
+            .controller('ProgressBarController', function ($scope, $timeout) {
+                $scope.exampleFunction = function () {
+                    // Simulate some time-consuming process
+                    $timeout(function () {
+                        console.log('Function execution complete.');
+                    }, 3000);
+                };
+            });
+    </script>
+</body>
+</html>
