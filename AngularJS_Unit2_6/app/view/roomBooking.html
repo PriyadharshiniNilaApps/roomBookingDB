@@ -8,7 +8,7 @@
                 <div class=" col-lg-4 col-md-6 col-sm-8 d-flex flex-column">
                     <div class="form-group">
                         <label class="m-0" for="name"> Name </label>
-                        <input type="text" class="form-control"  ng-class="{ 'validation-error-input': subForm1.fullname.$invalid &&  subForm1.$submitted  }"  id="name" name="fullname" ng-model="fullname" placeholder="Enter Full Name" aria-describedby="nameInputField" ng-required="true">
+                        <input type="text" class="form-control"  ng-class="{ 'validation-error-input placeholder-color' : subForm1.fullname.$invalid &&  subForm1.$submitted  }"  id="name" name="fullname" ng-model="fullname" placeholder="Enter Full Name" aria-describedby="nameInputField" ng-required="true">
                         <span ng-show="fullname | onlyAlphabets:this"> {{ validationStatus }}</span>
                         <span ng-show="subForm1.$submitted && subForm1.fullname.$error.required">Name is required</span>
                     </div>
@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <label class="m-0" for="emailId"> Email ID</label>
-                        <input type="text" ng-blur="isValidEmail()" name="email" class="form-control"  ng-class="{ 'validation-error-input': subForm1.email.$invalid &&  subForm1.$submitted  }"  id="emailId" ng-model="email" placeholder="Enter E-mail Address" aria-describedby="emailIdInputField" ng-required="true">
+                        <input type="text" ng-blur="isValidEmail()" name="email" class="form-control"  ng-class="{ 'validation-error-input placeholder-color': subForm1.email.$invalid &&  subForm1.$submitted  }"  id="emailId" ng-model="email" placeholder="Enter E-mail Address" aria-describedby="emailIdInputField" ng-required="true">
                         <span ng-show="subForm1.$submitted && subForm1.email.$error.required">E-Mail address is required</span>
                         <span ng-show="emailError">Please enter a valid email address.</span>
                     </div>
@@ -38,25 +38,25 @@
                 <div class="col-lg-4 col-md-6 col-sm-8 d-flex flex-column">
                     <div class="form-group">
                         <label class="m-0" for="age"> Age</label>
-                        <input type="number" class="form-control" id="age"  ng-class="{ 'validation-error-input': subForm1.age.$invalid &&  subForm1.$submitted  }"  name="age" ng-model="age" placeholder="Enter Age" aria-describedby="ageInputField" ng-required="true">
-                        <span ng-show="age && age < 18 || age > 120">Please enter a number between 18 - 120 </span>
+                        <input type="number" class="form-control" id="age"  ng-class="{ 'validation-error-input placeholder-color': subForm1.age.$invalid &&  subForm1.$submitted  }"  name="age" ng-model="age" placeholder="Enter Age" aria-describedby="ageInputField" ng-required="true">
+                        <span ng-show="age && age < 18 || age > 120">Age must be from 18 to 120 </span>
                         <span ng-show="subForm1.$submitted && subForm1.age.$error.required">Age is required</span>
                     </div>
                     <div class="form-group">
                         <label class="m-0" for="purpose"> Purpose</label>
-                        <input type="text" maxlength="50"   ng-class="{ 'validation-error-input': subForm1.purpose.$invalid &&  subForm1.$submitted  }"  ng-change="remainingCharacters()" ng-blur="clear()" class="form-control" id="purpose" name="purpose" ng-model="purpose" placeholder="Enter Purpose of Booking" aria-describedby="purposeInputField" ng-required="true">
+                        <input type="text" maxlength="50"   ng-class="{ 'validation-error-input placeholder-color': subForm1.purpose.$invalid &&  subForm1.$submitted  }"  ng-change="remainingCharacters()" ng-blur="clear()" class="form-control" id="purpose" name="purpose" ng-model="purpose" placeholder="Enter Purpose of Booking" aria-describedby="purposeInputField" ng-required="true">
                         <span ng-show="subForm1.$submitted && subForm1.purpose.$error.required">Purpose is required</span>
                         <span ng-show="purposeText">{{validationStatus}}</span>
                     </div>
                     <div class="form-group">
                         <label class="m-0" for="phonenumber"> Phone Number</label>
-                        <input type="text" minlength="8"  ng-class="{ 'validation-error-input': subForm1.phonenumber.$invalid &&  subForm1.$submitted  }"  maxlength="10" name="phonenumber"  oninput="this.value = this.value.replace(/\D+/g, '')" ngPattern="[0-9]{10}" ng-model="phonenumber" class="form-control" id="phonenumber"  placeholder="Enter Phone Number"  aria-describedby="phoneNumberInputField"  ng-required="true">
-                        <span ng-show="subForm1.phonenumber.$error.minlength || subForm1.$error.maxlength">Phonenumber length must be between 8 - 10</span>
+                        <input type="text" minlength="8"  ng-class="{ 'validation-error-input placeholder-color': subForm1.phonenumber.$invalid &&  subForm1.$submitted  }"  maxlength="10" name="phonenumber"  oninput="this.value = this.value.replace(/\D+/g, '')" ngPattern="[0-9]{10}" ng-model="phonenumber" class="form-control" id="phonenumber"  placeholder="Enter Phone Number"  aria-describedby="phoneNumberInputField"  ng-required="true">
+                        <span ng-show="subForm1.phonenumber.$error.minlength || subForm1.$error.maxlength">Phonenumber length must be from 8 to 10</span>
                         <span ng-show="subForm1.$submitted && subForm1.phonenumber.$error.required">Phone number is required</span>
                     </div>
                     <div class="form-group">
                         <label class="m-0" for="idnumber"> ID Number</label>
-                        <input type="text" class="form-control" id="idnumber"  ng-class="{ 'validation-error-input': subForm1.idnumber.$invalid &&  subForm1.$submitted  }"  name="idnumber" ng-model="idnumber" placeholder="Enter Government ID Number" aria-describedby="idNumberInputField" ng-required="true">
+                        <input type="text" class="form-control" id="idnumber"  ng-class="{ 'validation-error-input placeholder-color': subForm1.idnumber.$invalid &&  subForm1.$submitted  }"  name="idnumber" ng-model="idnumber" placeholder="Enter Government ID Number" aria-describedby="idNumberInputField" ng-required="true">
                         <span ng-show="idnumber | alphaNumerics:this">{{ validationStatus }}</span>
                         <span ng-show="subForm1.$submitted && subForm1.idnumber.$error.required">ID number is required</span>
                     </div>
@@ -64,14 +64,14 @@
             </div> 
             </div>  
         </ng-form> 
-        <ng-form ng-if="roomBookingDetailsForm"  name="subForm2"  novalidate>
+        <ng-form ng-show="roomBookingDetailsForm"  name="subForm2" novalidate>
             <div class="d-flex flex-column gap-25">
             <h1 class="text-center">Additional Requirements</h1>
             <div class="d-flex justify-content-around ">
                 <div class="col-lg-4 col-md-6 col-sm-8 d-flex flex-column">
-                    <div class="form-group ">
+                    <div class="form-group d-flex flex-column gap-10 ">
                         <label class="m-0" for="roomtype">Room type</label>
-                        <div class="d-flex gap-100 " ng-init="roomtype='AC'">
+                        <div class="d-flex gap-75 " ng-init="roomtype='AC'" >
                             <div class="form-check " >
                                 <input type="radio" class="form-check-input" ng-model="roomtype" value="AC" aria-describedby="roomType1InputField" >
                                 <label class="form-check-label">  AC </label>
@@ -93,7 +93,7 @@
                     </div>
                     <div class="form-group">
                         <label class="m-0"> Services Provider</label>
-                        <div class="d-flex gap-100 ">
+                        <div class="d-flex gap-75 ">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" ng-model="servicesprovided1" aria-describedby="servicesProvider1InputField" >
                             <label class="form-check-label">Catering</label>
@@ -116,7 +116,7 @@
                  
                     <div class="form-group">
                         <label class="m-0" for="checkintime"> Check-In Time</label>
-                        <input class="form-control" name="checkintime" ng-class="{ 'validation-error-input': subForm2.catering.$invalid &&  subForm2.$submitted  }" id="checkintime" ng-model="checkintime" onfocus="{this.type = 'time'}" onblur="this.type= 'text'" placeholder="Choose Check-In time" aria-describedby="checkInTimeInputField" ng-required="true">
+                        <input class="form-control" name="checkintime" ng-class="{ 'validation-error-input placeholder-color': subForm2.catering.$invalid &&  subForm2.$submitted  }" id="checkintime" ng-model="checkintime" onfocus="{this.type = 'time'}" onblur="this.type= 'text'" placeholder="Choose Check-In time" aria-describedby="checkInTimeInputField" ng-required="true">
                         <span ng-show="subForm2.$submitted && subForm2.checkintime.$error.required">Room check-in time must be choosen</span>
                  
                     </div>
@@ -126,8 +126,8 @@
                     </div> 
                 </div>
             </div> 
-            <div class=" d-flex justify-content-around " id="flex">
-                <div ng-show=" servicesprovided1" class=" col-lg-4 col-md-6 col-sm-8 d-flex flex-column ">
+            <div class=" d-flex justify-content-around ">
+                <div ng-show=" servicesprovided1" class=" col-lg-4 col-md-6 col-sm-8 d-flex flex-column">
                     <label class="m-0" for="cateringType"> Catering Type </label>
                     <select class="form-control  dropdown-icon" name="catering"  ng-class="{ 'validation-error-select': subForm2.catering.$invalid &&  subForm2.$submitted  }"  id="cateringType" ng-model="cateringType" aria-describedby="cateringTypeInputField" ng-required="true">
                         <option value disabled selected hidden> Choose Catering Type </option>
@@ -137,7 +137,7 @@
                 </div>
                 <div ng-show="servicesprovided2" class="col-lg-4 col-md-6 col-sm-8 d-flex flex-column" >
                     <label class="m-0" for="laundryType"> Laundry Type</label>
-                    <select class="form-control " name="laundryType" id="laundryType" ng-class="{ 'validation-error-input': subForm2.catering.$invalid &&  subForm2.$submitted  }"  ng-model="laundryType" aria-describedby="laundryInputField" ng-required="true">
+                    <select class="form-control " name="laundryType" id="laundryType" ng-class="{ 'validation-error-input placeholder-color': subForm2.catering.$invalid &&  subForm2.$submitted  }"  ng-model="laundryType" aria-describedby="laundryInputField" ng-required="true">
                         <option value disabled selected hidden>Choose Laundry Type</option>
                             <option value="{{ i }}" ng-repeat="i in laundryTypes">{{ i }}
                     </select>
@@ -153,14 +153,14 @@
             <button class="btn btn-format btn-format-1" disabled>View Booking</button>
         </div>             
       
-        <div class="modal " id="charges" tabindex="-1" role="dialog" aria-labelledby="#charges" aria-hidden="true">
+        <div class="modal" id="charges" tabindex="-1" role="dialog" aria-labelledby="#charges" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content justify-content-center">
                     <div class="modal-body">
                         <h1 class="modal-title text-center" id="exampleModalLabel">CHARGES</h1>
                         <div class="col-12 d-flex flex-column justify-content-center" id="modal-gap">
                             <form autocomplete="off" class="d-flex flex-column ">
-                                <div class="form-group d-flex align-items-center ">
+                                <div class="form-group h-auto d-flex align-items-center ">
                                     <label class="col-6 m-0" for="roomCharges"> Room charges </label>
                                     <input type="number" class="form-control" id="roomCharges" aria-describedby="roomChargesInputField">
                                 </div>
@@ -194,6 +194,8 @@
       
     </form>
 </div>
+
+<div ng-show="formSubmitted" class="load"></div>
 
 
   

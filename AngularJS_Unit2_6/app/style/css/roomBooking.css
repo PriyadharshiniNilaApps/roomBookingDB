@@ -6,6 +6,10 @@
   
 }
 
+.form-group{
+    height: 75px;
+}
+
 
 span{
    
@@ -20,13 +24,22 @@ body{
     line-height: 18px;
 }
 
-ng-form > h1{
+div > h1{
     font-size: 23px;
     line-height: 28.75px;
     text-align: center;
     color: #009A61;
     margin-top:68px;
+    font-weight: bold;
+    /* border: 1px solid rgba(0, 154, 97, 1); */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
+
+.gap-10{
+    gap:10px;
+}
+
 
 .form-gap-2{
     gap:200px;
@@ -51,7 +64,7 @@ ng-form > h1{
     height: 100vh; 
 }
 
-.gap-100{
+.gap-75{
     gap:75px;
 }
 
@@ -62,7 +75,7 @@ ng-form > h1{
 
 #modal-gap{
     padding:18px 50px;
-    gap:30px;
+    gap:0px;
 }
 
 
@@ -94,8 +107,14 @@ ng-form > h1{
     background: #F2C6C6;
     border: 3px solid rgba(142, 20, 20, 1);
     box-shadow: 0px 2px 7px 0px rgba(213, 213, 213, 1);
-    color:brown;
+   
 }
+
+
+.placeholder-color::placeholder{
+    color:rgba(142, 20, 20, 1) ;
+}
+
 
 
 .validation-error-select{
@@ -126,4 +145,32 @@ input[type='radio']:checked, input[type='checkbox']:checked {
 }
 
 
-
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to { 
+        transform: rotate(360deg);
+    }
+}
+ 
+.load {
+    position: absolute;
+	width:50px;
+	height: 50px;
+    z-index:1;
+    float: top;
+    top:0;
+    left: 0;
+    right: 0;
+	margin: 100px auto;
+	border:solid 5px #009A61;
+	border-radius: 50%;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+    transition: all 0.5s ease-in;
+    animation-name:             rotate; 
+    animation-duration:         1.0s; 
+    animation-iteration-count:  infinite;
+    animation-timing-function: linear; 
+}

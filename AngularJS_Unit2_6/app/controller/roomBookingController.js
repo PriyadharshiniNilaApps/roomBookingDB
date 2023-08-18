@@ -38,8 +38,10 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
         $scope.purposeText = false;
     }
 
-    $scope.roomBookingDetailsForm = false;
+    $scope.formSubmitted = false;
+    $scope.roomBookingDetailsForm = true;
     $scope.chargesForm = true;
+
 
     $scope.roomSizes = [ '1 bed room', '2 bed room', '3 bed room', '4 bed room' ];
 
@@ -50,20 +52,24 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
     $scope.laundryTypes = ['Up to 10 clothes - Normal wash','Up to 20 clothes - Normal wash','Up to 10 clothes - Dry wash','Up to 20 clothes - Dry wash'];  
 
     $scope.submitForm = function(){
+        
         if($scope.subForm1.$valid){
-          
+            $scope.formSubmitted = true;
          
             $timeout(function () {
-                    $scope.roomBookingDetailsForm = true;
+                   $scope.roomBookingDetailsForm = true;
+                   $scope.formSubmitted = false;
+             
              }, 2000);  
         }
 
-        //  if($scope.subForm2.$valid){
+        if($scope.subForm2.$valid){
           
-        //   console.log("valid");
-        // $('#charges').modal("show");
-            
-        //  }
+            console.log("valid");
+          $('#charges').modal("show");
+              
+           }
+      
     }
 
     $scope.roomSize = 'roomSize';
@@ -85,7 +91,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
     return function(input,scope){
         
         if (!(/^[\w]+$/.test(input))) { 
-            scope.validationStatus = 'Name must be alphabets';
+            scope.validationStatus = 'You can only use alphabets, numbers and underscore in ID number';
             return true;
         }
     }; 
