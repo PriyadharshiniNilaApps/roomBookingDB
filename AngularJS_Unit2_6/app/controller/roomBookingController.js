@@ -39,7 +39,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
     }
 
     $scope.formSubmitted = false;
-    $scope.roomBookingDetailsForm = true;
+    $scope.roomBookingDetailsForm = false;
     $scope.chargesForm = true;
 
 
@@ -64,7 +64,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
         }
 
         if($scope.subForm2.$valid){
-          
+            $scope.formSubmitted = false;
             console.log("valid");
           $('#charges').modal("show");
               
