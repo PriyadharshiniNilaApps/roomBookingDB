@@ -61,7 +61,7 @@ label, .form-control {
     font-family: Outfit;
 }
 
-.btn-format:hover{
+.btn-format:enabled.btn-format:hover {
     color: #fff;
     background-color: #00c57d;
 }

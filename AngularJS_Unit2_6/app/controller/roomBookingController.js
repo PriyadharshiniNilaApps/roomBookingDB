@@ -9,47 +9,16 @@ app.service('EmailService', function(){
 })
 
 app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', function ($scope, EmailService,$timeout) {
-    $scope.genders = [
-        'Male',
-        'Female',
-        'Transgender',
-    ];
+    $scope.myForm = {};
 
-    $scope.idType = [
-        'Aadhar card',
-        'Voter ID',
-        'PAN CARD',
-        'Driving Licence'
-    ]
-    
-    $scope.cateringTypes = [
-        'Up to 5 persons VEG',
-        'Up to 10 persons VEG',
-        'Up to 5 persons NON-VEG',
-        'Up to 10 persons NON-VEG'
-    ];
+    $scope.genders = ['Male','Female','Transgender'];
 
-    $scope.laundryTypes = [
-        'Up to 10 clothes - Normal wash',
-        'Up to 20 clothes - Normal wash',
-        'Up to 10 clothes - Dry wash',
-        'Up to 20 clothes - Dry wash'
-
-    ];  
-
-    $scope.roomSizes = [
-        '1 bed room',
-        '2 bed room',
-        '3 bed room',
-        '4 bed room'
-    ]
-
-
+    $scope.idType = [ 'Aadhar card', 'Voter ID', 'PAN CARD', 'Driving Licence']
 
     $scope.email = '';
     $scope.emailError = false;
 
-     $scope.isValidEmail = function(){
+    $scope.isValidEmail = function(){
         $scope.emailError = false;
         if($scope.email && !EmailService.validEmail($scope.email)){
             $scope.emailError = true;
@@ -69,22 +38,37 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
         $scope.purposeText = false;
     }
 
-    $scope.myForm = {};
-    $scope.roomBookingDetailsForm = true;
+    $scope.roomBookingDetailsForm = false;
+    $scope.chargesForm = true;
 
+    $scope.roomSizes = [ '1 bed room', '2 bed room', '3 bed room', '4 bed room' ];
 
+    $scope.defaultSelected = "Choose a Room size"
+    
+    $scope.cateringTypes = ['Up to 5 persons VEG','Up to 10 persons VEG','Up to 5 persons NON-VEG','Up to 10 persons NON-VEG'];
 
-      $scope.submitForm = function(){
+    $scope.laundryTypes = ['Up to 10 clothes - Normal wash','Up to 20 clothes - Normal wash','Up to 10 clothes - Dry wash','Up to 20 clothes - Dry wash'];  
+
+    $scope.submitForm = function(){
         if($scope.subForm1.$valid){
-            console.log("Valid")
-                $timeout(function () {
+          
+         
+            $timeout(function () {
                     $scope.roomBookingDetailsForm = true;
              }, 2000);  
         }
+
+        //  if($scope.subForm2.$valid){
+          
+        //   console.log("valid");
+        // $('#charges').modal("show");
+            
+        //  }
     }
 
-    $scope.template1 = "Choose a Room size"
-    $scope.name = "roomSize"
+    $scope.roomSize = 'roomSize';
+  
+    
 
 }])
 .filter('onlyAlphabets', function() {
@@ -94,12 +78,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
             scope.validationStatus = 'Name must be alphabets';
             return true;
         }
-
-         scope.validationStatus = '';
-        return false;
-    };
-   
-   
+    };  
 })
 
 .filter('alphaNumerics', function() {
@@ -109,29 +88,28 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
             scope.validationStatus = 'Name must be alphabets';
             return true;
         }
-
-         scope.validationStatus = '';
-        return false;
-    };
-   
-   
+    }; 
 })
 
 .directive('customDropdown', function () {
     return {
         restrict: 'E',
         scope: {
-            id: '=',
-            temp: '=',
+            formSubmitted: "=",
+            selected: '=',
             options: '=',
             selectedOption: '='
         },
+      
         template: `
-                <select  class="form-control"  name="{{ id }}" ng-model="selectedOption" required>
-                    <option value="" disabled hidden selected>{{ temp }}</option>
+                <select  class="form-control dropdown-icon"   name="{{ value }}" ng-model="selectedOption" required>
+                    <option value="" disabled hidden selected>{{ selected }}</option>
                     <option ng-repeat="option in options" value="{{ option }}">{{ option }}</option>
-                </select>
-        `
+                </select>  
+        `,
+        link: function(scope, element, attrs){
+            scope.value = 'roomSize'; 
+        }
     };
 })
 
