@@ -42,7 +42,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
     }
 
     $scope.formSubmitted = false;
-    $scope.roomBookingDetailsForm = false;
+    $scope.roomBookingDetailsForm = true;
     $scope.chargesForm = true;
   
 
@@ -60,15 +60,23 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
             $scope.formSubmitted = true;
          
             $timeout(function () {
-                   $scope.roomBookingDetailsForm = true;
+                   $scope.roomBookingDetailsForm = false;
                    $scope.formSubmitted = false;
              
              }, 2000);  
         }
 
       
+       
+      
+    }
+
+    $scope.submitAllData = function(){
+        
+     
+      
         if($scope.subForm2.$valid){
-            $scope.formSubmitted = false;
+    
             console.log("valid");
           $('#charges').modal("show");
               
@@ -78,7 +86,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
 
     $scope.roomSize = 'roomSize';
     $scope.regex = '/^[a-zA-Z()]+$/'
-    $scope.validationStatus = 'Name must be alphabets';
+    $scope.alphabetsOnly = 'Name must be alphabets';
     
 
 }])
@@ -125,4 +133,27 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
     };
 })
 
-
+app.directive('dynamicErrorClass', function(){
+    return {
+        restrict:'A',
+        require:'^input',
+        link:function(scope,elementl){
+            angular.forEach(formCtrl, function(formFieldCtrl, fieldName) {
+                if (fieldName[0] !== '$') {
+                    var inputElement = element.find('[name="' + fieldName + '"]');
+            var exp = inputElement.attr('ng-modal');
+           scope.$watch(exp, function(){
+            if(formFieldCtrl.$touched && formFieldCtrl.$invalid){
+                inputElement.addClass('validation-error-input placeholder-color')
+            }else{
+                inputElement.removeClass('validation-error-input placeholder-color');
+            }
+          
+        });
+    }      
+        
+    });
+      }
+    }
+    
+});
