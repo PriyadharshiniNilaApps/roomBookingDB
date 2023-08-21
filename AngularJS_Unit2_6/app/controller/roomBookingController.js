@@ -9,7 +9,9 @@ app.service('EmailService', function(){
 })
 
 app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', function ($scope, EmailService,$timeout) {
-    $scope.myForm = {};
+    $scope.form = {
+       fullname:'',
+    };
 
     $scope.genders = ['Male','Female','Transgender'];
 
@@ -17,6 +19,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
 
     $scope.email = '';
     $scope.emailError = false;
+   
 
     $scope.isValidEmail = function(){
         $scope.emailError = false;
@@ -41,7 +44,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
     $scope.formSubmitted = false;
     $scope.roomBookingDetailsForm = false;
     $scope.chargesForm = true;
-
+  
 
     $scope.roomSizes = [ '1 bed room', '2 bed room', '3 bed room', '4 bed room' ];
 
@@ -63,6 +66,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
              }, 2000);  
         }
 
+      
         if($scope.subForm2.$valid){
             $scope.formSubmitted = false;
             console.log("valid");
@@ -73,19 +77,21 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
     }
 
     $scope.roomSize = 'roomSize';
-  
+    $scope.regex = '/^[a-zA-Z()]+$/'
+    $scope.validationStatus = 'Name must be alphabets';
     
 
 }])
-.filter('onlyAlphabets', function() {
-    return function(input,scope){
+
+// .filter('onlyAlphabets', function() {
+//     return function(input,scope){
         
-        if (!(/^[a-zA-Z()]+$/.test(input))) { 
-            scope.validationStatus = 'Name must be alphabets';
-            return true;
-        }
-    };  
-})
+//         if (!(/^[a-zA-Z()]+$/.test(input))) { 
+//             scope.validationStatus = 'Name must be alphabets';
+//             return true;
+//         }
+//     };  
+// })
 
 .filter('alphaNumerics', function() {
     return function(input,scope){

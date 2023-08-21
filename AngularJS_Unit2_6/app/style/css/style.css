@@ -175,3 +175,13 @@ a:hover{
         padding: 0px;
     }    
 }
+
+.dropdown-icon {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('../images/caret-down.svg'); 
+    background-repeat: no-repeat;
+    background-position: right ;
+    background-origin: content-box;
+}

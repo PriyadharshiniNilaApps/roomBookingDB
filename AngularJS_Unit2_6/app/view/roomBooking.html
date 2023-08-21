@@ -8,8 +8,8 @@
                 <div class=" col-lg-4 col-md-6 col-sm-8 d-flex flex-column">
                     <div class="form-group">
                         <label class="m-0" for="name"> Name </label>
-                        <input type="text" class="form-control"  ng-class="{ 'validation-error-input placeholder-color' : subForm1.fullname.$invalid &&  subForm1.$submitted  }"  id="name" name="fullname" ng-model="fullname" placeholder="Enter Full Name" aria-describedby="nameInputField" ng-required="true">
-                        <span ng-show="fullname | onlyAlphabets:this"> {{ validationStatus }}</span>
+                        <input type="text" class="form-control" ng-pattern="/^[a-zA-Z()]+$/"  ng-class="{ 'validation-error-input placeholder-color' : subForm1.fullname.$invalid &&  subForm1.$submitted  }"  id="name" name="fullname" ng-model="fullname" placeholder="Enter Full Name" aria-describedby="nameInputField" ng-required="true">
+                        <span ng-show="subForm1.fullname.$error.pattern"> {{ validationStatus }}</span>
                         <span ng-show="subForm1.$submitted && subForm1.fullname.$error.required">Name is required</span>
                     </div>
                     <div class="form-group">
@@ -149,7 +149,8 @@
      
         </ng-form>   
         <div class="text-center d-flex justify-content-center form-gap-2">
-            <button type="submit" ng-click="submitForm()" class="btn btn-format btn-format-1">Next</button>
+            <button type="submit" ng-click="submitForm()" class="btn btn-format btn-format-1" ng-if="!roomBookingDetailsForm">Next</button>
+            <button type="submit" ng-click="submitAllData()" class="btn btn-format btn-format-1"  ng-if="roomBookingDetailsForm" >Save</button>
             <button class="btn btn-format btn-format-1" disabled>View Booking</button>
         </div>             
       

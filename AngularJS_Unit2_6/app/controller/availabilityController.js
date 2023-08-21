@@ -1,7 +1,7 @@
 app.controller('availabilityController', ['$scope', function ($scope) {
     // Static array of rooms with availability status and booking information
     var totalRooms = [
-        { room_number: 1, room_type: 'Standard', room_size: 1, booking: null },
+        { room_number: 1, room_type: 'Standard', room_size: 1, booking: null},
         { room_number: 2, room_type: 'Suite', room_size: 4, booking: { checkIn: '2023-08-10 14:00', checkOut: '2023-08-15 12:00' } },
         { room_number: 3, room_type: 'Standard', room_size: 1, booking: null },
         { room_number: 4, room_type: 'Standard', room_size: 1, booking: { checkIn: '2023-08-18 15:00', checkOut: '2023-08-23 10:00' } },
@@ -28,8 +28,10 @@ app.controller('availabilityController', ['$scope', function ($scope) {
         { room_number: 25, room_type: 'Deluxe', room_size: 3, booking: null }
     ];
 
-    $scope.isRoomAvailable = true;
+    $scope.isRoomAvailable = false;
     $scope.availableRooms = [];
+    $scope.rooms = [];
+    
 
     $scope.getRoomNumbers = function (rooms) {
         return rooms.map(function (room) {
@@ -37,31 +39,45 @@ app.controller('availabilityController', ['$scope', function ($scope) {
         }).join(', ');
     };
 
+   
+
     $scope.checkAvailability = function () {
         var checkInDateTime = new Date(new Date($scope.booking.checkInDate).toISOString().split('T')[0] + ' ' + new Date($scope.booking.checkInTime).toLocaleTimeString('it-IT'));
         var checkOutDateTime = new Date(new Date($scope.booking.checkOutDate).toISOString().split('T')[0] + ' ' + new Date($scope.booking.checkOutTime).toLocaleTimeString('it-IT') );
         var roomTypeSelected = $scope.booking.roomType;
-        var roomSizeSelected = $scope.booking.roomSize;
-
+        var roomSizeSelected = Number($scope.booking.roomSize);
+    
         $scope.availableRooms = totalRooms;
 
+        $scope.rooms.length = 0;
         for (var i = 0; i < $scope.availableRooms.length; i++) {
+     
             var room = $scope.availableRooms[i];
+            var roomType = room.room_type;
+            var roomSize = room.room_size;
 
             if (room.booking) {
-                var bookedCheckIn = new Date(room.booking.checkIn);
+                var bookedCheckIn = new Date(room .booking.checkIn);
                 var bookedCheckOut = new Date(room.booking.checkOut);
-                var roomType = room.room_type;
-                var roomSize = room.room_size;
-                
-                if ((checkInDateTime < bookedCheckOut && checkOutDateTime > bookedCheckIn) && (roomType == roomTypeSelected) && (roomSize == roomSizeSelected)) {
+                if (checkInDateTime < bookedCheckOut && checkOutDateTime > bookedCheckIn && roomType === roomTypeSelected && roomSize === roomSizeSelected){
                     room.isAvailable = true;
+                    $scope.rooms.push(room);
                 } else {
                     room.isAvailable = false;
                 }
-            } else {
-                room.isAvailable = true;
+            }else {
+                if(roomType === roomTypeSelected && roomSize === roomSizeSelected){
+                    room.isAvailable = true;
+                    $scope.rooms.push(room);
+                }
             }
         }
+
+        if($scope.rooms.length > 0){
+            $scope.isRoomAvailable = true;
+        }
+
+      
     };
+  
 }]);
