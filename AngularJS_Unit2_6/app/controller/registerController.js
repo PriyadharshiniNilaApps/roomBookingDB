@@ -22,3 +22,4 @@ function validateRegisterForm(){
 function navigate(){
     window.location.href="#/login";
 }
+

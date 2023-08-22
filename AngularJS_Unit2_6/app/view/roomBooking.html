@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="app/style/css/roomBooking.css">
 <div class="container-fluid container-center-1">
-    <form  autocomplete="off" novalidate class="d-flex flex-column gap-25"  name="myForm" dynamicErrorClass>
-        <ng-form ng-show="roomBookingDetailsForm"  name="subForm1" novalidate dynamicErrorClass>
+    <form  autocomplete="off" novalidate class="d-flex flex-column gap-25"  name="myForm">
+        <ng-form ng-show="roomBookingDetailsForm"  name="subForm1" novalidate>
             <div class="d-flex flex-column gap-25">
             <h1 class="text-center">Room booking details</h1>
             <div  class="d-flex justify-content-around " >
@@ -43,8 +43,8 @@
                     <div class="form-group">
                         <label class="m-0" for="age"> Age</label>
                         <input type="number" class="form-control" id="age" min="8" max="120"  ng-class="{ 'validation-error-input placeholder-color':  subForm1.age.$touched && !subForm1.age.$valid  }"  name="age" ng-model="age" placeholder="Enter Age" aria-describedby="ageInputField" ng-required="true">
-                        <span ng-show="age && age < 18 || age > 120">Age must be from 18 to 120 </span>
-                        <span ng-show="subForm1.age.$touched && subForm1.age.$error.required">Age is required</span>
+                        <span ng-hide="(age && (age >  '18' || age <'120')) ? false: true  "  >Age must be from 18 to 120 </span>
+                        <span ng-show="subForm1.age.$touched && subForm1.age.$error.required  ">Age is required</span>
                     </div>
                     <div class="form-group">
                         <label class="m-0" for="purpose"> Purpose</label>

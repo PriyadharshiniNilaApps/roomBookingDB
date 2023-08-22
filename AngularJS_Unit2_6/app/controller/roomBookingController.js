@@ -28,8 +28,11 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
         }
     }
 
-    $scope.purpose = '';
+   $scope.purpose = '';
     $scope.purposeText = false;
+
+   
+  
 
     $scope.remainingCharacters = function(){
            $scope.purposeText = true;
@@ -132,28 +135,3 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
         }
     };
 })
-
-app.directive('dynamicErrorClass', function(){
-    return {
-        restrict:'A',
-        require:'^input',
-        link:function(scope,elementl){
-            angular.forEach(formCtrl, function(formFieldCtrl, fieldName) {
-                if (fieldName[0] !== '$') {
-                    var inputElement = element.find('[name="' + fieldName + '"]');
-            var exp = inputElement.attr('ng-modal');
-           scope.$watch(exp, function(){
-            if(formFieldCtrl.$touched && formFieldCtrl.$invalid){
-                inputElement.addClass('validation-error-input placeholder-color')
-            }else{
-                inputElement.removeClass('validation-error-input placeholder-color');
-            }
-          
-        });
-    }      
-        
-    });
-      }
-    }
-    
-});
