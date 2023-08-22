@@ -28,11 +28,8 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
         }
     }
 
-   $scope.purpose = '';
+    $scope.purpose = '';
     $scope.purposeText = false;
-
-   
-  
 
     $scope.remainingCharacters = function(){
            $scope.purposeText = true;
@@ -49,6 +46,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
     $scope.chargesForm = true;
   
 
+
     $scope.roomSizes = [ '1 bed room', '2 bed room', '3 bed room', '4 bed room' ];
 
     $scope.defaultSelected = "Choose a Room size"
@@ -61,7 +59,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
         
         if($scope.subForm1.$valid){
             $scope.formSubmitted = true;
-         
+        
             $timeout(function () {
                    $scope.roomBookingDetailsForm = false;
                    $scope.formSubmitted = false;
@@ -74,12 +72,31 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
       
     }
 
+    const minDate = document.getElementById('checkindate');
+    const maxDate = document.getElementById('expectedcheckoutdate');
+
+  
+
+    $scope.setCheckOutDate = function(){
+        const minDateValue = minDate.value;
+        maxDate.min = minDateValue;
+       
+    }
+
+    $scope.setCheckInDate = function(){
+        const maxDateValue = maxDate.value;
+        minDate.max = maxDateValue;
+       
+    }
+
+    
+
     $scope.submitAllData = function(){
         
      
       
         if($scope.subForm2.$valid){
-    
+          
             console.log("valid");
           $('#charges').modal("show");
               
@@ -118,20 +135,91 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
     return {
         restrict: 'E',
         scope: {
-            formSubmitted: "=",
-            selected: '=',
+            ngModel: '=',
             options: '=',
-            selectedOption: '='
+            selected: '=',
+            name: '=',
         },
       
         template: `
-                <select  class="form-control dropdown-icon"   name="{{ value }}" ng-model="selectedOption" required>
+                <select  class="form-control dropdown-icon valid-text" valid-text="Room size must be choosen"  name="name" ng-model="ngModel" required valid-color-select>
                     <option value="" disabled hidden selected>{{ selected }}</option>
                     <option ng-repeat="option in options" value="{{ option }}">{{ option }}</option>
                 </select>  
-        `,
-        link: function(scope, element, attrs){
-            scope.value = 'roomSize'; 
-        }
+        `
     };
 })
+
+
+.directive('validColor', function() {
+    return {
+      restrict: 'A',
+      require: 'ngModel', 
+      link: function(scope, element, attrs, ngModelCtrl) {
+        scope.$watch(function() {
+         return !ngModelCtrl.$valid && ngModelCtrl.$touched;
+        }, function(newVal) {
+          if (newVal) {
+            element.addClass('validation-error-input');
+            element.addClass('placeholder-color')
+          } else {
+            element.removeClass('validation-error-input');
+            element.removeClass('placeholder-color')
+          }
+        });
+      }
+    };
+  })
+
+  .directive('validColorSelect', function() {
+    return {
+      restrict: 'A',
+      require: 'ngModel', 
+      link: function(scope, element, attrs, ngModelCtrl) {
+        scope.$watch(function() {
+         return !ngModelCtrl.$valid && ngModelCtrl.$touched;
+        }, function(newVal) {
+          if (newVal) {
+            element.addClass('validation-error-select');
+         element.addClass('placeholder-color')
+          } else {
+            element.removeClass('validation-error-select');
+         element.removeClass('placeholder-color')
+          }
+        });
+      }
+    };
+  })
+
+  .directive('validText', function() {
+    return {
+      restrict: 'C',
+      require: '^ngModel', 
+      link: function(scope, element, attrs, ngModelCtrl) {
+       
+        var validTextElement = angular.element('<span></span>');
+       
+    
+        // Watch for changes in the input's validity
+        scope.$watch(function() {
+          return ngModelCtrl.$error.required && ngModelCtrl.$touched;
+        }, function(newVal) {
+        if (newVal) {
+            var customText = element.attr('valid-text')|| 'Valid input!';
+
+            validTextElement.text(customText);
+            element.after(validTextElement);
+         
+       
+          } else {
+            validTextElement.text('');
+            validTextElement.remove();
+          }
+        });
+      }
+    };
+  })
+
+
+
+   
