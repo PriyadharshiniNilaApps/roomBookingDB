@@ -1,9 +1,6 @@
 app.controller('registerController', ['$scope', function ($scope) {
-  
-}]);
-
-//Validating Register form
-function validateRegisterForm(){
+    //Validating Register form
+$scope.validateRegisterForm = function(){
     const userType = document.querySelector("input[name='options']:checked");
     const username = document.getElementById("username");
     const password = document.getElementById("password");
@@ -18,8 +15,18 @@ function validateRegisterForm(){
     }  
 }
 
-//Pop-up Navigation
-function navigate(){
-    window.location.href="#/login";
-}
+
+
+    var page = "#/login"; 
+    //Pop-up Navigation
+    $scope.navigate = function(){
+        window.location.href=page;
+    }
+
+
+    var user = window.localStorage.getItem("user");
+    if(user){
+        window.location.href = page;
+    }
+}]);
 

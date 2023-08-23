@@ -30,6 +30,8 @@ app.controller('availabilityController', ['$scope', function ($scope) {
 
     $scope.isRoomAvailable = false;
     $scope.availableRooms = [];
+
+    //Available rooms array
     $scope.rooms = [];
     
     $scope.getRoomNumbers = function (rooms) {
@@ -38,20 +40,25 @@ app.controller('availabilityController', ['$scope', function ($scope) {
         }).join(', ');
     };
 
+    //Setting the check in and check out so that check in date is less than check out date
     const minDate = document.getElementById('checkindate');
     const maxDate = document.getElementById('checkoutdate');
 
+    //Limiting checkOut date
     $scope.setCheckOutDate = function(){
         const minDateValue = minDate.value;
         maxDate.min = minDateValue;
     }
 
+    //Limiting checkIn date
     $scope.setCheckInDate = function(){
         const maxDateValue = maxDate.value;
         minDate.max = maxDateValue;
     }
 
     $scope.checkAvailability = function () {
+
+    //Formatting check in and check out Date/Time 
     var checkInDateTime = new Date($scope.booking.checkInDate);
     var checkInTime = new Date($scope.booking.checkInTime);
     checkInDateTime.setHours(checkInTime.getHours());
@@ -63,43 +70,41 @@ app.controller('availabilityController', ['$scope', function ($scope) {
     checkOutDateTime.setHours(checkOutTime.getHours());
     checkOutDateTime.setMinutes(checkOutTime.getMinutes());
     checkOutDateTime.setSeconds(checkOutTime.getSeconds());
-    var roomTypeSelected = $scope.booking.roomType;
-      
+    
+    var roomTypeSelected = $scope.booking.roomType;  
     var roomSizeSelected = Number($scope.booking.roomSize);
-       $scope.availableRooms = totalRooms;
-
-        $scope.rooms.length = 0;
+    
+    $scope.availableRooms = totalRooms;
+    $scope.rooms.length = 0;
         
         for (var i = 0; i < $scope.availableRooms.length; i++) {
-     
+        
             var room = $scope.availableRooms[i];
             var roomType = room.room_type;
             var roomSize = room.room_size;
-         
-          if (room.booking) {
+            
+            if (room.booking) {
                 var bookedCheckIn =  new Date(new Date(room.booking.checkIn));
                 var bookedCheckOut = new Date(new Date(room.booking.checkOut));
-              
-       
+                
                 if ((checkInDateTime > bookedCheckOut || checkOutDateTime < bookedCheckIn) && roomType === roomTypeSelected && roomSize === roomSizeSelected){
-                   room.isAvailable = true;
+                    //Adding the available room in rooms
+                    room.isAvailable = true;
                     $scope.rooms.push(room);
                 } else {
                     room.isAvailable = false;
                 }
             }else {
                 if(roomType === roomTypeSelected && roomSize === roomSizeSelected){
+                    //Adding the available room in rooms
                     room.isAvailable = true;
                     $scope.rooms.push(room);
                 }
             }
         }
-
-        if($scope.rooms.length > 0){
-            $scope.isRoomAvailable = true;
-        }
-
       
-    };
+        //Checking if rooms are available
+        $scope.isRoomAvailable = ($scope.rooms.length > 0)? true: false;
+    }
   
 }]);

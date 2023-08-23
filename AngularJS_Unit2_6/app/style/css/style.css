@@ -185,3 +185,36 @@ a:hover{
     background-position: right ;
     background-origin: content-box;
 }
+
+.validation-error-input{
+    background: #F2C6C6;
+    border: 3px solid rgba(142, 20, 20, 1);
+    box-shadow: 0px 2px 7px 0px rgba(213, 213, 213, 1);
+   
+}
+
+
+.placeholder-color::placeholder{
+    color:rgba(142, 20, 20, 1) ;
+}
+
+
+
+.validation-error-select{
+  
+    background:  #F2C6C6 url('../images/caret-down1.svg');
+    background-repeat: no-repeat;
+    background-position: right ;
+    background-origin: content-box;
+    border: 3px solid rgba(142, 20, 20, 1);
+    box-shadow: 0px 2px 7px 0px rgba(213, 213, 213, 1);
+    color:rgba(142, 20, 20, 1);
+}  
+
+span{
+   
+    text-align: left;
+    padding-left:5px;
+    color: red;
+     
+}

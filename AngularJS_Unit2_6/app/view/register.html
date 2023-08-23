@@ -16,7 +16,7 @@
                         <input type="radio" name="options" id="option2" autocomplete="off" value="Customer" required> Customer
                     </label>
                 </div>
-                <form autocomplete="off"  class="d-flex flex-column form-gap-1" onsubmit="validateRegisterForm()">
+                <form autocomplete="off"  class="d-flex flex-column form-gap-1" ng-submit="validateRegisterForm()">
                     <div class="form-group">
                         <label for="username"> Username </label>
                         <input type="text"  minlength="4"  class="form-control" id="username" placeholder="Enter Username" aria-describedby="usernameInputField" required>
@@ -59,7 +59,7 @@
                     </div>
                     <p id="message"></p>
                     <div>
-                        <button type="button" class="btn btn-format" onclick="navigate()" class="close" data-dismiss="modal" >Sign in</button>
+                        <button type="button" class="btn btn-format" ng-click="navigate()" class="close" data-dismiss="modal" >Sign in</button>
                     </div>
                 </div>
             </div>
