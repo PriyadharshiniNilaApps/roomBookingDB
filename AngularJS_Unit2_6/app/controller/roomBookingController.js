@@ -59,7 +59,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
         
         if($scope.subForm1.$valid){
             $scope.formSubmitted = true;
-        
+        console.log($scope.subForm1.$valid)
             $timeout(function () {
                    $scope.roomBookingDetailsForm = false;
                    $scope.formSubmitted = false;
