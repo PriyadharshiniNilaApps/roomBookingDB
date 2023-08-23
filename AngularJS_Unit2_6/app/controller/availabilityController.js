@@ -52,13 +52,21 @@ app.controller('availabilityController', ['$scope', function ($scope) {
     }
 
     $scope.checkAvailability = function () {
-      
-        var checkInDateTime = new Date(new Date($scope.booking.checkInDate).toISOString().split('T')[0] + ' ' + new Date($scope.booking.checkInTime).toLocaleTimeString('it-IT'));
-        var checkOutDateTime = new Date(new Date($scope.booking.checkOutDate).toISOString().split('T')[0] + ' ' + new Date($scope.booking.checkOutTime).toLocaleTimeString('it-IT') );
+    var checkInDateTime = new Date($scope.booking.checkInDate);
+    var checkInTime = new Date($scope.booking.checkInTime);
+    checkInDateTime.setHours(checkInTime.getHours());
+    checkInDateTime.setMinutes(checkInTime.getMinutes());
+    checkInDateTime.setSeconds(checkInTime.getSeconds());
+
+    var checkOutDateTime = new Date($scope.booking.checkOutDate);
+    var checkOutTime = new Date($scope.booking.checkOutTime);
+    checkOutDateTime.setHours(checkOutTime.getHours());
+    checkOutDateTime.setMinutes(checkOutTime.getMinutes());
+    checkOutDateTime.setSeconds(checkOutTime.getSeconds());
     var roomTypeSelected = $scope.booking.roomType;
-        var roomSizeSelected = Number($scope.booking.roomSize);
-    
-        $scope.availableRooms = totalRooms;
+      
+    var roomSizeSelected = Number($scope.booking.roomSize);
+       $scope.availableRooms = totalRooms;
 
         $scope.rooms.length = 0;
         
@@ -68,11 +76,11 @@ app.controller('availabilityController', ['$scope', function ($scope) {
             var roomType = room.room_type;
             var roomSize = room.room_size;
          
-
-            if (room.booking) {
+          if (room.booking) {
                 var bookedCheckIn =  new Date(new Date(room.booking.checkIn));
                 var bookedCheckOut = new Date(new Date(room.booking.checkOut));
-  
+              
+       
                 if ((checkInDateTime > bookedCheckOut || checkOutDateTime < bookedCheckIn) && roomType === roomTypeSelected && roomSize === roomSizeSelected){
                    room.isAvailable = true;
                     $scope.rooms.push(room);

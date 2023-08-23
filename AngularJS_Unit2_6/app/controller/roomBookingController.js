@@ -109,15 +109,15 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
     $scope.alphabetsOnly = 'Name must be alphabets';
 }])
 
-// .filter('onlyAlphabets', function() {
-//     return function(input,scope){
+.filter('onlyAlphabets', function() {
+    return function(input,scope){
         
-//         if (!(/^[a-zA-Z()]+$/.test(input))) { 
-//             scope.validationStatus = 'Name must be alphabets';
-//             return true;
-//         }
-//     };  
-// })
+        if (!(/^[a-zA-Z()]+$/.test(input))) { 
+            scope.validationStatus = 'Name must be alphabets';
+            return true;
+        }
+    };  
+})
 
 .filter('alphaNumerics', function() {
     return function(input,scope){
