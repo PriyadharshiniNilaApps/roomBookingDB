@@ -22,7 +22,7 @@
                         <div class="form-group">
                             <label class="m-0" for="emailId"> Email ID</label>
                             <input type="text" ng-pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/" ng-blur="isValidEmail()" name="email" class="form-control valid-text " valid-text="E-Mail address is required"  id="emailId" ng-model="email" placeholder="Enter E-mail Address" aria-describedby="emailIdInputField"  valid-color ng-required="true">
-                            <span ng-show="emailError" >Please enter a valid email address.</span>
+                            <span ng-show="subForm1.email.$error.pattern" >Please enter a valid email address.</span>
                         </div>
                         <div class="form-group">
                             <label class="m-0" for="idtype"> ID Type</label>
@@ -36,8 +36,8 @@
                     <div class="col-lg-4 col-md-6 col-sm-8 d-flex flex-column">
                         <div class="form-group">
                             <label class="m-0" for="age"> Age</label>
-                            <input type="number" class="form-control valid-text "  valid-text="Age is required" id="age" ngMin="18" ngMax="120"  name="age" ng-model="age" placeholder="Enter Age" aria-describedby="ageInputField"  valid-color ng-required="true">
-                            <span ng-show="age && age < 18 || age > 120">Age must be from 18 to 120 </span>
+                            <input type="number" class="form-control valid-text "  valid-text="Age is required" id="age" min="18" max="120" name="age" ng-model="age" placeholder="Enter Age" aria-describedby="ageInputField"  valid-color ng-required="true">
+                            <span ng-show="subForm1.age.$error.min || subForm1.age.$error.max">Age must be from 18 to 120 </span>
                         </div>
                         <div class="form-group">
                             <label class="m-0" for="purpose"> Purpose</label>
@@ -52,7 +52,7 @@
                         <div class="form-group">
                             <label class="m-0" for="idnumber"> ID Number</label>
                             <input type="text" class="form-control valid-text " ng-pattern="/^[\w]+$/"  id="idnumber"  name="idnumber" ng-model="idnumber" valid-text="ID number is required" placeholder="Enter Government ID Number" aria-describedby="idNumberInputField" valid-color  ng-required="true" >
-                            <span ng-show="idnumber | alphaNumerics:this">{{ validationStatus }}</span>
+                            <span ng-show="subForm1.idnumber.$error.pattern">You can only use alphabets, numbers and underscore in ID number</span>
                        </div>
               
                 </div> 

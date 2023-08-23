@@ -107,8 +107,6 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
     $scope.roomSize = 'roomSize';
     $scope.regex = '/^[a-zA-Z()]+$/'
     $scope.alphabetsOnly = 'Name must be alphabets';
-    
-
 }])
 
 // .filter('onlyAlphabets', function() {
