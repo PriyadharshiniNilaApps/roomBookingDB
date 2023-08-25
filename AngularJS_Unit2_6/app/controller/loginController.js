@@ -1,6 +1,6 @@
-app.controller('loginController', ['$scope', function ($scope) {
+app.controller('loginController', ['$scope', '$timeout', function ($scope, $timeout) {
     var page = "#/roomBooking";
-
+ 
     //Validating registration form
     $scope.validateLoginForm = function() {
         const message = document.getElementById('message');
@@ -12,8 +12,15 @@ app.controller('loginController', ['$scope', function ($scope) {
         }else{
             message.innerText = userType.value +  ' - ' + username.value + ' ' + "Sign In Successfully";
             localStorage.setItem("user",username.value);
-        //    $('#authentication-success').modal("show");
-            window.location.href = page;
+            $('#authentication-success').modal("show");
+       
+        //     $timeout(function () {
+        //         $('#authentication-success').modal("toggle");
+        //         // window.location.href = page;
+        //   }, 1000);  
+        
+          
+          
         }  
     }
 
