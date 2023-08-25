@@ -112,6 +112,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
              for(var i = 0;i< inputModels.length;i++){
                     $scope.form[inputModels[i]]="";
              }
+             $scope.subForm1.$setUntouched();
              $scope.subForm2.$setUntouched();
             $('#charges').modal("show");      
           }
