@@ -42,6 +42,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 }])
 
+  //Custom Directive for adding a class when the input element if not valid
 .directive('errorClass', function() {
     return {
       restrict: 'A',
