@@ -13,7 +13,7 @@ app.service('EmailService', function(){
 })
 
 //injected filters and services
-app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', function ($scope, EmailService,$timeout) {
+app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'listOfItem', '$http', function ($scope, EmailService,$timeout, listOfItem, $http) {
     $scope.form = {
        fullname:"",
        gender:"",
@@ -34,10 +34,9 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
 
     };
 
-   var inputModels = [ "fullname", "gender", "email", "idtype", "age", "purpose", "phonenumber", "idnumber", "roomtype", "checkindate", "expectedcheckoutdate", "cateringType", "laundryType", "roomSize", "checkintime", "expectedcheckouttime"]
-
-    $scope.values = [];
-    $scope.regex = '/^[a-zA-Z()]+$/'
+   var inputModels = [ "fullname", "gender", "email", "idtype", "age", "purpose", "phonenumber", "idnumber", "roomtype", "checkindate", "expectedcheckoutdate", "cateringType", "laundryType", "roomSize", "checkintime", "expectedcheckouttime"];
+   
+    $scope.regex = '/^[a-zA-Z ]+$/'
     $scope.alphabetsOnly = 'Name must be alphabets';
     $scope.genders = ['Male','Female','Transgender'];
     $scope.idType = [ 'Aadhar card', 'Voter ID', 'PAN CARD', 'Driving Licence']
@@ -66,12 +65,11 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
           $scope.purposeText = false;
       }
   
-    $scope.roomSizes = [ '1 bed room', '2 bed room', '3 bed room', '4 bed room' ];
-    $scope.defaultSelected = "Choose a Room size"
+    $scope.roomSizes = [ '1', '2', '3', '4' ];
     $scope.cateringTypes = ['Up to 5 persons VEG','Up to 10 persons VEG','Up to 5 persons NON-VEG','Up to 10 persons NON-VEG'];
     $scope.laundryTypes = ['Up to 10 clothes - Normal wash','Up to 20 clothes - Normal wash','Up to 10 clothes - Dry wash','Up to 20 clothes - Dry wash'];  
     $scope.formSubmitted = false;
-    $scope.roomBookingDetailsForm = true;
+    $scope.roomBookingDetailsForm = false;
     
       //Showing the additional requirements page after validating room booking form and show loading bar with timeout
       $scope.submitForm = function(){
@@ -102,32 +100,221 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
           minDate.max = maxDateValue;
       }
 
-      $scope.roomSize = 'roomSize';
+      // $scope.values = [];
+      //Dummy Data
+      const jsonData = {
+          user: 'Owner',
+          userData: {
+            fullname: 'priya',
+            gender: 'female',
+            email: 'priya@gmail.com',
+            idType: 'Aadhar Card',
+            age: 23,
+            purpose: 'wfwfwffer',
+            phonenumber: '2343411334' ,
+            idnumber: '13222131231',
+            roomType: 'Non - AC',
+            checkindate: '23-09-2000',
+            expectedcheckoutdate: '01-09-2000',
+            roomSize: '2',
+            checkindate: '12:00',
+          },
+          customer: [
+            {
+              'index':1,
+              'fullname':'Priyadharshini ',
+              'email': 'priyadharshini@gmail.com',
+              'roomtype': 'AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+            
+            },
+            {'index':2,
+              'fullname':'Edward',
+              'email': 'ed@gmail.com',
+              'roomtype': 'Non-AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+              
+            
+            },
+            {
+              'index':3,
+              'fullname':'Shreya',
+              'email': 's@gmail.com',
+              'roomtype': 'AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+              
+            
+            },
+            {
+              'index':4,
+              'fullname':'Kundavai',
+              'email': 'kundavai@gmail.com',
+              'roomtype': 'AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+              
+            
+            },
+            {
+              'index':5,
+              'fullname':'dharshini ',
+              'email': 'dharshini@gmail.com',
+              'roomtype': 'AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+              
+            
+            },{
+              'index':1,
+              'fullname':'Priyadharshini ',
+              'email': 'priyadharshini@gmail.com',
+              'roomtype': 'AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+            
+            },
+            {'index':2,
+              'fullname':'Edward',
+              'email': 'ed@gmail.com',
+              'roomtype': 'Non-AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+              
+            
+            },
+            {
+              'index':3,
+              'fullname':'Shreya',
+              'email': 's@gmail.com',
+              'roomtype': 'AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+              
+            
+            },
+            {
+              'index':4,
+              'fullname':'Kundavai',
+              'email': 'kundavai@gmail.com',
+              'roomtype': 'AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+              
+            
+            },
+            {
+              'index':5,
+              'fullname':'dharshini ',
+              'email': 'dharshini@gmail.com',
+              'roomtype': 'AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+              
+            
+            }
+          
+          ]
+      }
 
       //Showing the charges form after validating the additional requirements form 
       $scope.submitAllData = function(){
           if($scope.subForm2.$valid){
-            $scope.values.push($scope.form);
+            var user = window.localStorage.getItem("user");
+            if(user === "Customer"){
+              
+            }else{
+              $scope.set = function(){
+                $.ajax({
+                type: 'POST',
+                url: 'app/controller/save_data.php',
+                data: { data: jsonData },
+                success: function(response) {
+                  console.log(response);
+                }
+              });
+            }
+
+              $scope.retrieveData = function() {
+                $.ajax({
+                  method: 'GET',
+                  url: 'app/controller/get_data.php', // Replace with the correct URL
+                }).then(function(response) {
+                  var retrieved= response.data;
+                  console.log(retrieved);
+                });
+          
+          
+          
+          
+          
+            }
+          }
+
+          $scope.set();
+            $scope.retrieveData();
+            listOfItem.values($scope.form);
+
+
+            // console.log(listOfItem.values);
             $scope.roomBookingDetailsForm = true;
-             for(var i = 0;i< inputModels.length;i++){
-                    $scope.form[inputModels[i]]="";
-             }
+            $scope.form = {
+              fullname:"",
+              gender:"",
+              email:"",
+              idtype:"",
+              age:"",
+              purpose:"",
+              phonenumber:"",
+              idnumber:"",
+              roomtype:"",
+              checkindate:"",
+              expectedcheckoutdate:"",
+              cateringType:"",
+              laundryType:"",
+              roomSize:"",
+              checkintime:"",
+              expectedcheckouttime:"",
+       
+           };
+       
+             $scope.subForm1.$setUntouched();
              $scope.subForm2.$setUntouched();
             $('#charges').modal("show");      
           }
       }
 
-      var page="#/login";
-      var user = window.localStorage.getItem("user");
-      if(!user){
-          window.location.href = page;
-      }
+      $scope.userType = false;
+
+      // var page="#/login";
+      // var user = window.localStorage.getItem("user");
+      // console.log(user);
+      // if(user === "Customer"){
+      //   $scope.userType = true;
+      // }else{
+      //   $scope.userType = false;
+      // }
+      // if(!user){
+      //     window.location.href = page;
+      // }
 }])
 
 //Filter for field with only alphabets
 .filter('onlyAlphabets', function() {
   return function(input,scope){
-      if (!(/^[a-zA-Z()]+$/.test(input))) { 
+      if (!(/^[a-zA-Z ]+$/.test(input))) { 
         scope.validationStatus = 'Name must be alphabets';
         return true;
       }
@@ -137,7 +324,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
 //Filter for field with only alphaNumberics
 .filter('alphaNumerics', function() {
   return function(input,scope){ 
-      if (!(/^[\w]+$/.test(input))) { 
+      if (!(/^[\w ]+$/.test(input))) { 
         scope.validationStatus = 'You can only use alphabets, numbers and underscore in ID number';
         return true;
       }
@@ -152,14 +339,14 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
     scope: {
         ngModel: '=',
         options: '=',
-        selected: '=',
-        name: '=',
+        selected: '@',
+        name: '@',
     },
   
     template: `
       <select  class="form-control dropdown-icon error-text" error-text="Room size must be choosen"  name="name" ng-model="ngModel" required error-class-select>
           <option value="" disabled hidden selected>{{ selected }}</option>
-          <option ng-repeat="option in options" value="{{ option }}">{{ option }}</option>
+          <option ng-repeat="option in options" value="{{ option }}">{{ option }} bed room</option>
       </select>  
     `
   };
