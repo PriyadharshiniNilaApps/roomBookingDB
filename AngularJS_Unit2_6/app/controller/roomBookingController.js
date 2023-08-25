@@ -33,13 +33,6 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
        expectedcheckouttime:"",
 
     };
- 
-    var page="#/login";
-    var user = window.localStorage.getItem("user");
-console.log(user)
-if(!user){
-    window.location.href = page;
-}
 
    var inputModels = [ "fullname", "gender", "email", "idtype", "age", "purpose", "phonenumber", "idnumber", "roomtype", "checkindate", "expectedcheckoutdate", "cateringType", "laundryType", "roomSize", "checkintime", "expectedcheckouttime"]
 
@@ -122,6 +115,12 @@ if(!user){
              $scope.subForm2.$setUntouched();
             $('#charges').modal("show");      
           }
+      }
+
+      var page="#/login";
+      var user = window.localStorage.getItem("user");
+      if(!user){
+          window.location.href = page;
       }
 }])
 

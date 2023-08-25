@@ -14,14 +14,16 @@
                         <input type="radio" name="options" id="option2"  value="Customer"  autocomplete="off"> Customer
                     </label>
                 </div>
-                <form autocomplete="off" class="d-flex flex-column form-gap" ng-submit="validateLoginForm()">
+                <form autocomplete="off" name="loginForm" class="d-flex flex-column form-gap" ng-submit="validateLoginForm()">
                     <div class="form-group">
                         <label class="m-0" for="username"> Username </label>
-                        <input type="text" class="form-control error-text" ng-pattern="/^[\w]+$/"  id="username" name="username" ng-model="username" placeholder="Enter username" aria-describedby="nameInputField" error-text="Name is required" error-class ng-required="true" >
+                        <input type="text" minlength="4" ngMinlength="4" class="form-control error-text" ng-pattern="/^[\w]+$/"  id="username" name="username" ng-model="username" placeholder="Enter username" aria-describedby="nameInputField" error-text="Username is required" error-class ng-required="true" >
+                        <span ng-show="loginForm.username.$error.minlength">Name must have minimum 4 characters</span>
                     </div>
                     <div class="form-group">
                         <label class="m-0 "  for="password">Password </label>
-                        <input type="password" minlength="6" class="form-control " id="password" name="password"  placeholder="Enter Password" aria-describedby="passwordInputField" ng-required="true">
+                        <input type="password" minlength="6" ngMinlength="6" class="form-control error-text" id="password" name="password" ng-model="password" placeholder="Enter Password" error-text="Password is required" error-class aria-describedby="passwordInputField" ng-required="true">
+                        <span ng-show="loginForm.password.$error.minlength">Password must have minimum 6 characters</span>
                     </div>   
                     <div class="text-center">  
                         <button type="submit"  class="btn btn-format">SIGN IN</button>      

@@ -8,34 +8,39 @@
         </div>
         <div class="col-lg-4 col-md-6 col-sm-8 " >
             <div class="d-flex flex-column form-gap-1" >   
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons" >
                     <label class="btn vertical-center active w-50">
-                        <input type="radio" name="options" id="option1" autocomplete="off" checked  value="Owner" required> Owner
+                        <input type="radio" name="options" id="option1" autocomplete="off" checked value="Owner"> Owner
                     </label>
                     <label class="btn  vertical-center w-50 ">
-                        <input type="radio" name="options" id="option2" autocomplete="off" value="Customer" required> Customer
+                        <input type="radio" name="options" id="option2" autocomplete="off" value="Customer"> Customer
                     </label>
                 </div>
-                <form autocomplete="off"  class="d-flex flex-column form-gap-1" ng-submit="validateRegisterForm()">
+                <form autocomplete="off" name="registrationForm" class="d-flex flex-column form-gap-1" ng-submit="validateregistrationForm()">
                     <div class="form-group">
                         <label for="username"> Username </label>
-                        <input type="text"  minlength="4"  class="form-control" id="username" placeholder="Enter Username" aria-describedby="usernameInputField" required>
+                        <input type="text"  minlength="4" ngMinlength="4"  name="username"  ng-model="username" class="form-control error-text"  error-text="Username required" error-class id="username" placeholder="Enter Username" aria-describedby="usernameInputField" ng-required="true">
+                        <span ng-show="registrationForm.username.$error.minlength">Name must have minimum 4 characters</span>
                     </div>
                     <div class="form-group">
                         <label for="emailid"> Email ID</label>
-                        <input type="email" class="form-control" id="emailid" placeholder="Enter E-mail" aria-describedby="emailIdInputField" required>
+                        <input type="email" ng-pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/" class="form-control error-text" name="emailid" ng-model="emailid" id="emailid"  error-text="Email Id is required" error-class placeholder="Enter E-mail" aria-describedby="emailIdInputField" ng-required="true">
+                        <span ng-show="registrationForm.emailid.$error.pattern">Please enter a valid email address.</span>
                     </div>
                     <div class="form-group">
-                        <label for="phonenumber"> Phone Number</label>
-                        <input type="text" maxlength="10" oninput="this.value = this.value.replace(/\D+/g, '')"  pattern="[0-9]{10}" class="form-control" id="phonenumber" placeholder="Enter Phone Number" aria-describedby="phoneNumberInputField" required>
+                        <label class="m-0" for="phonenumber"> Phone Number</label>
+                        <input type="text" ngMinlength="10" minlength="10" maxlength="10" ngMaxlength="10" name="phonenumber" error-text="Phone number is required"  oninput="this.value = this.value.replace(/\D+/g, '')" ng-pattern="[0-9]{10}" ng-model="phonenumber" class="form-control error-text " id="phonenumber"  placeholder="Enter Phone Number"  aria-describedby="phoneNumberInputField"   error-class ng-required="true">
+                        <span ng-show="registrationForm.phonenumber.$error.minlength">Phonenumber length must be  10</span>
                     </div>
                     <div class="form-group">
                         <label for="password">Password </label>
-                        <input type="password" minlength="6" class="form-control" id="password" name="password" placeholder="Enter Password" aria-describedby="passwordInputField" required>
+                        <input type="password" ngMinlength="8"  class="form-control error-text"  error-text="Password is required" error-class id="password" name="password" ng-model="password" placeholder="Enter Password" aria-describedby="passwordInputField" ng-required="true">
+                        <span ng-show="registrationForm.password.$error.minlength">Name must have minimum 4 characters</span>
                     </div>   
                     <div class="form-group">
                         <label for="reenterpassword"> Re-Enter Password </label>
-                        <input type="password" minlength="6"  class="form-control" id="reenterpassword" placeholder="Enter Re-Enter Password" aria-describedby="reEnterPasswordInputField" required>
+                        <input type="password" ngMinlength="8" class="form-control error-text" ng-change="validatePassword()" error-text="Please re-enter the password"  error-class id="reenterpassword" name="reenterpassword" ng-model="reenterpassword" placeholder="Enter Re-Enter Password" aria-describedby="reEnterPasswordInputField" ng-required="true">
+                        <span ng-show="checkPassword">Password doesn't matches</span>
                     </div>
                     <div class="text-center"> 
                         <button type="submit" class="btn btn-format" >Sign Up</button>      
