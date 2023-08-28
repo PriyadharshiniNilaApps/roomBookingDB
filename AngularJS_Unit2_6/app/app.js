@@ -1,47 +1,74 @@
 // Initialize the AngularJS application
 var app = angular.module('myApp', ['ngRoute']);
 
-app.controller('mainCtrl', ['$scope', function ($scope) {
-    $scope.sample = "data";
-    localStorage.clear()
-    // Your home controller logic goes here
-}]);
-
 app.config(['$locationProvider', function ($locationProvider) {
-    $locationProvider.hashPrefix('');
+  $locationProvider.hashPrefix('');
 }]);
 
 // Configure the routes
 app.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider
-    .when('/login', {
-            templateUrl: 'app/view/login.html',
-            controller: 'loginController'
-        })
-        
-        .when('/register', {
-            templateUrl: 'app/view/register.html',
-            controller: 'registerController'
-        })
+  $routeProvider
+  .when('/login', {
+          templateUrl: 'app/view/login.html',
+          controller: 'loginController'
+      })
       
-        .when('/roomBooking',{
-            templateUrl: 'app/view/roomBooking.html',
-            controller: 'roomBookingController'
-        })
+      .when('/register', {
+          templateUrl: 'app/view/register.html',
+          controller: 'registerController'
+      })
+    
+      .when('/roomBooking',{
+          templateUrl: 'app/view/roomBooking.html',
+          controller: 'roomBookingController'
+      })
 
-        .when('/home', {
-            templateUrl: 'app/view/home.html',
-            controller: 'homeController'
-        })
-        .when('/availability', {
-            templateUrl: 'app/view/availabilityTemplate.html',
-            controller: 'availabilityController'
-        })
-        .otherwise({ redirectTo: '/login' });
-    console.log($routeProvider);
+      .when('/home', {
+          templateUrl: 'app/view/home.html',
+          controller: 'homeController'
+      })
+      .when('/availability', {
+          templateUrl: 'app/view/availabilityTemplate.html',
+          controller: 'availabilityController'
+      })
+      .when('/viewBooking',{
+        templateUrl: 'app/view/viewBooking.html',
+        controller: 'viewBookingController'
+      })
+      .otherwise({ redirectTo: '/login' });
+  console.log($routeProvider);
+
+}]) 
+
+app.controller('mainCtrl', ['$scope', function ($scope) {
+    $scope.sample = "data";
+    localStorage.clear()
 
 }])
 
+
+
+
+.service('listOfItem', function(){
+  var listOfItem = [];
+  listOfItem.push({
+    'fullname':'Priyadharshini S',
+    'email': 'priyadharshinis@gmail.com',
+    'roomtype': 'AC',
+    'age': 23,
+    'roomSize': '2',
+    
+  
+  });
+  this.values = function(value){
+      listOfItem.push(value);
+  }
+
+  this.get =function(){
+  return listOfItem;
+}
+
+})
   //Custom Directive for adding a class when the input element if not valid
 .directive('errorClass', function() {
     return {

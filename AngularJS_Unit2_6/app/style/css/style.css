@@ -37,6 +37,7 @@ label, .form-control {
     box-shadow: 0px 2px 7px 0px #D5D5D5;
 }
 
+
 .vertical-center {
     display: flex;
     align-items: center;
@@ -186,6 +187,24 @@ a:hover{
     background-origin: content-box;
 }
 
+input#search{
+    width: 50%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('../images/search.svg');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 20px 40px 20px 40px;
+}
+
+input#search:focus{
+    background-image: none;
+    padding: 20px;
+}
+
 .validation-error-input{
     background: #F2C6C6;
     border: 3px solid rgba(142, 20, 20, 1);
@@ -197,6 +216,7 @@ a:hover{
 .placeholder-color::placeholder{
     color:rgba(142, 20, 20, 1) ;
 }
+
 
 
 

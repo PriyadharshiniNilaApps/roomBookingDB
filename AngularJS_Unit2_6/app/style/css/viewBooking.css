@@ -1,0 +1,72 @@
+.gap-25{
+    gap:20px;
+}
+
+
+thead{
+font-family: Inter;
+font-size: 11px;
+font-weight: 600;
+line-height: 16px;
+letter-spacing: 0.04em;
+text-align: left;
+color: rgba(70, 79, 96, 1);
+}
+
+tbody{
+font-family: Inter;
+font-size: 14px;
+line-height: 20px;
+letter-spacing: 0em;
+text-align: left;
+color: rgba(70, 79, 96, 1);
+
+}
+
+
+.font-weight{
+color: rgba(23, 28, 38, 1);
+font-weight: bold;
+letter-spacing: 0.02em;
+}
+
+
+.table-striped>tbody>tr:nth-child(even)>td, 
+.table-striped>tbody>tr:nth-child(even)>th {
+    background: rgba(249, 250, 252, 1);
+}
+
+.btn-format-2{
+    border-radius: 6px;
+    gap: 8px;
+    background: rgba(255, 255, 255, 1);
+    border:1px solid  rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 5px 0px rgba(89, 96, 120, 0.1);
+}
+
+.search{
+    width: Fixed (320px);
+height: Hug (32px);
+top: 16px;
+left: 76px;
+padding: 6px 12px 6px 12px;
+border-radius: 6px;
+gap: 8px;
+
+}
+
+img{
+    padding: 6px;
+}
+
+.form-control{
+  
+    border:3px solid rgba(98, 98, 98, 0.54);
+    box-shadow: 0px 2px 7px 0px #D5D5D5;
+    color:rgba(98, 98, 98, 0.54);
+  
+}
+
+.form-group{
+    height: 75px;
+}

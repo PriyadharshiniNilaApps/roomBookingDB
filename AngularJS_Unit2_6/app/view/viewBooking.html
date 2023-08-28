@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="/StayFlex-jul23/AngularJS_Unit2_6/app/style/css/viewBooking.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+<div class="card-body row">
+    <form class="form-group w-100 gap-25 d-flex justify-content-around align-items-center">
+        <button class="btn btn-format-2"><img src="app/style/images/filter.svg"></button>
+        
+            <input type="text" class="form-control" id="search" placeholder="Search..">
+        
+        
+            <button class="btn btn-format ml-auto"><img src="app/style/images/add.svg">Create Booking</button>
+        </form>
+    <table class="table col-12 table-striped">
+        
+        
+        <thead>
+            <tr >
+                <th><input class="" type="checkbox" ng-model="table-check" aria-describedby="tableCheckInputField" ></th>
+                <th>#</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>ROOM TYPE</th>
+                <th>AGE</th>
+                <th>ROOM SIZE</th>
+                <th>VIEW</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="value in values" scope="row">
+            <th><input class="" type="checkbox" ng-model="table-check" aria-describedby="tableCheckInputField" ></th>
+            <td class="font-weight">{{  values.indexOf(value) + 1 }}</td>
+            <td class="font-weight">{{ value.fullname  }}</td>
+            <td>{{ value.email }}</td>
+            <td>{{ value.roomtype}}</td>
+            <td>{{ value.age}}</td>
+            <td>{{ value.roomSize }} - BED</td>
+            <td><img src="app/style/images/view.svg"></td>
+            
+        </tr>
+    </tbody>
+    <tfooter>
+        <!-- <tr scope="row">
+            <td> 1 - 10 of {{ values.length }}</td>
+            <td class="ml-auto">Rows per page: </td>
+            
+        </tr> -->
+    </tfooter>
+    </table>
+</div>
+

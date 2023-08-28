@@ -13,7 +13,7 @@ app.service('EmailService', function(){
 })
 
 //injected filters and services
-app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', function ($scope, EmailService,$timeout) {
+app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'listOfItem', function ($scope, EmailService,$timeout, listOfItem) {
     $scope.form = {
        fullname:"",
        gender:"",
@@ -34,9 +34,8 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
 
     };
 
-   var inputModels = [ "fullname", "gender", "email", "idtype", "age", "purpose", "phonenumber", "idnumber", "roomtype", "checkindate", "expectedcheckoutdate", "cateringType", "laundryType", "roomSize", "checkintime", "expectedcheckouttime"]
-
-    $scope.values = [];
+   var inputModels = [ "fullname", "gender", "email", "idtype", "age", "purpose", "phonenumber", "idnumber", "roomtype", "checkindate", "expectedcheckoutdate", "cateringType", "laundryType", "roomSize", "checkintime", "expectedcheckouttime"];
+   
     $scope.regex = '/^[a-zA-Z ]+$/'
     $scope.alphabetsOnly = 'Name must be alphabets';
     $scope.genders = ['Male','Female','Transgender'];
@@ -66,7 +65,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
           $scope.purposeText = false;
       }
   
-    $scope.roomSizes = [ '1 bed room', '2 bed room', '3 bed room', '4 bed room' ];
+    $scope.roomSizes = [ '1', '2', '3', '4' ];
     $scope.cateringTypes = ['Up to 5 persons VEG','Up to 10 persons VEG','Up to 5 persons NON-VEG','Up to 10 persons NON-VEG'];
     $scope.laundryTypes = ['Up to 10 clothes - Normal wash','Up to 20 clothes - Normal wash','Up to 10 clothes - Dry wash','Up to 20 clothes - Dry wash'];  
     $scope.formSubmitted = false;
@@ -101,12 +100,15 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
           minDate.max = maxDateValue;
       }
 
+      // $scope.values = [];
 
       //Showing the charges form after validating the additional requirements form 
       $scope.submitAllData = function(){
           if($scope.subForm2.$valid){
-            $scope.values.push($scope.form);
-            console.log($scope.values);
+            listOfItem.values($scope.form);
+
+
+            // console.log(listOfItem.values);
             $scope.roomBookingDetailsForm = true;
             $scope.form = {
               fullname:"",
@@ -176,7 +178,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', fu
     template: `
       <select  class="form-control dropdown-icon error-text" error-text="Room size must be choosen"  name="name" ng-model="ngModel" required error-class-select>
           <option value="" disabled hidden selected>{{ selected }}</option>
-          <option ng-repeat="option in options" value="{{ option }}">{{ option }}</option>
+          <option ng-repeat="option in options" value="{{ option }}">{{ option }} bed room</option>
       </select>  
     `
   };
