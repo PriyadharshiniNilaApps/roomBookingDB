@@ -10,26 +10,26 @@
             <input type="text" class="form-control" id="search" placeholder="Search..">
         
         
-            <button class="btn btn-format ml-auto"><img src="app/style/images/add.svg">Create Booking</button>
+            <button class="btn btn-format ml-auto" onclick=" window.location.href ='#/roomBooking'"><img src="app/style/images/add.svg">Create Booking</button>
         </form>
-    <table class="table col-12 table-striped">
+    <table class="table" id="myTable">
         
         
         <thead>
             <tr >
-                <th><input class="" type="checkbox" ng-model="table-check" aria-describedby="tableCheckInputField" ></th>
+                <!-- <th><input class="" type="checkbox" ng-model="table-check" aria-describedby="tableCheckInputField" ></th>
                 <th>#</th>
                 <th>NAME</th>
                 <th>EMAIL</th>
                 <th>ROOM TYPE</th>
                 <th>AGE</th>
                 <th>ROOM SIZE</th>
-                <th>VIEW</th>
+                <th>VIEW</th> -->
             </tr>
         </thead>
         <tbody>
         <tr ng-repeat="value in values" scope="row">
-            <th><input class="" type="checkbox" ng-model="table-check" aria-describedby="tableCheckInputField" ></th>
+            <!-- <th><input class="" type="checkbox" ng-model="table-check" aria-describedby="tableCheckInputField" ></th>
             <td class="font-weight">{{  values.indexOf(value) + 1 }}</td>
             <td class="font-weight">{{ value.fullname  }}</td>
             <td>{{ value.email }}</td>
@@ -37,7 +37,7 @@
             <td>{{ value.age}}</td>
             <td>{{ value.roomSize }} - BED</td>
             <td><img src="app/style/images/view.svg"></td>
-            
+             -->
         </tr>
     </tbody>
     <tfooter>
@@ -49,4 +49,3 @@
     </tfooter>
     </table>
 </div>
-

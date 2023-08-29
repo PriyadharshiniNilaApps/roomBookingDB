@@ -60,7 +60,7 @@
                     <button type="submit" ng-disabled="!subForm1.$valid" ng-click="submitForm()" class="btn btn-format btn-format-1 " >Next</button>
                 </div>
                 <div class=" col-lg-4 col-md-6 col-sm-8  w-50 text-left">
-                    <button class="btn btn-format btn-format-1" disabled>View Booking</button>
+                    <button class="btn btn-format btn-format-1" onclick=" window.location.href ='#/viewBooking'" ng-disabled="userType">View Booking</button>
                 </div> 
             </div>
         </ng-form> 
@@ -141,7 +141,7 @@
                     <button type="submit" ng-disabled="!subForm2.$valid" ng-click="submitAllData()" class="btn btn-format btn-format-1 " >Save</button>
                 </div>
                 <div class=" col-lg-4 col-md-6 col-sm-8  w-50 text-left">
-                    <button class="btn btn-format btn-format-1" disabled>View Booking</button>
+                    <button class="btn btn-format btn-format-1" onclick=" window.location.href ='#/viewBooking'" ng-disabled="userType">View Booking</button>
                 </div>
             </div>  
         </ng-form> 
@@ -188,3 +188,6 @@
 
 <div ng-show="formSubmitted" class="load"></div>
   
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+

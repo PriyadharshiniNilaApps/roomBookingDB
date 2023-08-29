@@ -11,7 +11,7 @@ app.controller('loginController', ['$scope', '$timeout', function ($scope, $time
             alert("Enter all data");
         }else{
             message.innerText = userType.value +  ' - ' + username.value + ' ' + "Sign In Successfully";
-            localStorage.setItem("user",username.value);
+            localStorage.setItem("user",userType.value);
             $('#authentication-success').modal("show");
        
         //     $timeout(function () {
@@ -24,10 +24,10 @@ app.controller('loginController', ['$scope', '$timeout', function ($scope, $time
         }  
     }
 
-    // var user = window.localStorage.getItem("user");
-    // if(user){
-    //     window.location.href = page;
-    // }
+    var user = window.localStorage.getItem("user");
+    if(user){
+        window.location.href = page;
+    }
 }])
 
 

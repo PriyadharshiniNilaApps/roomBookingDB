@@ -101,10 +101,155 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'l
       }
 
       // $scope.values = [];
+      //Dummy Data
+      const jsonData = {
+          user: 'Owner',
+          userData: {
+            fullname: 'priya',
+            gender: 'female',
+            email: 'priya@gmail.com',
+            idType: 'Aadhar Card',
+            age: 23,
+            purpose: 'wfwfwffer',
+            phonenumber: '2343411334' ,
+            idnumber: '13222131231',
+            roomType: 'Non - AC',
+            checkindate: '23-09-2000',
+            expectedcheckoutdate: '01-09-2000',
+            roomSize: '2',
+            checkindate: '12:00',
+          },
+          customer: [
+            {
+              'index':1,
+              'fullname':'Priyadharshini ',
+              'email': 'priyadharshini@gmail.com',
+              'roomtype': 'AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+            
+            },
+            {'index':2,
+              'fullname':'Edward',
+              'email': 'ed@gmail.com',
+              'roomtype': 'Non-AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+              
+            
+            },
+            {
+              'index':3,
+              'fullname':'Shreya',
+              'email': 's@gmail.com',
+              'roomtype': 'AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+              
+            
+            },
+            {
+              'index':4,
+              'fullname':'Kundavai',
+              'email': 'kundavai@gmail.com',
+              'roomtype': 'AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+              
+            
+            },
+            {
+              'index':5,
+              'fullname':'dharshini ',
+              'email': 'dharshini@gmail.com',
+              'roomtype': 'AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+              
+            
+            },{
+              'index':1,
+              'fullname':'Priyadharshini ',
+              'email': 'priyadharshini@gmail.com',
+              'roomtype': 'AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+            
+            },
+            {'index':2,
+              'fullname':'Edward',
+              'email': 'ed@gmail.com',
+              'roomtype': 'Non-AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+              
+            
+            },
+            {
+              'index':3,
+              'fullname':'Shreya',
+              'email': 's@gmail.com',
+              'roomtype': 'AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+              
+            
+            },
+            {
+              'index':4,
+              'fullname':'Kundavai',
+              'email': 'kundavai@gmail.com',
+              'roomtype': 'AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+              
+            
+            },
+            {
+              'index':5,
+              'fullname':'dharshini ',
+              'email': 'dharshini@gmail.com',
+              'roomtype': 'AC',
+              'age': 23,
+              'roomSize': '2',
+              'view':'app/style/images/view.svg'
+              
+            
+            }
+          
+          ]
+      }
 
       //Showing the charges form after validating the additional requirements form 
       $scope.submitAllData = function(){
           if($scope.subForm2.$valid){
+            var user = window.localStorage.getItem("user");
+            if(user === "Customer"){
+              
+            }else{
+              $.ajax({
+                type: 'POST',
+                url: 'save_data.php',
+                data: { data: jsonData },
+                success: function(response) {
+                  console.log(response);
+                }
+              });
+          
+          
+          
+          
+          
+            }
             listOfItem.values($scope.form);
 
 
@@ -136,11 +281,19 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'l
           }
       }
 
-      var page="#/login";
-      var user = window.localStorage.getItem("user");
-      if(!user){
-          window.location.href = page;
-      }
+      $scope.userType = false;
+
+      // var page="#/login";
+      // var user = window.localStorage.getItem("user");
+      // console.log(user);
+      // if(user === "Customer"){
+      //   $scope.userType = true;
+      // }else{
+      //   $scope.userType = false;
+      // }
+      // if(!user){
+      //     window.location.href = page;
+      // }
 }])
 
 //Filter for field with only alphabets
