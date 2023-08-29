@@ -13,7 +13,7 @@ app.service('EmailService', function(){
 })
 
 //injected filters and services
-app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'listOfItem', function ($scope, EmailService,$timeout, listOfItem) {
+app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'listOfItem', '$http', function ($scope, EmailService,$timeout, listOfItem, $http) {
     $scope.form = {
        fullname:"",
        gender:"",
@@ -69,7 +69,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'l
     $scope.cateringTypes = ['Up to 5 persons VEG','Up to 10 persons VEG','Up to 5 persons NON-VEG','Up to 10 persons NON-VEG'];
     $scope.laundryTypes = ['Up to 10 clothes - Normal wash','Up to 20 clothes - Normal wash','Up to 10 clothes - Dry wash','Up to 20 clothes - Dry wash'];  
     $scope.formSubmitted = false;
-    $scope.roomBookingDetailsForm = true;
+    $scope.roomBookingDetailsForm = false;
     
       //Showing the additional requirements page after validating room booking form and show loading bar with timeout
       $scope.submitForm = function(){
@@ -236,20 +236,35 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'l
             if(user === "Customer"){
               
             }else{
-              $.ajax({
+              $scope.set = function(){
+                $.ajax({
                 type: 'POST',
-                url: 'save_data.php',
+                url: 'app/controller/save_data.php',
                 data: { data: jsonData },
                 success: function(response) {
                   console.log(response);
                 }
               });
+            }
+
+              $scope.retrieveData = function() {
+                $.ajax({
+                  method: 'GET',
+                  url: 'app/controller/get_data.php', // Replace with the correct URL
+                }).then(function(response) {
+                  var retrieved= response.data;
+                  console.log(retrieved);
+                });
           
           
           
           
           
             }
+          }
+
+          $scope.set();
+            $scope.retrieveData();
             listOfItem.values($scope.form);
 
 
