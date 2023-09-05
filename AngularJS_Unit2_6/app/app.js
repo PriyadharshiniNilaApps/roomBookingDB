@@ -7,6 +7,7 @@ app.config(['$locationProvider', function ($locationProvider) {
 
 // Configure the routes
 app.config(['$routeProvider', function ($routeProvider) {
+<<<<<<< HEAD
   $routeProvider
   .when('/login', {
           templateUrl: 'app/view/login.html',
@@ -230,4 +231,17 @@ app.controller('mainCtrl', ['$scope', function ($scope) {
     };
   })
   
+=======
+    $routeProvider
+        .when('/home', {
+            templateUrl: 'app/view/home.html',
+            controller: 'homeController'
+        })
+        .when('/availability', {
+            templateUrl: 'app/view/availabilityTemplate.html',
+            controller: 'availabilityController'
+        })
+        .otherwise({ redirectTo: '/home' });
+    console.log($routeProvider);
+>>>>>>> 7019eafb6022f6981c3b3b611bbba9a524eb75c5
 
