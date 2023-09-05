@@ -8,6 +8,9 @@ app.config(['$locationProvider', function ($locationProvider) {
 // Configure the routes
 app.config(['$routeProvider', function ($routeProvider) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ed8b1ab5dcd04ef535662714871eab792c1e396d
   $routeProvider
   .when('/login', {
           templateUrl: 'app/view/login.html',
@@ -23,6 +26,7 @@ app.config(['$routeProvider', function ($routeProvider) {
           templateUrl: 'app/view/roomBooking.html',
           controller: 'roomBookingController'
       })
+<<<<<<< HEAD
 
       .when('/home', {
           templateUrl: 'app/view/home.html',
@@ -39,6 +43,24 @@ app.config(['$routeProvider', function ($routeProvider) {
       .otherwise({ redirectTo: '/login' });
   console.log($routeProvider);
 
+=======
+
+      .when('/home', {
+          templateUrl: 'app/view/home.html',
+          controller: 'homeController'
+      })
+      .when('/availability', {
+          templateUrl: 'app/view/availabilityTemplate.html',
+          controller: 'availabilityController'
+      })
+      .when('/viewBooking',{
+        templateUrl: 'app/view/viewBooking.html',
+        controller: 'viewBookingController'
+      })
+      .otherwise({ redirectTo: '/login' });
+  console.log($routeProvider);
+
+>>>>>>> ed8b1ab5dcd04ef535662714871eab792c1e396d
 }]) 
 
 app.controller('mainCtrl', ['$scope', function ($scope) {
