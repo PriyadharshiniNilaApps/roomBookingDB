@@ -31,6 +31,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'l
        roomSize:"",
        checkintime:"",
        expectedcheckouttime:"",
+       customer: [],
 
     };
 
@@ -69,7 +70,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'l
     $scope.cateringTypes = ['Up to 5 persons VEG','Up to 10 persons VEG','Up to 5 persons NON-VEG','Up to 10 persons NON-VEG'];
     $scope.laundryTypes = ['Up to 10 clothes - Normal wash','Up to 20 clothes - Normal wash','Up to 10 clothes - Dry wash','Up to 20 clothes - Dry wash'];  
     $scope.formSubmitted = false;
-    $scope.roomBookingDetailsForm = false;
+    $scope.roomBookingDetailsForm = true;
     
       //Showing the additional requirements page after validating room booking form and show loading bar with timeout
       $scope.submitForm = function(){
@@ -229,47 +230,67 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'l
           ]
       }
 
+      $scope.setDataOwner = function(data,user){
+               
+        $.ajax({
+          url: 'app/controller/save_data.php?',
+        method: 'POST',
+      
+        data: {user_1:user, data: JSON.stringify(data)},
+        success: function(response) {
+          console.log(response);
+        }
+      });
+      }
+
+      $scope.setDataCusotmer = function(data_1){
+               
+        $.ajax({
+          url: 'app/controller/save_data.php?',
+        method: 'POST',
+      
+        data: {  user:"Customer",data:JSON.stringify(data_1) },
+        success: function(response) {
+          console.log(response);
+        }
+      });
+      }
+
+      $scope.getData = function() {
+     
+      
+        $.ajax({
+          url: 'app/controller/get_data.php?', // Replace with the correct URL
+          method: 'GET',
+         
+        success:function(response) {
+          var retrieved= response;
+          console.log(retrieved);
+        }
+        });
+    }
+  
       //Showing the charges form after validating the additional requirements form 
       $scope.submitAllData = function(){
           if($scope.subForm2.$valid){
             var user = window.localStorage.getItem("user");
-            if(user === "Customer"){
-              
-            }else{
-              $scope.set = function(){
-                $.ajax({
-                type: 'POST',
-                url: 'app/controller/save_data.php',
-                data: { data: jsonData },
-                success: function(response) {
-                  console.log(response);
-                }
-              });
-            }
-
-              $scope.retrieveData = function() {
-                $.ajax({
-                  method: 'GET',
-                  url: 'app/controller/get_data.php', // Replace with the correct URL
-                }).then(function(response) {
-                  var retrieved= response.data;
-                  console.log(retrieved);
-                });
+              var page="#/login";
+      var user = window.localStorage.getItem("user");
+      
+         
+      if(user === "Customer"){
+        $scope.userType = true;
+        $scope.setDataCusotmer($scope.form)
+      }else{
+        $scope.setDataOwner($scope.form,"Owner")
+        $scope.userType = false;
+      }
+      if(!user){
+          window.location.href = page;
+      }
           
-          
-          
-          
-          
-            }
-          }
-
-          $scope.set();
-            $scope.retrieveData();
-            listOfItem.values($scope.form);
-
-
-            // console.log(listOfItem.values);
-            $scope.roomBookingDetailsForm = true;
+          $scope.roomBookingDetailsForm = true;
+            
             $scope.form = {
               fullname:"",
               gender:"",
@@ -287,29 +308,30 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'l
               roomSize:"",
               checkintime:"",
               expectedcheckouttime:"",
+              customer:[],
        
            };
-       
-             $scope.subForm1.$setUntouched();
+
+          // if($scope.form.roomType != ""){
+          //   $scope.form.roomType = "Open";
+          // }
+
+          $scope.subForm1.$setUntouched();
              $scope.subForm2.$setUntouched();
-            $('#charges').modal("show");      
+            $('#charges').modal("show");
+          
+          }
+
+         
+                
+                  
           }
       }
 
-      $scope.userType = false;
+ 
 
-      // var page="#/login";
-      // var user = window.localStorage.getItem("user");
-      // console.log(user);
-      // if(user === "Customer"){
-      //   $scope.userType = true;
-      // }else{
-      //   $scope.userType = false;
-      // }
-      // if(!user){
-      //     window.location.href = page;
-      // }
-}])
+    
+])
 
 //Filter for field with only alphabets
 .filter('onlyAlphabets', function() {
