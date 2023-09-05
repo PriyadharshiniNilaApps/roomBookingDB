@@ -1,4 +1,7 @@
-app.controller('homeController', ['$scope', function ($scope) {
-    // Your home controller logic goes here
+app.controller('homeController', ['$scope','listOfItem', function ($scope, listOfItem) {
+   
+    
+    $scope.values = listOfItem.get();
+    console.log($scope.values.length);
 }]);
 

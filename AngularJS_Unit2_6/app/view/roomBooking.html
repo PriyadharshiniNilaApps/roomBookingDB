@@ -8,7 +8,7 @@
                     <div class=" col-lg-4 col-md-6 col-sm-8 d-flex flex-column">
                         <div class="form-group">
                             <label class="m-0" for="name"> Name </label>
-                            <input type="text" class="form-control error-text" ng-pattern="/^[a-zA-Z()]+$/"  id="name" name="fullname" ng-model="form.fullname" placeholder="Enter Full Name" aria-describedby="nameInputField" error-text="Name is required" error-class ng-required="true" >
+                            <input type="text" class="form-control error-text" ng-pattern="/^[a-zA-Z ]+$/"  id="name" name="fullname" ng-model="form.fullname" placeholder="Enter Full Name" aria-describedby="nameInputField" error-text="Name is required" error-class ng-required="true" >
                             <span ng-show="subForm1.fullname.$error.pattern"> {{ alphabetsOnly }}</span>
                         </div>
                         <div class="form-group">
@@ -49,7 +49,7 @@
                         </div>
                         <div class="form-group">
                             <label class="m-0" for="idnumber"> ID Number</label>
-                            <input type="text" class="form-control error-text " ng-pattern="/^[\w]+$/"  id="idnumber"  name="idnumber" ng-model="form.idnumber" error-text="ID number is required" placeholder="Enter Government ID Number" aria-describedby="idNumberInputField" error-class  ng-required="true" >
+                            <input type="text" class="form-control error-text " ng-pattern="/^[\w ]+$/"  id="idnumber"  name="idnumber" ng-model="form.idnumber" error-text="ID number is required" placeholder="Enter Government ID Number" aria-describedby="idNumberInputField" error-class  ng-required="true" >
                             <span ng-show="subForm1.idnumber.$error.pattern">You can only use alphabets, numbers and underscore in ID number</span>
                        </div>
                 </div> 
@@ -60,7 +60,7 @@
                     <button type="submit" ng-disabled="!subForm1.$valid" ng-click="submitForm()" class="btn btn-format btn-format-1 " >Next</button>
                 </div>
                 <div class=" col-lg-4 col-md-6 col-sm-8  w-50 text-left">
-                    <button class="btn btn-format btn-format-1" disabled>View Booking</button>
+                    <button class="btn btn-format btn-format-1" onclick=" window.location.href ='#/viewBooking'" ng-disabled="userType">View Booking</button>
                 </div> 
             </div>
         </ng-form> 
@@ -107,7 +107,7 @@
                         </div>
                         <div ng-show=" servicesprovided1" class="form-group">
                             <label class="m-0" for="cateringType"> Catering Type </label>
-                            <select class="form-control error-text   dropdown-icon" name="cateringType" error-text="Catering type must be chosen" error-class-s id="cateringType" ng-model="cateringType" aria-describedby="cateringTypeInputField" ng-required="servicesprovided1" >
+                            <select class="form-control error-text   dropdown-icon" name="cateringType" error-text="Catering type must be chosen" error-class-s id="cateringType" ng-model="form.cateringType" aria-describedby="cateringTypeInputField" ng-required="servicesprovided1" >
                                 <option value disabled selected hidden> Choose Catering Type </option>
                                 <option value="{{ i }}" ng-repeat="i in cateringTypes"> {{ i }}
                             </select>
@@ -116,7 +116,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-8 d-flex flex-column">
                         <div class="form-group">
                             <label class="m-0" >  Room Size</label>
-                            <custom-dropdown  selected="defaultSelected" name="roomSize" options="roomSizes" ng-model="form.roomSize" ></custom-dropdown>
+                            <custom-dropdown  selected="Choose a Room size" name="roomSize" options="roomSizes" ng-model="form.roomSize" ></custom-dropdown>
                         </div>
                         <div class="form-group">
                             <label class="m-0" for="checkouttime"> Check-In Time</label>
@@ -124,9 +124,9 @@
                         </div>
                         <div class="form-group">
                             <label class="m-0" for="expectedcheckouttime"> Expected Check-Out Date </label>
-                            <input class="form-control error-text " id="expectedcheckouttime" ng-model="form.expectedcheckouttime" onfocus="{this.type = 'time', error()}" onblur="this.type= 'text'" placeholder="Choose Expected Check-Out time" aria-describedby="expectedCheckOutTimeInputField">
+                            <input class="form-control error-text " id="expectedcheckouttime" ng-model="form.expectedcheckouttime" onfocus="{this.type = 'time'}" onblur="this.type= 'text'" placeholder="Choose Expected Check-Out time" aria-describedby="expectedCheckOutTimeInputField">
                         </div> 
-                        <div ng-show="servicesprovided2" class="form-group  mt-auto"">
+                        <div ng-show="servicesprovided2" class="form-group  mt-auto">
                             <label class="m-0" for="laundryType"> Laundry Type</label>
                             <select class="form-control error-text  dropdown-icon" name="laundryType" id="laundryType" error-text="Laundry type must be chosen" error-class-select ng-model="form.laundryType" aria-describedby="laundryInputField" >
                                 <option value disabled selected hidden>Choose Laundry Type</option>
@@ -141,7 +141,7 @@
                     <button type="submit" ng-disabled="!subForm2.$valid" ng-click="submitAllData()" class="btn btn-format btn-format-1 " >Save</button>
                 </div>
                 <div class=" col-lg-4 col-md-6 col-sm-8  w-50 text-left">
-                    <button class="btn btn-format btn-format-1" disabled>View Booking</button>
+                    <button class="btn btn-format btn-format-1" onclick=" window.location.href ='#/viewBooking'" ng-disabled="userType">View Booking</button>
                 </div>
             </div>  
         </ng-form> 
@@ -188,3 +188,6 @@
 
 <div ng-show="formSubmitted" class="load"></div>
   
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
