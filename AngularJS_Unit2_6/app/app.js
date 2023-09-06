@@ -7,10 +7,6 @@ app.config(['$locationProvider', function ($locationProvider) {
 
 // Configure the routes
 app.config(['$routeProvider', function ($routeProvider) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ed8b1ab5dcd04ef535662714871eab792c1e396d
   $routeProvider
   .when('/login', {
           templateUrl: 'app/view/login.html',
@@ -26,7 +22,6 @@ app.config(['$routeProvider', function ($routeProvider) {
           templateUrl: 'app/view/roomBooking.html',
           controller: 'roomBookingController'
       })
-<<<<<<< HEAD
 
       .when('/home', {
           templateUrl: 'app/view/home.html',
@@ -41,26 +36,6 @@ app.config(['$routeProvider', function ($routeProvider) {
         controller: 'viewBookingController'
       })
       .otherwise({ redirectTo: '/login' });
-  console.log($routeProvider);
-
-=======
-
-      .when('/home', {
-          templateUrl: 'app/view/home.html',
-          controller: 'homeController'
-      })
-      .when('/availability', {
-          templateUrl: 'app/view/availabilityTemplate.html',
-          controller: 'availabilityController'
-      })
-      .when('/viewBooking',{
-        templateUrl: 'app/view/viewBooking.html',
-        controller: 'viewBookingController'
-      })
-      .otherwise({ redirectTo: '/login' });
-  console.log($routeProvider);
-
->>>>>>> ed8b1ab5dcd04ef535662714871eab792c1e396d
 }]) 
 
 app.controller('mainCtrl', ['$scope', function ($scope) {
@@ -74,111 +49,7 @@ app.controller('mainCtrl', ['$scope', function ($scope) {
 
 .service('listOfItem', function(){
   var listOfItem = [];
-  listOfItem.push({
-    'index':1,
-    'fullname':'Priyadharshini ',
-    'email': 'priyadharshini@gmail.com',
-    'roomtype': 'AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-  
-  },
-  {'index':2,
-    'fullname':'Edward',
-    'email': 'ed@gmail.com',
-    'roomtype': 'Non-AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-    
-  
-  },
-  {
-    'index':3,
-    'fullname':'Shreya',
-    'email': 's@gmail.com',
-    'roomtype': 'AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-    
-  
-  },
-  {
-    'index':4,
-    'fullname':'Kundavai',
-    'email': 'kundavai@gmail.com',
-    'roomtype': 'AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-    
-  
-  },
-  {
-    'index':5,
-    'fullname':'dharshini ',
-    'email': 'dharshini@gmail.com',
-    'roomtype': 'AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-    
-  
-  },{
-    'index':1,
-    'fullname':'Priyadharshini ',
-    'email': 'priyadharshini@gmail.com',
-    'roomtype': 'AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-  
-  },
-  {'index':2,
-    'fullname':'Edward',
-    'email': 'ed@gmail.com',
-    'roomtype': 'Non-AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-    
-  
-  },
-  {
-    'index':3,
-    'fullname':'Shreya',
-    'email': 's@gmail.com',
-    'roomtype': 'AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-    
-  
-  },
-  {
-    'index':4,
-    'fullname':'Kundavai',
-    'email': 'kundavai@gmail.com',
-    'roomtype': 'AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-    
-  
-  },
-  {
-    'index':5,
-    'fullname':'dharshini ',
-    'email': 'dharshini@gmail.com',
-    'roomtype': 'AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-    
-  
-  });
+  listOfItem.push();
   this.values = function(value){
       listOfItem.push(value);
   }
@@ -253,17 +124,6 @@ app.controller('mainCtrl', ['$scope', function ($scope) {
     };
   })
   
-=======
-    $routeProvider
-        .when('/home', {
-            templateUrl: 'app/view/home.html',
-            controller: 'homeController'
-        })
-        .when('/availability', {
-            templateUrl: 'app/view/availabilityTemplate.html',
-            controller: 'availabilityController'
-        })
-        .otherwise({ redirectTo: '/home' });
-    console.log($routeProvider);
->>>>>>> 7019eafb6022f6981c3b3b611bbba9a524eb75c5
+
+ 
 

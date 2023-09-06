@@ -101,139 +101,10 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'l
           minDate.max = maxDateValue;
       }
 
-      // $scope.values = [];
-      //Dummy Data
-      const jsonData = {
-          user: 'Owner',
-          userData: {
-            fullname: 'priya',
-            gender: 'female',
-            email: 'priya@gmail.com',
-            idType: 'Aadhar Card',
-            age: 23,
-            purpose: 'wfwfwffer',
-            phonenumber: '2343411334' ,
-            idnumber: '13222131231',
-            roomType: 'Non - AC',
-            checkindate: '23-09-2000',
-            expectedcheckoutdate: '01-09-2000',
-            roomSize: '2',
-            checkindate: '12:00',
-          },
-          customer: [
-            {
-              'index':1,
-              'fullname':'Priyadharshini ',
-              'email': 'priyadharshini@gmail.com',
-              'roomtype': 'AC',
-              'age': 23,
-              'roomSize': '2',
-              'view':'app/style/images/view.svg'
-            
-            },
-            {'index':2,
-              'fullname':'Edward',
-              'email': 'ed@gmail.com',
-              'roomtype': 'Non-AC',
-              'age': 23,
-              'roomSize': '2',
-              'view':'app/style/images/view.svg'
-              
-            
-            },
-            {
-              'index':3,
-              'fullname':'Shreya',
-              'email': 's@gmail.com',
-              'roomtype': 'AC',
-              'age': 23,
-              'roomSize': '2',
-              'view':'app/style/images/view.svg'
-              
-            
-            },
-            {
-              'index':4,
-              'fullname':'Kundavai',
-              'email': 'kundavai@gmail.com',
-              'roomtype': 'AC',
-              'age': 23,
-              'roomSize': '2',
-              'view':'app/style/images/view.svg'
-              
-            
-            },
-            {
-              'index':5,
-              'fullname':'dharshini ',
-              'email': 'dharshini@gmail.com',
-              'roomtype': 'AC',
-              'age': 23,
-              'roomSize': '2',
-              'view':'app/style/images/view.svg'
-              
-            
-            },{
-              'index':1,
-              'fullname':'Priyadharshini ',
-              'email': 'priyadharshini@gmail.com',
-              'roomtype': 'AC',
-              'age': 23,
-              'roomSize': '2',
-              'view':'app/style/images/view.svg'
-            
-            },
-            {'index':2,
-              'fullname':'Edward',
-              'email': 'ed@gmail.com',
-              'roomtype': 'Non-AC',
-              'age': 23,
-              'roomSize': '2',
-              'view':'app/style/images/view.svg'
-              
-            
-            },
-            {
-              'index':3,
-              'fullname':'Shreya',
-              'email': 's@gmail.com',
-              'roomtype': 'AC',
-              'age': 23,
-              'roomSize': '2',
-              'view':'app/style/images/view.svg'
-              
-            
-            },
-            {
-              'index':4,
-              'fullname':'Kundavai',
-              'email': 'kundavai@gmail.com',
-              'roomtype': 'AC',
-              'age': 23,
-              'roomSize': '2',
-              'view':'app/style/images/view.svg'
-              
-            
-            },
-            {
-              'index':5,
-              'fullname':'dharshini ',
-              'email': 'dharshini@gmail.com',
-              'roomtype': 'AC',
-              'age': 23,
-              'roomSize': '2',
-              'view':'app/style/images/view.svg'
-              
-            
-            }
-          
-          ]
-      }
-
       $scope.setDataOwner = function(data,user){
                
         $.ajax({
-          url: 'app/controller/save_data.php?',
+          url: 'API/save_data.php?',
         method: 'POST',
       
         data: {user_1:user, data: JSON.stringify(data)},
@@ -246,7 +117,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'l
       $scope.setDataCusotmer = function(data_1){
                
         $.ajax({
-          url: 'app/controller/save_data.php?',
+          url: 'API/save_data.php?',
         method: 'POST',
       
         data: {  user:"Customer",data:JSON.stringify(data_1) },
@@ -260,7 +131,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'l
      
       
         $.ajax({
-          url: 'app/controller/get_data.php?', // Replace with the correct URL
+          url: 'API/get_data.php?', // Replace with the correct URL
           method: 'GET',
          
         success:function(response) {
@@ -280,7 +151,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'l
          
       if(user === "Customer"){
         $scope.userType = true;
-        $scope.setDataCusotmer($scope.form)
+        $scope.setDataCusotmer($scope.form,"Customer")
       }else{
         $scope.setDataOwner($scope.form,"Owner")
         $scope.userType = false;

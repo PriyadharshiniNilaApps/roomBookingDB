@@ -2,7 +2,7 @@
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_POST['user']) ){
     $jsonData = $_POST['data'];
-    $filePath = '/opt/lampp/htdocs/Assessment_5/app/controller/data.json';
+    $filePath = '/opt/lampp/htdocs/Assessment_5/StayFlex-jul23/AngularJS_Unit2_6/app/controller/data.json';
     $currentData = file_get_contents($filePath);
     $existingData = json_decode($currentData, true);
   
@@ -43,7 +43,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_1'])){
      
       $jsonData = $_POST['data'];
 
-    $filePath = '/opt/lampp/htdocs/Assessment_5/app/controller/data.json';
+    $filePath = '/opt/lampp/htdocs/Assessment_5/StayFlex-jul23/AngularJS_Unit2_6/app/controller/data.json';
     $currentData = file_get_contents($filePath);
     $existingData = json_decode($currentData, true);
   

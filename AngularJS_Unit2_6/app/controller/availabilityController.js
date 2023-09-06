@@ -1,11 +1,8 @@
 app.controller('availabilityController', ['$scope', function ($scope) {
     // Static array of rooms with availability status and booking information
     var totalRooms = [
-<<<<<<< HEAD
-        { room_number: 1, room_type: 'Standard', room_size: 1, booking: null},
-=======
+
         { room_number: 1, room_type: 'Standard', room_size: 1, booking: null },
->>>>>>> 7019eafb6022f6981c3b3b611bbba9a524eb75c5
         { room_number: 2, room_type: 'Suite', room_size: 4, booking: { checkIn: '2023-08-10 14:00', checkOut: '2023-08-15 12:00' } },
         { room_number: 3, room_type: 'Standard', room_size: 1, booking: null },
         { room_number: 4, room_type: 'Standard', room_size: 1, booking: { checkIn: '2023-08-18 15:00', checkOut: '2023-08-23 10:00' } },
@@ -32,25 +29,23 @@ app.controller('availabilityController', ['$scope', function ($scope) {
         { room_number: 25, room_type: 'Deluxe', room_size: 3, booking: null }
     ];
 
-<<<<<<< HEAD
+
     $scope.isRoomAvailable = false;
     $scope.availableRooms = [];
 
     //Available rooms array
     $scope.rooms = [];
-    
-=======
+
     $scope.isRoomAvailable = true;
     $scope.availableRooms = [];
 
->>>>>>> 7019eafb6022f6981c3b3b611bbba9a524eb75c5
     $scope.getRoomNumbers = function (rooms) {
         return rooms.map(function (room) {
             return room.room_number;
         }).join(', ');
     };
 
-<<<<<<< HEAD
+
     //Setting the check in and check out so that check in date is less than check out date
     const minDate = document.getElementById('checkindate');
     const maxDate = document.getElementById('checkoutdate');
@@ -118,7 +113,7 @@ app.controller('availabilityController', ['$scope', function ($scope) {
         $scope.isRoomAvailable = ($scope.rooms.length > 0)? true: false;
     }
   
-=======
+
     $scope.checkAvailability = function () {
         var checkInDateTime = new Date($scope.booking.checkInDate + ' ' + $scope.booking.checkInTime);
         var checkOutDateTime = new Date($scope.booking.checkOutDate + ' ' + $scope.booking.checkOutTime);
@@ -152,5 +147,4 @@ app.controller('availabilityController', ['$scope', function ($scope) {
             }
         }
     };
->>>>>>> 7019eafb6022f6981c3b3b611bbba9a524eb75c5
 }]);
