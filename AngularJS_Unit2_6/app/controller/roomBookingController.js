@@ -13,7 +13,7 @@ app.service('EmailService', function(){
 })
 
 //injected filters and services
-app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'listOfItem', '$http', function ($scope, EmailService,$timeout, listOfItem, $http) {
+app.controller('roomBookingController',['$scope', 'EmailService', '$timeout' , function ($scope, EmailService,$timeout) {
     $scope.form = {
        fullname:"",
        gender:"",
@@ -31,6 +31,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'l
        roomSize:"",
        checkintime:"",
        expectedcheckouttime:"",
+       view:"",
        customer: [],
 
     };
@@ -144,11 +145,12 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'l
       //Showing the charges form after validating the additional requirements form 
       $scope.submitAllData = function(){
           if($scope.subForm2.$valid){
-            var user = window.localStorage.getItem("user");
+           var user = window.localStorage.getItem("user");
               var page="#/login";
       var user = window.localStorage.getItem("user");
       
-         
+      $scope.view =  "app/style/images/view.svg";
+           
       if(user === "Customer"){
         $scope.userType = true;
         $scope.setDataCusotmer($scope.form,"Customer")
@@ -179,6 +181,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', 'l
               roomSize:"",
               checkintime:"",
               expectedcheckouttime:"",
+              view:"",
               customer:[],
        
            };

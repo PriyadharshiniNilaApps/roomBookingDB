@@ -239,3 +239,14 @@ span{
     color: red;
      
 }
+#custom-pagination {
+    text-align: center;
+    margin-top: 10px; /* Adjust as needed */
+}
+
+#custom-previous img,
+#custom-next img {
+    width: 20px; /* Adjust image width as needed */
+    height: 20px; /* Adjust image height as needed */
+    vertical-align: middle; /* Align image vertically */
+}
