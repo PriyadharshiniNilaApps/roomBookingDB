@@ -3,6 +3,8 @@ var app = angular.module('myApp', ['ngRoute']);
 
 app.config(['$locationProvider', function ($locationProvider) {
   $locationProvider.hashPrefix('');
+  var listItems=[];
+  $scope.i = 0;
 }]);
 
 // Configure the routes
@@ -47,122 +49,7 @@ app.controller('mainCtrl', ['$scope', function ($scope) {
 
 
 
-.service('listOfItem', function(){
-  var listOfItem = [{
-    'index':1,
-    'fullname':'Priyadharshini ',
-    'email': 'priyadharshini@gmail.com',
-    'roomtype': 'AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-  
-  },
-  {'index':2,
-    'fullname':'Edward',
-    'email': 'ed@gmail.com',
-    'roomtype': 'Non-AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-    
-  
-  },
-  {
-    'index':3,
-    'fullname':'Shreya',
-    'email': 's@gmail.com',
-    'roomtype': 'AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-    
-  
-  },
-  {
-    'index':4,
-    'fullname':'Kundavai',
-    'email': 'kundavai@gmail.com',
-    'roomtype': 'AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-    
-  
-  },
-  {
-    'index':5,
-    'fullname':'dharshini ',
-    'email': 'dharshini@gmail.com',
-    'roomtype': 'AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-    
-  
-  },{
-    'index':1,
-    'fullname':'Priyadharshini ',
-    'email': 'priyadharshini@gmail.com',
-    'roomtype': 'AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-  
-  },
-  {'index':2,
-    'fullname':'Edward',
-    'email': 'ed@gmail.com',
-    'roomtype': 'Non-AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-    
-  
-  },
-  {
-    'index':3,
-    'fullname':'Shreya',
-    'email': 's@gmail.com',
-    'roomtype': 'AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-    
-  
-  },
-  {
-    'index':4,
-    'fullname':'Kundavai',
-    'email': 'kundavai@gmail.com',
-    'roomtype': 'AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-    
-  
-  },
-  {
-    'index':5,
-    'fullname':'dharshini ',
-    'email': 'dharshini@gmail.com',
-    'roomtype': 'AC',
-    'age': 23,
-    'roomSize': '2',
-    'view':'app/style/images/view.svg'
-    
-  
-  }];
-  listOfItem.push();
-  this.values = function(value){
-      listOfItem.push(value);
-  }
 
-  this.get =function(){
-  return listOfItem;
-}
-
-})
   //Custom Directive for adding a class when the input element if not valid
 .directive('errorClass', function() {
     return {

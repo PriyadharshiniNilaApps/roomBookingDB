@@ -15,6 +15,7 @@ app.service('EmailService', function(){
 //injected filters and services
 app.controller('roomBookingController',['$scope', 'EmailService', '$timeout' , function ($scope, EmailService,$timeout) {
     $scope.form = {
+       index:"",
        fullname:"",
        gender:"",
        email:"",
@@ -31,12 +32,12 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout' , f
        roomSize:"",
        checkintime:"",
        expectedcheckouttime:"",
-       view:"",
+       view:  "app/style/images/view.svg",
        customer: [],
 
     };
 
-   var inputModels = [ "fullname", "gender", "email", "idtype", "age", "purpose", "phonenumber", "idnumber", "roomtype", "checkindate", "expectedcheckoutdate", "cateringType", "laundryType", "roomSize", "checkintime", "expectedcheckouttime"];
+   var inputModels = [ "fullname", "gender", "email", "idtype", "age", "purpose", "phonenumber", "idnumber", "roomtype", "checkindate", "expectedcheckoutdate", "cateringType", "laundryType", "roomSize", "checkintime", "expectedcheckouttime","view","customer"];
    
     $scope.regex = '/^[a-zA-Z ]+$/'
     $scope.alphabetsOnly = 'Name must be alphabets';
@@ -150,7 +151,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout' , f
       var user = window.localStorage.getItem("user");
       
       $scope.view =  "app/style/images/view.svg";
-           
+      $scope.index = $scope.i++;
       if(user === "Customer"){
         $scope.userType = true;
         $scope.setDataCusotmer($scope.form,"Customer")
@@ -165,6 +166,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout' , f
           $scope.roomBookingDetailsForm = true;
             
             $scope.form = {
+              index:"",
               fullname:"",
               gender:"",
               email:"",

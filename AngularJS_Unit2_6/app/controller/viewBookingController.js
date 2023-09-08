@@ -11,6 +11,7 @@ app.controller('viewBookingController', ['$scope', function ($scope) {
           success:function(response) {
          
             $scope.values=JSON.parse(response);
+            console.log($scope.values);
  
             var table = $('#myTable').DataTable({
         
@@ -20,9 +21,9 @@ app.controller('viewBookingController', ['$scope', function ($scope) {
                         title: '<input type="checkbox" class="checkbox" />',
                         render: function (data, type, row) {
                             return '<input type="checkbox" class="checkbox" />';
-                        },
+                        }
                     },
-                    {title: '#', data:'index'},
+                    {title: '#', data:''},
                     {title:'NAME', data:'fullname' },
                     {title: 'EMAIL', data:'email'},
                     {title: 'ROOM TYPE', data:'roomtype'},
@@ -36,6 +37,7 @@ app.controller('viewBookingController', ['$scope', function ($scope) {
                     return '<img src="' + data + '" alt="View Image">'
                 }}
                     ],
+                    
                 //   paging: false, // Disable pagination (optional)
                     paging:true,
                     pagingType: "simple_numbers",
@@ -61,6 +63,13 @@ app.controller('viewBookingController', ['$scope', function ($scope) {
                          
                         
                     },
+                    "drawCallback": function(settings) {         
+                         var api = this.api();          
+                         var pageInfo = api.page.info();       
+                            var paginationDiv = $(this).closest('.dataTables_wrapper').find('.dataTables_paginate');                    // Create a custom content for the pagination span    
+                                  var customPagination = '<span class="custom-pagination">' + (pageInfo.page + 1) + '/' + pageInfo.pages + '</span>';                  // Replace the content of the existing span with the custom content      
+                                      paginationDiv.find('span').replaceWith(customPagination);   
+                 },
                    
                     pageLength:10,
                     lengthMenu:[5,10,25,50,100],
@@ -83,30 +92,6 @@ app.controller('viewBookingController', ['$scope', function ($scope) {
       
         
         
-            table.on('draw.dt', function () {
-                var pageInfo = table.page.info();
-                var currentPage = pageInfo.page + 1; // Current page number
-                var totalPages = pageInfo.pages; // Total number of pages
-
-                var customPagination = '<span class="paginate_button previous" id="myCustomPrevious">Previous</span>';
-                customPagination += '<span class="paginate_button next" id="myCustomNext">Next</span>';
-                customPagination += '<div class="paginate_info">Page ' + currentPage + ' of ' + totalPages + '</div>';
-
-                $('#customPagination').html(customPagination);
-
-                // Add click event handlers for custom previous and next buttons
-                $('#myCustomPrevious').click(function () {
-                    if (currentPage > 1) {
-                        table.page(currentPage - 2).draw(false);
-                    }
-                });
-
-                $('#myCustomNext').click(function () {
-                    if (currentPage < totalPages) {
-                        table.page(currentPage).draw(false);
-                    }
-                });
-            });
     
     
      

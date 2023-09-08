@@ -7,9 +7,31 @@ app.controller('loginController', ['$scope', '$timeout', function ($scope, $time
         const username =document.getElementById('username');
         const password = document.getElementById('password');
         const userType = document.querySelector("input[name='options']:checked");
+       
+       
+       
         if (username.value == "" || password.value == "") {
             alert("Enter all data");
         }else{
+
+       
+                $.ajax({
+                    url: 'API/get_data.php?', // Replace with the correct URL
+                    method: 'GET',
+                   
+                  success:function(response) {
+                 
+                    var retrieve =JSON.parse(response);
+                    for (var i = 0; i < retrieve.length; i++) {
+                        var obj = retrieve[i];
+                        if(obj.fullname === username){
+                            console.log("Existed");
+                        }
+                    }
+                  }
+                });
+         
+           
             message.innerText = userType.value +  ' - ' + username.value + ' ' + "Sign In Successfully";
             localStorage.setItem("user",userType.value);
             $('#authentication-success').modal("show");
