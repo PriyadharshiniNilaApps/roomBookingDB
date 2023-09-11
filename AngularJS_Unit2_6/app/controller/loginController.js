@@ -16,6 +16,7 @@ app.controller('loginController', ['$scope', '$timeout', function ($scope, $time
             message.innerText = userType.value +  ' - ' + username.value + ' ' + "Sign In Successfully";
             localStorage.setItem("user",userType.value);
             $('#authentication-success').modal("show");
+            
         //     $timeout(function () {
         //         $('#authentication-success').modal("toggle");
         //         // window.location.href = page;
