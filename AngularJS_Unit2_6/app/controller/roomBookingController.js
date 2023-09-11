@@ -32,6 +32,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout' , f
        roomSize:"",
        checkintime:"",
        expectedcheckouttime:"",
+       userType:"",
        view:  "app/style/images/view.svg",
        customer: [],
 
@@ -74,27 +75,41 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout' , f
     $scope.formSubmitted = false;
     $scope.roomBookingDetailsForm = true;
     
+    const minDate = document.getElementById('checkindate');
+    const maxDate = document.getElementById('expectedcheckoutdate');
+   
+     $scope.change =  function(){
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+
+      today = yyyy + '-' + mm + '-' + dd; 
+      minDate.min = today;
+      maxDate.min =today;
+ 
+     }
+           
       //Showing the additional requirements page after validating room booking form and show loading bar with timeout
       $scope.submitForm = function(){
          if($scope.subForm1.$valid){
               $scope.formSubmitted = true;
-        
+            
               $timeout(function () {
                     $scope.roomBookingDetailsForm = false;
                     $scope.formSubmitted = false;
-              
               }, 2000);  
-          
+              $scope.change();
       }
     }
 
-    const minDate = document.getElementById('checkindate');
-    const maxDate = document.getElementById('expectedcheckoutdate');
+  
+
 
       //Setting the check in and check out so that check in date is less than check out date    
-   
       $scope.setCheckOutDate = function(){
           const minDateValue = minDate.value;
+          console.log(minDate.value);
           maxDate.min = minDateValue;
       }
 
@@ -107,13 +122,12 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout' , f
                
         $.ajax({
           url: 'API/save_data.php?',
-        method: 'POST',
-      
-        data: {user_1:user, data: JSON.stringify(data)},
-        success: function(response) {
-          console.log(response);
-        }
-      });
+          method: 'POST',
+          data: {user_1:user, data: JSON.stringify(data)},
+          success: function(response) {
+            console.log(response);
+          }
+        });
       }
 
       $scope.setDataCusotmer = function(data_1){
@@ -142,22 +156,27 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout' , f
         }
         });
     }
-  
+    var user = window.localStorage.getItem("user");
+    var page="#/login";
+    if(user === "Customer"){
+      $scope.userType = true;
+    }else{
+      $scope.userType = false;
+    }
       //Showing the charges form after validating the additional requirements form 
       $scope.submitAllData = function(){
           if($scope.subForm2.$valid){
-           var user = window.localStorage.getItem("user");
-              var page="#/login";
-      var user = window.localStorage.getItem("user");
-      
+         
+             
+            if($scope.form.roomType != ""){
+              $scope.form.roomType = "Open";
+            }
       $scope.view =  "app/style/images/view.svg";
       $scope.index = $scope.i++;
       if(user === "Customer"){
-        $scope.userType = true;
         $scope.setDataCusotmer($scope.form,"Customer")
       }else{
         $scope.setDataOwner($scope.form,"Owner")
-        $scope.userType = false;
       }
       if(!user){
           window.location.href = page;
@@ -183,14 +202,13 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout' , f
               roomSize:"",
               checkintime:"",
               expectedcheckouttime:"",
+              userType:"",
               view:"",
               customer:[],
        
            };
 
-          // if($scope.form.roomType != ""){
-          //   $scope.form.roomType = "Open";
-          // }
+        
 
           $scope.subForm1.$setUntouched();
              $scope.subForm2.$setUntouched();

@@ -84,7 +84,7 @@
                         </div>
                         <div class="form-group">
                             <label class="m-0" for="checkindate"> Check-In Date</label>
-                            <input class="form-control error-text" ng-change="setCheckOutDate()" name="checkindate" id="checkindate" error-class error-text="Room check-in date must be choosen" ng-model="form.checkindate" onfocus="{this.type = 'date'}" onblur="this.type= 'text'"  placeholder="Choose Check-In Date" aria-describedby="checkInDateInputField" ng-required="true">
+                            <input class="form-control error-text"  ng-change="setCheckOutDate()" name="checkindate" id="checkindate" error-class error-text="Room check-in date must be choosen" ng-model="form.checkindate" onfocus="{this.type = 'date'}" onblur="this.type= 'text'"  placeholder="Choose Check-In Date" aria-describedby="checkInDateInputField" ng-required="true">
                             <span ng-if="err">invalid date!</span>
                         </div>
                         <div class="form-group">
@@ -187,7 +187,6 @@
 </div>
 
 <div ng-show="formSubmitted" class="load"></div>
-  
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 

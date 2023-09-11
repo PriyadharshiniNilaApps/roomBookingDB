@@ -12,37 +12,14 @@ app.controller('loginController', ['$scope', '$timeout', function ($scope, $time
        
         if (username.value == "" || password.value == "") {
             alert("Enter all data");
-        }else{
-
-       
-                $.ajax({
-                    url: 'API/get_data.php?', // Replace with the correct URL
-                    method: 'GET',
-                   
-                  success:function(response) {
-                 
-                    var retrieve =JSON.parse(response);
-                    for (var i = 0; i < retrieve.length; i++) {
-                        var obj = retrieve[i];
-                        if(obj.fullname === username){
-                            console.log("Existed");
-                        }
-                    }
-                  }
-                });
-         
-           
+        } else {
             message.innerText = userType.value +  ' - ' + username.value + ' ' + "Sign In Successfully";
             localStorage.setItem("user",userType.value);
             $('#authentication-success').modal("show");
-       
         //     $timeout(function () {
         //         $('#authentication-success').modal("toggle");
         //         // window.location.href = page;
         //   }, 1000);  
-        
-          
-          
         }  
     }
 
