@@ -13,12 +13,14 @@ app.controller('viewBookingController', ['$scope', function ($scope) {
                     data:$scope.values,
                     columns:[
                         {
-                            title: '<input type="checkbox" class="checkbox" />',
+                            title: '<input type="checkbox" class="checkbox"  />',
                             render: function (data, type, row) {
                                 return '<input type="checkbox" class="checkbox" />';
                             }
                         },
-                        {title: '#', data:''},
+                        { title: '#',
+                        data: null,
+                        render: (data, type, row, meta) => meta.row +1 },
                         {title:'NAME', data:'fullname' },
                         {title: 'EMAIL', data:'email'},
                         {title: 'ROOM TYPE', data:'roomtype'},
@@ -64,25 +66,32 @@ app.controller('viewBookingController', ['$scope', function ($scope) {
                     lengthMenu:[5,10,25,50,100],
                     columnDefs: [
                         { width:"500px", targets:[2,3,4,5,6,7]},
-                        { "className": "dt-center", "targets": [0,5,6,7] }, 
+                        { "className": "dt-center ", "targets": [0,5,6,7] }, 
                         {
                             targets: [0,3,4,5,6,7], 
                             orderable: false,
                             className: 'no-toggle' 
-                        }
+                        },
                     ],
-                    searching: false, 
+                    "order": [[1, 'asc']],
+                    
+                    searching: true, 
                     lengthChange: true,
+                    
                 })
+                $('#search').on('keyup', function () {  
+                      var customSearchValue = $(this).val();   
+                       table.search(customSearchValue).draw();  
+                    });
             }   
         });
    }
     $scope.getData();
     console.log($scope.values);
 });
-var user = window.localStorage.getItem("user");
-    if(user != "Owner"){
-        window.location.href = '#/roomBooking';
-    }
+// var user = window.localStorage.getItem("user");
+//     if(user != "Owner"){
+//         window.location.href = '#/roomBooking';
+    // }
 }]);
 

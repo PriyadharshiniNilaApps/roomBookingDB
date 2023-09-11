@@ -13,9 +13,9 @@ app.service('EmailService', function(){
 })
 
 //injected filters and services
-app.controller('roomBookingController',['$scope', 'EmailService', '$timeout' , function ($scope, EmailService,$timeout) {
+app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$rootScope' , function ($scope, EmailService,$timeout, $rootScope) {
     $scope.form = {
-       index:"",
+       index:++$rootScope.i,
        fullname:"",
        gender:"",
        email:"",
@@ -24,7 +24,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout' , f
        purpose:"",
        phonenumber:"",
        idnumber:"",
-       roomtype:"",
+       roomtype:"Open",
        checkindate:"",
        expectedcheckoutdate:"",
        cateringType:"",
@@ -165,14 +165,11 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout' , f
     }
       //Showing the charges form after validating the additional requirements form 
       $scope.submitAllData = function(){
-          if($scope.subForm2.$valid){
-         
-             
-            if($scope.form.roomType != ""){
-              $scope.form.roomType = "Open";
-            }
+      
       $scope.view =  "app/style/images/view.svg";
-      $scope.index = $scope.i++;
+    
+    
+    
       if(user === "Customer"){
         $scope.setDataCusotmer($scope.form,"Customer")
       }else{
@@ -220,8 +217,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout' , f
                 
                   
           }
-      }
-
+      
  
 
     

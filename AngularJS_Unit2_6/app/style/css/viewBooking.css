@@ -98,3 +98,11 @@ span{
     color: black;
      
 }
+
+.dataTables_wrapper .dataTables_length select {
+    border: 0px solid #fff; 
+    border-radius: 3px;
+    padding: 5px;
+    background-color: transparent;
+    padding: 4px;
+}

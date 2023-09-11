@@ -40,8 +40,9 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 }]) 
 
-app.controller('mainCtrl', ['$scope', function ($scope) {
+app.controller('mainCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
     $scope.sample = "data";
+    $rootScope.i = 0;
     localStorage.clear()
 
 }])

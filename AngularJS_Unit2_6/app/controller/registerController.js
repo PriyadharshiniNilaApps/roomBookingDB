@@ -31,9 +31,9 @@ app.controller('registerController', ['$scope', function ($scope) {
         window.location.href=page;
     }
 
-    var user = window.localStorage.getItem("user");
-    if(user){
-        window.location.href = page;
-    }
+    // var user = window.localStorage.getItem("user");
+    // if(user){
+    //     window.location.href = page;
+    // }
 }]);
 
