@@ -15,6 +15,18 @@ app.controller('registerController', ['$scope', function ($scope) {
         }
     }
 
+    $scope.register = {
+       
+        name:"",
+        userType:"",
+        email:"",
+        phonenumber:"",
+        password:"",
+ 
+     };
+ 
+    var inputModels = [ "name", "userType", "email", "phonenumber", "password"];
+    
     //Validating password
     $scope.validatePassword = function(){
         if(password.value != reenterpassword.value){
