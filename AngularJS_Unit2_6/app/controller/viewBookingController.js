@@ -72,7 +72,8 @@ app.controller('viewBookingController', ['$scope', function ($scope) {
                             orderable: false,
                             className: 'no-toggle' 
                         },
-                    ],
+                        { className: "font-weight-bold", targets: [1,2] }
+                   ],
                     "order": [[1, 'asc']],
                     
                     searching: true, 

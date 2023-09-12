@@ -86,5 +86,27 @@
         "userType": "",
         "view": "app\/style\/images\/view.svg",
         "customer": []
+    },
+    {
+        "index": 1,
+        "fullname": "Priya",
+        "gender": "Male",
+        "email": "ed@gmail.com",
+        "idtype": "Aadhar card",
+        "age": 23,
+        "purpose": "wfdqwerqre`",
+        "phonenumber": "3113231312",
+        "idnumber": "1231231qweweqw",
+        "roomtype": "NON - AC",
+        "checkindate": "2023-09-12",
+        "expectedcheckoutdate": "",
+        "cateringType": null,
+        "laundryType": null,
+        "roomSize": "4",
+        "checkintime": "11:33",
+        "expectedcheckouttime": "",
+        "userType": "",
+        "view": "app\/style\/images\/view.svg",
+        "customer": []
     }
 ]
