@@ -3,11 +3,14 @@ app.controller('viewBookingController', ['$scope', function ($scope) {
     $(document).ready(function(){
         $scope.values = null;
         //Get Request function
+     var user = window.localStorage.getItem("user");
         $scope.getData = function(){
         $.ajax({
             url: 'API/get_data.php?', 
             method: 'GET',
+            data:{customer:"Customer",email:user},
             success:function(response) {
+                console.log(response);
                 $scope.values=JSON.parse(response);
                 var table = $('#myTable').DataTable({
                     data:$scope.values,
@@ -90,7 +93,7 @@ app.controller('viewBookingController', ['$scope', function ($scope) {
     $scope.getData();
     console.log($scope.values);
 });
-// var user = window.localStorage.getItem("user");
+
 //     if(user != "Owner"){
 //         window.location.href = '#/roomBooking';
     // }

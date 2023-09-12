@@ -123,20 +123,20 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$
         $.ajax({
           url: 'API/save_data.php?',
           method: 'POST',
-          data: {user_1:user, data: JSON.stringify(data)},
+          data: {user:user, data: JSON.stringify(data)},
           success: function(response) {
             console.log(response);
           }
         });
       }
 
-      $scope.setDataCusotmer = function(data_1){
+      $scope.setDataCusotmer = function(data){
                
         $.ajax({
           url: 'API/save_data.php?',
         method: 'POST',
       
-        data: {  user:"Customer",data:JSON.stringify(data_1) },
+        data: {  user_1:"Customer",data:JSON.stringify(data) },
         success: function(response) {
           console.log(response);
         }
@@ -158,11 +158,8 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$
     }
     var user = window.localStorage.getItem("user");
     var page="#/login";
-    if(user === "Customer"){
-      $scope.userType = true;
-    }else{
-      $scope.userType = false;
-    }
+   
+  
       //Showing the charges form after validating the additional requirements form 
       $scope.submitAllData = function(){
       
@@ -171,7 +168,8 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$
     
     
       if(user === "Customer"){
-        $scope.setDataCusotmer($scope.form,"Customer")
+        console.log(user);
+        $scope.setDataCusotmer($scope.form)
       }else{
         $scope.setDataOwner($scope.form,"Owner")
       }

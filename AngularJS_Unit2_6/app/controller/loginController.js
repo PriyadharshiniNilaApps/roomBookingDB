@@ -8,14 +8,39 @@ app.controller('loginController', ['$scope', '$timeout', function ($scope, $time
         const password = document.getElementById('password');
         const userType = document.querySelector("input[name='options']:checked");
        
-       
+       $scope.call = function(){
+        if(userType.value === "Owner"){
+        $.ajax({
+            url: "API/get_data.php?",
+            method: "POST",
+            data: {username:username.value},
+    
+            success:function(response) {
+        console.log(response);
+              if(response != ""){
+              
+               
+                localStorage.setItem("user",response);
+            
+             
+              }else{
+                alert("Incorrect email or password");
+              }
+            },
+                  
+          });
+        }else{
+            localStorage.setItem("user",userType.value);
+        }
+        $('#authentication-success').modal("show");
+       }
        
         if (username.value == "" || password.value == "") {
             alert("Enter all data");
         } else {
             message.innerText = userType.value +  ' - ' + username.value + ' ' + "Sign In Successfully";
-            localStorage.setItem("user",userType.value);
-            $('#authentication-success').modal("show");
+           $scope.call();
+           
             
         //     $timeout(function () {
         //         $('#authentication-success').modal("toggle");
@@ -24,10 +49,10 @@ app.controller('loginController', ['$scope', '$timeout', function ($scope, $time
         }  
     }
 
-    // var user = window.localStorage.getItem("user");
-    // if(user){
-    //     window.location.href = page;
-    // }
+    var user = window.localStorage.getItem("user");
+    if(user){
+        window.location.href = page;
+    }
 }])
 
 
