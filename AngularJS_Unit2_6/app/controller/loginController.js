@@ -13,7 +13,7 @@ app.controller('loginController', ['$scope', '$timeout', function ($scope, $time
         $.ajax({
             url: "API/get_data.php?",
             method: "POST",
-            data: {username:username.value},
+            data: {username:username.value, password: password.value, userType:userType.value},
     
             success:function(response) {
         console.log(response);
@@ -21,6 +21,9 @@ app.controller('loginController', ['$scope', '$timeout', function ($scope, $time
               
                
                 localStorage.setItem("user",response);
+                localStorage.setItem("userType",userType.value)
+                //  $('#authentication-success').modal("show");
+    
             
              
               }else{
@@ -30,9 +33,11 @@ app.controller('loginController', ['$scope', '$timeout', function ($scope, $time
                   
           });
         }else{
-            localStorage.setItem("user",userType.value);
+            localStorage.setItem("user",username.value);
+            localStorage.setItem("userType",userType.value);
+            $('#authentication-success').modal("show");
+    
         }
-        $('#authentication-success').modal("show");
        }
        
         if (username.value == "" || password.value == "") {

@@ -1,14 +1,15 @@
 <?php
 
 $file = '/opt/lampp/htdocs/Assessment_5/StayFlex-jul23/AngularJS_Unit2_6/app/controller/data.json';
-if(isset($_GET['email']) && $_SERVER['REQUEST_METHOD'] === 'GET'){
-  $email= $_GET['email'];
+if(isset($_GET['user']) && $_SERVER['REQUEST_METHOD'] === 'GET'){
+  $name= $_GET['user'];
+  $type = $_GET['usertype'];
 
   $currentData = file_get_contents($file);
     $existingData = json_decode($currentData, true);
     foreach($existingData as $key => $item){
-      if($item['email'] === $email){
-        foreach ($item['customer'] as $values) {
+      if($item['name'] === $name && $item['userType'] === $type){
+        foreach ($item['customers'] as $values) {
           $resultArray[] = [
               'index' => $values['index'],
               'fullname'=> $values['fullname'],
@@ -40,12 +41,15 @@ header('Content-Type=> application/json');
 echo json_encode($resultArray);
 }
 else if (file_exists($file)) {
-  $name= $_POST['username'];
+ 
+  
   $currentData = file_get_contents($file);
     $existingData = json_decode($currentData, true);
     foreach($existingData as $key => $item){
-      if($item['fullname'] === $_POST['username']){
-            echo $item['email'];
+      if($item['name'] === $_POST['username'] &&
+        $item['password'] === $POST['password'] &&
+        $item['userType'] === $_POST['userType']){
+            echo $item['name'];
       }
       
  }

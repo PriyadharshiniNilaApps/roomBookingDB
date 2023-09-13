@@ -118,45 +118,33 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$
           minDate.max = maxDateValue;
       }
 
-      $scope.setDataOwner = function(data,user){
+      // $scope.setDataOwner = function(data,user){
                
-        $.ajax({
-          url: 'API/save_data.php?',
-          method: 'POST',
-          data: {user:user, data: JSON.stringify(data)},
-          success: function(response) {
-            console.log(response);
-          }
-        });
-      }
+      //   $.ajax({
+      //     url: 'API/save_data.php?',
+      //     method: 'POST',
+      //     data: {user:user, data: JSON.stringify(data)},
+      //     success: function(response) {
+      //       console.log(response);
+      //     }
+      //   });
+      // }
 
-      $scope.setDataCusotmer = function(data){
+      $scope.addCustomer = function(data,user, usertype){
                
         $.ajax({
           url: 'API/save_data.php?',
         method: 'POST',
       
-        data: {  user_1:"Customer",data:JSON.stringify(data) },
+        data: {  user_1:user,usertype:usertype,data:JSON.stringify(data) },
         success: function(response) {
           console.log(response);
         }
       });
-      }
-
-      $scope.getData = function() {
-     
       
-        $.ajax({
-          url: 'API/get_data.php?', // Replace with the correct URL
-          method: 'GET',
-         
-        success:function(response) {
-          var retrieved= response;
-          console.log(retrieved);
-        }
-        });
     }
     var user = window.localStorage.getItem("user");
+    var usertype = window.localStorage.getItem("userType");
     var page="#/login";
    
   
@@ -167,11 +155,8 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$
     
     
     
-      if(user === "Customer"){
-        console.log(user);
-        $scope.setDataCusotmer($scope.form)
-      }else{
-        $scope.setDataOwner($scope.form,"Owner")
+      if(user !== "Customer"){
+        $scope.addCustomer($scope.form,usertype,user)
       }
       if(!user){
           window.location.href = page;
