@@ -2,16 +2,20 @@
 
  if($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_POST['user_1']) ){
     $jsonData = $_POST['data'];
-    echo $jsonData;
+   
     $filePath = '/opt/lampp/htdocs/Assessment_5/StayFlex-jul23/AngularJS_Unit2_6/app/controller/data.json';
     $currentData = file_get_contents($filePath);
     $existingData = json_decode($currentData, true);
     $decodedData = json_decode($jsonData, true);
-
+  
+   
     if ($decodedData !== null) {
        foreach($existingData as &$object){
-            if($object['name'] === $decodedData['user_1'] && $object['userType']  === $decodedData['usertype'] )
+            if($object['name'] === $_POST['user_1'] ){
             $object["customers"][] = $decodedData;
+             
+           
+            }
        }
 
        $updatedData = json_encode($existingData, JSON_PRETTY_PRINT);

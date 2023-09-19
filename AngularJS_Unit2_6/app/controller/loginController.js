@@ -8,21 +8,23 @@ app.controller('loginController', ['$scope', '$timeout', function ($scope, $time
         const password = document.getElementById('password');
         const userType = document.querySelector("input[name='options']:checked");
        
-       $scope.call = function(){
+   
         if(userType.value === "Owner"){
         $.ajax({
-            url: "API/get_data.php?",
+            url: "API/get_data.php",
             method: "POST",
             data: {username:username.value, password: password.value, userType:userType.value},
     
             success:function(response) {
-        console.log(response);
+            console.log(response);
+      
               if(response != ""){
               
-               
-                localStorage.setItem("user",response);
+                message.innerText = userType.value +  ' - ' + username.value + ' ' + "Sign In Successfully";
+       
+                localStorage.setItem("user",username.value);
                 localStorage.setItem("userType",userType.value)
-                //  $('#authentication-success').modal("show");
+               $('#authentication-success').modal("show");
     
             
              
@@ -40,19 +42,18 @@ app.controller('loginController', ['$scope', '$timeout', function ($scope, $time
         }
        }
        
-        if (username.value == "" || password.value == "") {
-            alert("Enter all data");
-        } else {
-            message.innerText = userType.value +  ' - ' + username.value + ' ' + "Sign In Successfully";
-           $scope.call();
+        // if (username.value == "" || password.value == "") {
+        //     alert("Enter all data");
+        // } else {
+        //  //  $scope.call();
            
             
-        //     $timeout(function () {
-        //         $('#authentication-success').modal("toggle");
-        //         // window.location.href = page;
-        //   }, 1000);  
-        }  
-    }
+        // //     $timeout(function () {
+        // //         $('#authentication-success').modal("toggle");
+        // //         // window.location.href = page;
+        // //   }, 1000);  
+        // }  
+    
 
     var user = window.localStorage.getItem("user");
     if(user){

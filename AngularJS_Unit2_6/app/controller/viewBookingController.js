@@ -3,14 +3,16 @@ app.controller('viewBookingController', ['$scope', function ($scope) {
     $(document).ready(function(){
         $scope.values = null;
         //Get Request function
-     var user = window.localStorage.getItem("user");
+     var user = window.localStorage.getItem("userType");
+     var usertype = window.localStorage.getItem("user");
         $scope.getData = function(){
         $.ajax({
             url: 'API/get_data.php?', 
             method: 'GET',
-            data:{customer:"Customer",email:user},
+            data:{user:usertype, usertype:user},
             success:function(response) {
-                console.log(response);
+                console.log(user,usertype);
+                 console.log(response);
                 $scope.values=JSON.parse(response);
                 var table = $('#myTable').DataTable({
                     data:$scope.values,

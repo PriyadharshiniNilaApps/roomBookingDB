@@ -130,15 +130,15 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$
       //   });
       // }
 
-      $scope.addCustomer = function(data,user, usertype){
-               
+      $scope.addCustomer = function(usertype, user,data){
+        console.log(user);
         $.ajax({
           url: 'API/save_data.php?',
         method: 'POST',
       
-        data: {  user_1:user,usertype:usertype,data:JSON.stringify(data) },
+        data: {  user_1:usertype,usertype:user,data:JSON.stringify(data) },
         success: function(response) {
-          console.log(response);
+         
         }
       });
       
@@ -156,7 +156,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$
     
     
       if(user !== "Customer"){
-        $scope.addCustomer($scope.form,usertype,user)
+        $scope.addCustomer(user,usertype, $scope.form);
       }
       if(!user){
           window.location.href = page;
