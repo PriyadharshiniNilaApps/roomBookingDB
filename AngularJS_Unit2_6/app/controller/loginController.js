@@ -9,7 +9,7 @@ app.controller('loginController', ['$scope', '$timeout', function ($scope, $time
         const userType = document.querySelector("input[name='options']:checked");
        
    
-        if(userType.value === "Owner"){
+    
         $.ajax({
             url: "API/get_data.php",
             method: "POST",
@@ -18,28 +18,28 @@ app.controller('loginController', ['$scope', '$timeout', function ($scope, $time
             success:function(response) {
             console.log(response);
       
-              if(response != ""){
+              if(response == ""){
               
-                message.innerText = userType.value +  ' - ' + username.value + ' ' + "Sign In Successfully";
-       
-                localStorage.setItem("user",username.value);
-                localStorage.setItem("userType",userType.value)
-               $('#authentication-success').modal("show");
+                alert("Incorrect email or password");
     
             
              
               }else{
-                alert("Incorrect email or password");
+               
+                message.innerText = userType.value +  ' - ' + username.value + ' ' + "Sign In Successfully";
+       
+           
+                localStorage.setItem("user",username.value);
+                localStorage.setItem("userType",userType.value);
+                $('#authentication-success').modal("show");
               }
             },
                   
           });
-        }else{
-            localStorage.setItem("user",username.value);
-            localStorage.setItem("userType",userType.value);
-            $('#authentication-success').modal("show");
+        
+        
     
-        }
+        
        }
        
         // if (username.value == "" || password.value == "") {

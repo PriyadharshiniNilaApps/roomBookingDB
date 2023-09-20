@@ -22,7 +22,7 @@ app.controller('registerController', ['$scope', function ($scope) {
                 const userType = document.querySelector("input[name='options']:checked");
              
             if(password.value != reenterpassword.value){
-                // alert("Password doesn't match!");
+                alert("Password doesn't match!");
                 $scope.checkPassword = true;
             }else{
             
@@ -30,9 +30,7 @@ app.controller('registerController', ['$scope', function ($scope) {
                
                
                 if(!$scope.checkPassword){
-                    // message.innerText = `${userType.value} - ${username.value} Sign Up Successfully`;
-                //  $('#authentication-success').modal("show");
-                //   console.log("Etnered");
+              
                      $scope.register.userType = userType.value;
                 
                         $.ajax({
@@ -40,9 +38,8 @@ app.controller('registerController', ['$scope', function ($scope) {
                           method: 'POST',
                           data: {data: JSON.stringify($scope.register)},
                           success: function(response) {
-                            console.log(response);
-                            alert("User is registered");
-                            location.reload();
+                            message.innerText = `${userType.value} - ${username.value} Sign Up Successfully`;
+                            $('#authentication-success').modal("show");           
                           }
                         });
                       }
@@ -53,18 +50,11 @@ app.controller('registerController', ['$scope', function ($scope) {
         $scope.navigate = function(){
             window.location.href=page;
         }
-       
-          
-        
     
-
-
     //Validating password
-    
-
-    // var user = window.localStorage.getItem("user");
-    // if(user){
-    //     window.location.href = page;
-    // }
+    var user = window.localStorage.getItem("user");
+    if(user){
+        window.location.href = page;
+    }
 }]);
 

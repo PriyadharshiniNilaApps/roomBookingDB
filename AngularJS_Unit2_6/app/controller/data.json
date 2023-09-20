@@ -385,5 +385,37 @@
                 "customer": []
             }
         ]
+    },
+    {
+        "userType": "Customer",
+        "name": "Pirya",
+        "email": "priya@gmail.com",
+        "phonenumber": "2323232343",
+        "password": "ererer",
+        "customers": []
+    },
+    {
+        "userType": "Owner",
+        "name": "Edward",
+        "email": "ed@gmail.com",
+        "phonenumber": "9494949494",
+        "password": "senthamil",
+        "customers": []
+    },
+    {
+        "userType": "Owner",
+        "name": "qdAFQFQC",
+        "email": "WDQ@GMAIL.COM",
+        "phonenumber": "3231212323",
+        "password": "senthamil",
+        "customers": []
+    },
+    {
+        "userType": "Owner",
+        "name": "Edwaerdsad",
+        "email": "wdqwdwde@gmail.com",
+        "phonenumber": "1232132132",
+        "password": "senthamil",
+        "customers": []
     }
 ]
