@@ -44,8 +44,7 @@ if (file_exists($file)) {
   $currentData = file_get_contents($file);
   $existingData = json_decode($currentData, true);
   foreach($existingData as $key => $item){
-    if($item["name"] === $_POST['username'] &&
-    $item["userType"] === $_POST['userType']){
+    if($item["name"] === $_POST['username'] &&  $item["userType"] === $_POST['userType']){
         echo $item["userType"];
   } 
       

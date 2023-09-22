@@ -7,7 +7,6 @@
         "password": "priya1",
         "customers": [
             {
-                "index": 1,
                 "fullname": "Priya",
                 "gender": "Female",
                 "email": "priya@gmail.com",
@@ -29,7 +28,6 @@
                 "customer": []
             },
             {
-                "index": 3,
                 "fullname": "Priya",
                 "gender": "Male",
                 "email": "ed@gmail.com",
@@ -51,7 +49,6 @@
                 "customer": []
             },
             {
-                "index": 1,
                 "fullname": "Priya",
                 "gender": "Female",
                 "email": "priya@gmail.com",
@@ -73,7 +70,6 @@
                 "customer": []
             },
             {
-                "index": 1,
                 "fullname": "Edward",
                 "gender": "Female",
                 "email": "ed@gmail.com",
@@ -95,7 +91,6 @@
                 "customer": []
             },
             {
-                "index": 1,
                 "fullname": "Priya",
                 "gender": "Female",
                 "email": "priya@gmail.com",
@@ -117,7 +112,6 @@
                 "customer": []
             },
             {
-                "index": 3,
                 "fullname": "Priya",
                 "gender": "Male",
                 "email": "ed@gmail.com",
@@ -139,7 +133,6 @@
                 "customer": []
             },
             {
-                "index": 1,
                 "fullname": "Priya",
                 "gender": "Female",
                 "email": "priya@gmail.com",
@@ -161,7 +154,6 @@
                 "customer": []
             },
             {
-                "index": 1,
                 "fullname": "Edward",
                 "gender": "Female",
                 "email": "ed@gmail.com",
@@ -183,7 +175,6 @@
                 "customer": []
             },
             {
-                "index": 1,
                 "fullname": "Priya",
                 "gender": "Female",
                 "email": "priya@gmail.com",
@@ -205,7 +196,6 @@
                 "customer": []
             },
             {
-                "index": 3,
                 "fullname": "Priya",
                 "gender": "Male",
                 "email": "ed@gmail.com",
@@ -227,7 +217,6 @@
                 "customer": []
             },
             {
-                "index": 1,
                 "fullname": "Priya",
                 "gender": "Female",
                 "email": "priya@gmail.com",
@@ -249,7 +238,6 @@
                 "customer": []
             },
             {
-                "index": 1,
                 "fullname": "Edward",
                 "gender": "Female",
                 "email": "ed@gmail.com",
@@ -269,6 +257,84 @@
                 "userType": "",
                 "view": "app\/style\/images\/view.svg",
                 "customer": []
+            },
+            {
+                "fullname": "Priya",
+                "gender": "Male",
+                "email": "ed@gmail.com",
+                "idtype": "Aadhar card",
+                "age": 34,
+                "purpose": "fadfadgq",
+                "phonenumber": "3242321424",
+                "idnumber": "DGWR2345",
+                "roomtype": "NON - AC",
+                "checkindate": "2023-09-28",
+                "expectedcheckoutdate": "",
+                "cateringType": null,
+                "laundryType": null,
+                "roomSize": "2",
+                "checkintime": "13:14",
+                "expectedcheckouttime": "",
+                "userType": "",
+                "view": "app\/style\/images\/view.svg",
+                "customer": []
+            },
+            {
+                "fullname": "Priya",
+                "gender": "Female",
+                "email": "priya@gmail.com",
+                "idtype": "Aadhar card",
+                "age": 23,
+                "purpose": "fkdwflnfj",
+                "phonenumber": "2341434314",
+                "idnumber": "efwfdafwf",
+                "roomtype": "NON - AC",
+                "checkindate": "2023-09-27",
+                "expectedcheckoutdate": "",
+                "cateringType": null,
+                "laundryType": null,
+                "roomSize": "1",
+                "checkintime": "13:33",
+                "expectedcheckouttime": "",
+                "view": "app\/style\/images\/view.svg"
+            },
+            {
+                "fullname": "Pita",
+                "gender": "Female",
+                "email": "ed@gmail.com",
+                "idtype": "Aadhar card",
+                "age": 23,
+                "purpose": "clksjdnwqnj",
+                "phonenumber": "1231312414",
+                "idnumber": "wdfwfdsefwf",
+                "roomtype": "NON - AC",
+                "checkindate": "2023-09-22",
+                "expectedcheckoutdate": "",
+                "cateringType": null,
+                "laundryType": null,
+                "roomSize": "4",
+                "checkintime": "14:41",
+                "expectedcheckouttime": "",
+                "view": "app\/style\/images\/view.svg"
+            },
+            {
+                "fullname": "Edward",
+                "gender": "Male",
+                "email": "ed@gmail.com",
+                "idtype": "Aadhar card",
+                "age": 23,
+                "purpose": "Priyafnsfsjlnfl",
+                "phonenumber": "3113213122",
+                "idnumber": "weffeqrd",
+                "roomtype": "AC",
+                "checkindate": "2023-09-23",
+                "expectedcheckoutdate": "",
+                "cateringType": null,
+                "laundryType": null,
+                "roomSize": "4",
+                "checkintime": "16:54",
+                "expectedcheckouttime": "",
+                "view": "app\/style\/images\/view.svg"
             }
         ]
     },
@@ -288,7 +354,6 @@
         "password": "ererer",
         "customers": [
             {
-                "index": 2,
                 "fullname": "Priya",
                 "gender": "Female",
                 "email": "ed@gmail.cmo",
@@ -310,7 +375,6 @@
                 "customer": []
             },
             {
-                "index": 3,
                 "fullname": "PRIYA",
                 "gender": "Male",
                 "email": "PRIYA@GMAIL.COM",
@@ -332,7 +396,6 @@
                 "customer": []
             },
             {
-                "index": 3,
                 "fullname": "Ed",
                 "gender": "Male",
                 "email": "ed@gmail.com",
@@ -363,7 +426,6 @@
         "password": "ererer",
         "customers": [
             {
-                "index": 2,
                 "fullname": "Priyqq",
                 "gender": "Female",
                 "email": "er@gmail.com",
@@ -400,7 +462,29 @@
         "email": "ed@gmail.com",
         "phonenumber": "9494949494",
         "password": "senthamil",
-        "customers": []
+        "customers": [
+            {
+                "fullname": "Priya",
+                "gender": "Male",
+                "email": "ed@gmail.com",
+                "idtype": "Aadhar card",
+                "age": 34,
+                "purpose": "aklnadlm",
+                "phonenumber": "1231232131",
+                "idnumber": "dafweqfasd",
+                "roomtype": "NON - AC",
+                "checkindate": "2023-09-22",
+                "expectedcheckoutdate": "",
+                "cateringType": null,
+                "laundryType": null,
+                "roomSize": "4",
+                "checkintime": "11:18",
+                "expectedcheckouttime": "",
+                "userType": "",
+                "view": "app\/style\/images\/view.svg",
+                "customer": []
+            }
+        ]
     },
     {
         "userType": "Owner",
@@ -415,6 +499,83 @@
         "name": "Edwaerdsad",
         "email": "wdqwdwde@gmail.com",
         "phonenumber": "1232132132",
+        "password": "senthamil",
+        "customers": []
+    },
+    {
+        "userType": "Owner",
+        "name": "Edward",
+        "email": "ed@gmail.com",
+        "phonenumber": "2341143141",
+        "password": "ererer",
+        "customers": [
+            {
+                "index": 2,
+                "fullname": "Priya",
+                "gender": "Male",
+                "email": "ed@gmail.com",
+                "idtype": "Aadhar card",
+                "age": 34,
+                "purpose": "aklnadlm",
+                "phonenumber": "1231232131",
+                "idnumber": "dafweqfasd",
+                "roomtype": "NON - AC",
+                "checkindate": "2023-09-22",
+                "expectedcheckoutdate": "",
+                "cateringType": null,
+                "laundryType": null,
+                "roomSize": "4",
+                "checkintime": "11:18",
+                "expectedcheckouttime": "",
+                "userType": "",
+                "view": "app\/style\/images\/view.svg",
+                "customer": []
+            }
+        ]
+    },
+    {
+        "userType": "Owner",
+        "name": "Edward",
+        "email": "ed@gmail.com",
+        "phonenumber": "8883336601",
+        "password": "senthamil",
+        "customers": [
+            {
+                "fullname": "Priya",
+                "gender": "Male",
+                "email": "ed@gmail.com",
+                "idtype": "Aadhar card",
+                "age": 34,
+                "purpose": "aklnadlm",
+                "phonenumber": "1231232131",
+                "idnumber": "dafweqfasd",
+                "roomtype": "NON - AC",
+                "checkindate": "2023-09-22",
+                "expectedcheckoutdate": "",
+                "cateringType": null,
+                "laundryType": null,
+                "roomSize": "4",
+                "checkintime": "11:18",
+                "expectedcheckouttime": "",
+                "userType": "",
+                "view": "app\/style\/images\/view.svg",
+                "customer": []
+            }
+        ]
+    },
+    {
+        "userType": "Owner",
+        "name": "Edward Paul",
+        "email": "ed@gmail.com",
+        "phonenumber": "8883336601",
+        "password": "senthamil",
+        "customers": []
+    },
+    {
+        "userType": "Customer",
+        "name": "Dharshini",
+        "email": "dharshini@gmail.co",
+        "phonenumber": "8883336601",
         "password": "senthamil",
         "customers": []
     }

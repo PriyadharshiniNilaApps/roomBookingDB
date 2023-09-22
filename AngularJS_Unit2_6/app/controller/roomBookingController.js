@@ -15,7 +15,6 @@ app.service('EmailService', function(){
 //injected filters and services
 app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$rootScope' , function ($scope, EmailService,$timeout, $rootScope) {
     $scope.form = {
-       index:++$rootScope.i,
        fullname:"",
        gender:"",
        email:"",
@@ -32,18 +31,23 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$
        roomSize:"",
        checkintime:"",
        expectedcheckouttime:"",
-       userType:"",
        view:  "app/style/images/view.svg",
-       customer: [],
-
     };
+    var user = window.localStorage.getItem("user");
+    var usertype = window.localStorage.getItem("userType");
+
+    if(usertype === 'Customer'){
+      $scope.userType = true;
+    }
 
    var inputModels = [ "fullname", "gender", "email", "idtype", "age", "purpose", "phonenumber", "idnumber", "roomtype", "checkindate", "expectedcheckoutdate", "cateringType", "laundryType", "roomSize", "checkintime", "expectedcheckouttime","view","customer"];
-   
+
+   var page = "#/login";
+ 
     $scope.regex = '/^[a-zA-Z ]+$/'
     $scope.alphabetsOnly = 'Name must be alphabets';
-    $scope.genders = ['Male','Female','Transgender'];
-    $scope.idType = [ 'Aadhar card', 'Voter ID', 'PAN CARD', 'Driving Licence']
+    // $scope.genders = ['Male','Female','Transgender'];
+    // $scope.idType = [ 'Aadhar card', 'Voter ID', 'PAN CARD', 'Driving Licence']
     $scope.email = '';
     $scope.emailError = false;
    
@@ -69,7 +73,10 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$
           $scope.purposeText = false;
       }
   
+      $scope.genders = ['Male','Female','Transgender'];
+    $scope.idType = [ 'Aadhar card', 'Voter ID', 'PAN CARD', 'Driving Licence'];
     $scope.roomSizes = [ '1', '2', '3', '4' ];
+   
     $scope.cateringTypes = ['Up to 5 persons VEG','Up to 10 persons VEG','Up to 5 persons NON-VEG','Up to 10 persons NON-VEG'];
     $scope.laundryTypes = ['Up to 10 clothes - Normal wash','Up to 20 clothes - Normal wash','Up to 10 clothes - Dry wash','Up to 20 clothes - Dry wash'];  
     $scope.formSubmitted = false;
@@ -118,54 +125,47 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$
           minDate.max = maxDateValue;
       }
 
-      // $scope.setDataOwner = function(data,user){
+      // $scope.addCustomerData = function(user, usertype, data){
                
       //   $.ajax({
       //     url: 'API/save_data.php?',
       //     method: 'POST',
-      //     data: {user:user, data: JSON.stringify(data)},
+      //     data: {user_C:user, usertype:usertype, data: JSON.stringify(data)},
       //     success: function(response) {
       //       console.log(response);
       //     }
       //   });
       // }
 
-      $scope.addCustomer = function(usertype, user,data){
-        console.log(user);
+      $scope.addOwnerData = function(user, usertype ,data){
+      
+
         $.ajax({
           url: 'API/save_data.php?',
         method: 'POST',
       
-        data: {  user_1:usertype,usertype:user,data:JSON.stringify(data) },
+        data: {  user_O:user,usertype:usertype,data:JSON.stringify(data) },
         success: function(response) {
          
         }
       });
       
     }
-    var user = window.localStorage.getItem("user");
-    var usertype = window.localStorage.getItem("userType");
-    var page="#/login";
+  
    
   
       //Showing the charges form after validating the additional requirements form 
       $scope.submitAllData = function(){
       
       $scope.view =  "app/style/images/view.svg";
-    
-    
-    
-      if(user !== "Customer"){
-        $scope.addCustomer(user,usertype, $scope.form);
-      }
-      if(!user){
-          window.location.href = page;
-      }
-          
+        if(usertype === "Owner"){
+        $scope.addOwnerData (user,usertype, $scope.form);
+        $('#charges').modal("show");
+        }else{
+          alert("Customer cannot Add Booking");
+        }
           $scope.roomBookingDetailsForm = true;
-            
             $scope.form = {
-              index:"",
               fullname:"",
               gender:"",
               email:"",
@@ -188,22 +188,14 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$
        
            };
 
-        
-
           $scope.subForm1.$setUntouched();
              $scope.subForm2.$setUntouched();
-            $('#charges').modal("show");
+          }
           
-          }
-
-         
-                
-                  
-          }
-      
- 
-
-    
+          if(!user){
+              window.location.href = page;
+          }          
+        }
 ])
 
 //Filter for field with only alphabets

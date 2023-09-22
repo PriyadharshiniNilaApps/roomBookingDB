@@ -10,7 +10,36 @@
         <button class="btn btn-format ml-auto" onclick=" window.location.href ='#/roomBooking'"><img src="app/style/images/add.svg">Create Booking</button>
         </form>
     <table  class="display" cellspacing="0" width="100%" id="myTable">
-        <hello-world></hello-world>
-    </table>
-   
+       
+        <div class="modal" id="view-data" tabindex="-1" role="dialog" aria-labelledby="#view-data" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content justify-content-center">
+                    <button class="btn btn-format ml-auto" class="close" data-dismiss="modal" aria-label="Close">Cancel</button>
+                      
+                    <div class="modal-body">
+                       <div class="col-12 d-flex flex-column justify-content-center" id="modal-gap">
+                            <view-data values="userComponent" ></view-data>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="edit-data" tabindex="-1" role="dialog" aria-labelledby="#edit-data" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content justify-content-center">
+                    <button class="btn btn-format ml-auto" class="close" data-dismiss="modal" aria-label="Close">Cancel</button>
+                      
+                    <div class="modal-body">
+                       <div class="col-12 d-flex flex-column justify-content-center" >
+                        <edit-data values="userComponent" options1="gender" options2="idtype" options3="roomsizes" options4="roomtypes" ></edit-data>
+                    
+                        </div>
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+         
+
+     </table>
 </div>
