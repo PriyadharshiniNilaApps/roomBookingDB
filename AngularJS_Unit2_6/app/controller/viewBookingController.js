@@ -1,7 +1,7 @@
 app.controller('viewBookingController', ['$scope', '$timeout', function ($scope, $timeout) {
-   
-   
+ 
     $(document).ready(function(){
+
         $scope.values = null;
         //Get Request function
      var user = window.localStorage.getItem("user");
@@ -152,9 +152,15 @@ app.controller('viewBookingController', ['$scope', '$timeout', function ($scope,
             }   
         });
    }
+
     $scope.getData();
     console.log($scope.values);
 })
+
+
+   $scope.submit = function(){
+
+   }
 var user = window.localStorage.getItem("user");
 var usertype = window.localStorage.getItem("userType");
 // $scope.back = false;
@@ -173,6 +179,11 @@ if(!user){
    if(usertype !== "Owner"){
        window.location.href = '#/roomBooking';
     }
+
+    // $('#datepicker-input').datepicker({
+    //     format: 'mm/dd/yyyy', // Date format
+    //     autoclose: true, // Close the datepicker when a date is selected
+    // });
     window.history.pushState(null, null, window.location.href);
 window.addEventListener('popstate', function (event) {
   window.history.pushState(null, null, window.location.href);
@@ -190,15 +201,73 @@ bindings:{
 })
 
 .component('editData', { 
-    templateUrl:'app/view/edit-component.html'
-    ,
+    templateUrl:'app/view/edit-component.html',
+    // controllerAs:'$ctrl',
+
+    
 bindings:{
-    values:'<',
-    options1:'<',
-    options2:'<',
-    options3:'<',
+    values:'=',
+    options1:'=',
+    options2:'=',
+    options3:'=',
     options4:'=',
+    // submitData:'&',
 },
+controller: ['$http', function ($http) {
+    var ctrl = this;
+
+    ctrl.submitData = function () {
+        console.log(ctrl.values);
+        // Create a data object with the specific properties you want to send
+        var value = {
+            value:JSON.stringify(ctrl.values) 
+            // Add other properties as needed
+        };
+
+        $http.post('API/save_data.php', value)
+            .then(function (response) {
+                console.log('Response:', response.data);
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+            });
+    };
+}]
+// },controller:function(){
+//     var ctrl = this;
+   
+    
+//     // ctrl.setCheckOutDate = function () {
+//     //     console.log("entered");
+//     //     $('#checkindate').datepicker({
+//     //         format: 'yyyy-mm-dd',
+//     //         autoclose: true,
+//     //         todayHighlight: true,
+    
+//     //       });
+
+//     //     $('#checkindate').datepicker('show'); // Show the modal
+//     // };
+
+//     ctrl.submitData = function(){
+//         console.log(ctrl.values.fullname)
+//         $.ajax({
+//             url: 'API/save_data.php?', 
+//             method: 'POST',
+//             data:{values:ctrl},
+//             success:function(response) {
+//                 console.log(response);
+//             }
+//         });
+
+       
+//     }
+  
+// }
 
 })
+
+
+
+
 

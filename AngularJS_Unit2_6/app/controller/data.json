@@ -578,5 +578,13 @@
         "phonenumber": "8883336601",
         "password": "senthamil",
         "customers": []
+    },
+    {
+        "userType": "Owner",
+        "name": "Priya",
+        "email": "priya@gmail.com",
+        "phonenumber": "7339167941",
+        "password": "senthamil",
+        "customers": []
     }
 ]
