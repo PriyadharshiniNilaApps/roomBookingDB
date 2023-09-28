@@ -1,7 +1,7 @@
 <?php
-if($_SERVER['REQUEST_METHOD'] === 'POST' ){
-    $jsonData = $_POST['value'];
-     echo $jsonData;
+if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['jsonData'])  ){
+    $jsonData = $_POST['jsonData'];
+     
     $filePath = '/opt/lampp/htdocs/Assessment_5/StayFlex-jul23/AngularJS_Unit2_6/app/controller/data.json';
     $currentData = file_get_contents($filePath);
     $existingData = json_decode($currentData, true);
@@ -10,12 +10,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' ){
    
     if ($decodedData !== null) {
        foreach($existingData as &$object){
-           if($object["customers"]["fullname"]=== $decodedData["fullname"] && $object["customers"]["phonenumber"] === $decodedData["phonenumber"]){
-            $object["customers"]["email"]=== $decodedData["email"];
-           }
+        if($object['name'] === $_POST['user'] && $object['userType'] === $_POST['usertype']){
+            $object["customers"][] = $decodedData;
          }
+     }
        
-
+        
        $updatedData = json_encode($existingData, JSON_PRETTY_PRINT);
 
         if (file_put_contents($filePath, $updatedData) !== false) {
@@ -24,15 +24,17 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' ){
                 echo 'Error saving data to data.json: ' . error_get_last()['message'];
         }
     
-    } else{
+    
+    }else{
         echo 'Invalid JSON data';
     }
 
 
 
 
-}else 
- if($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_POST['user_O']) ){
+ }
+
+else if($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_POST['user_O']) ){
     $jsonData = $_POST['data'];
    
     $filePath = '/opt/lampp/htdocs/Assessment_5/StayFlex-jul23/AngularJS_Unit2_6/app/controller/data.json';

@@ -335,6 +335,28 @@
                 "checkintime": "16:54",
                 "expectedcheckouttime": "",
                 "view": "app\/style\/images\/view.svg"
+            },
+            {
+                "index": null,
+                "fullname": "Priya",
+                "gender": "Female",
+                "email": "priya@gmail.com",
+                "idtype": "Aadhar card",
+                "age": 23,
+                "purpose": "dfqwafwfwwtfwefqe",
+                "phonenumber": "1312431231",
+                "idnumber": "fwefdfwtrwtf",
+                "roomtype": "NON - AC",
+                "checkindate": "2023-09-23",
+                "expectedcheckoutdate": "",
+                "cateringType": null,
+                "laundryType": null,
+                "roomSize": "2",
+                "checkintime": "17:20",
+                "expectedcheckouttime": "",
+                "userType": "",
+                "view": "app\/style\/images\/view.svg",
+                "customer": []
             }
         ]
     },
@@ -585,6 +607,29 @@
         "email": "priya@gmail.com",
         "phonenumber": "7339167941",
         "password": "senthamil",
-        "customers": []
+        "customers": [
+            {
+                "index": null,
+                "fullname": "Priya",
+                "gender": "Female",
+                "email": "priya@gmail.com",
+                "idtype": "Aadhar card",
+                "age": 23,
+                "purpose": "dfqwafwfwwtfwefqe",
+                "phonenumber": "1312431231",
+                "idnumber": "fwefdfwtrwtf",
+                "roomtype": "NON - AC",
+                "checkindate": "2023-09-23",
+                "expectedcheckoutdate": "",
+                "cateringType": null,
+                "laundryType": null,
+                "roomSize": "2",
+                "checkintime": "17:20",
+                "expectedcheckouttime": "",
+                "userType": "",
+                "view": "app\/style\/images\/view.svg",
+                "customer": []
+            }
+        ]
     }
 ]

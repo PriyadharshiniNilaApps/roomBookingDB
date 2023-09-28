@@ -217,53 +217,23 @@ controller: ['$http', function ($http) {
     var ctrl = this;
 
     ctrl.submitData = function () {
-        console.log(ctrl.values);
-        // Create a data object with the specific properties you want to send
-        var value = {
-            value:JSON.stringify(ctrl.values) 
-            // Add other properties as needed
-        };
-
-        $http.post('API/save_data.php', value)
-            .then(function (response) {
-                console.log('Response:', response.data);
-            })
-            .catch(function (error) {
-                console.error('Error:', error);
-            });
+        var user = window.localStorage.getItem("user");
+        var usertype = window.localStorage.getItem("userType");
+        $.ajax({
+            url: 'API/save_data.php',
+          method: 'POST',
+          data: {  jsonData:JSON.stringify(ctrl.values), user:user, usertype:usertype },
+          success: function(response) {
+            console.log('Response:', response);
+          },
+          error:function(error){
+                console.log(error);
+          }
+        });
+      
     };
 }]
-// },controller:function(){
-//     var ctrl = this;
-   
-    
-//     // ctrl.setCheckOutDate = function () {
-//     //     console.log("entered");
-//     //     $('#checkindate').datepicker({
-//     //         format: 'yyyy-mm-dd',
-//     //         autoclose: true,
-//     //         todayHighlight: true,
-    
-//     //       });
 
-//     //     $('#checkindate').datepicker('show'); // Show the modal
-//     // };
-
-//     ctrl.submitData = function(){
-//         console.log(ctrl.values.fullname)
-//         $.ajax({
-//             url: 'API/save_data.php?', 
-//             method: 'POST',
-//             data:{values:ctrl},
-//             success:function(response) {
-//                 console.log(response);
-//             }
-//         });
-
-       
-//     }
-  
-// }
 
 })
 
