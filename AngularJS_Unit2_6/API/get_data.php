@@ -1,14 +1,13 @@
 <?php
 
 $file = '/opt/lampp/htdocs/Assessment_5/StayFlex-jul23/AngularJS_Unit2_6/app/controller/data.json';
-if(isset($_GET['user']) && $_SERVER['REQUEST_METHOD'] === 'GET'){
+if(isset($_GET['user_id']) && $_SERVER['REQUEST_METHOD'] === 'GET'){
    $currentData = file_get_contents($file);
     $existingData = json_decode($currentData, true);
     foreach($existingData as $key => $item){
-      if($item["name"] === $_GET['user'] &&   $item["userType"] === $_GET['usertype']){
+      if($item['id'] === $_GET['user_id']){
         foreach ($item['customers'] as $values) {
           $resultArray[] = [
-              'index' => $values['index'],
               'fullname'=> $values['fullname'],
               'gender'=> $values['gender'],
               'email'=> $values['email'],
@@ -25,9 +24,7 @@ if(isset($_GET['user']) && $_SERVER['REQUEST_METHOD'] === 'GET'){
               'roomSize'=> $values['roomSize'],
               'checkintime'=> $values['checkintime'],
               'expectedcheckouttime'=> $values['expectedcheckouttime'],
-              'userType'=> $values['userType'],
               'view'=> $values['view'],
-              'customer'=>$values['customer']
           ];
       }
     }
@@ -44,8 +41,8 @@ if (file_exists($file)) {
   $currentData = file_get_contents($file);
   $existingData = json_decode($currentData, true);
   foreach($existingData as $key => $item){
-    if($item["name"] === $_POST['username'] &&  $item["userType"] === $_POST['userType']){
-        echo $item["userType"];
+    if($item["name"] === $_POST['username'] && $item["password"] === $_POST['password'] &&  $item["userType"] === $_POST['userType']){
+        echo $item["id"];
   } 
       
     }

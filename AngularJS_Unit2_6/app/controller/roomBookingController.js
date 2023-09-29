@@ -33,21 +33,18 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$
        expectedcheckouttime:"",
        view:  "app/style/images/view.svg",
     };
-    var user = window.localStorage.getItem("user");
+
+    var userId = window.localStorage.getItem("userId");
     var usertype = window.localStorage.getItem("userType");
+    $scope.userType = false;
 
-    if(usertype === 'Customer'){
-      $scope.userType = true;
-    }
+      if(usertype === 'Customer'){
+        $scope.userType = true;
+      }
 
-   var inputModels = [ "fullname", "gender", "email", "idtype", "age", "purpose", "phonenumber", "idnumber", "roomtype", "checkindate", "expectedcheckoutdate", "cateringType", "laundryType", "roomSize", "checkintime", "expectedcheckouttime","view","customer"];
-
-   var page = "#/login";
- 
+    var page = "#/login";
     $scope.regex = '/^[a-zA-Z ]+$/'
     $scope.alphabetsOnly = 'Name must be alphabets';
-    // $scope.genders = ['Male','Female','Transgender'];
-    // $scope.idType = [ 'Aadhar card', 'Voter ID', 'PAN CARD', 'Driving Licence']
     $scope.email = '';
     $scope.emailError = false;
    
@@ -73,10 +70,9 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$
           $scope.purposeText = false;
       }
   
-      $scope.genders = ['Male','Female','Transgender'];
+    $scope.genders = ['Male','Female','Transgender'];
     $scope.idType = [ 'Aadhar card', 'Voter ID', 'PAN CARD', 'Driving Licence'];
     $scope.roomSizes = [ '1', '2', '3', '4' ];
-   
     $scope.cateringTypes = ['Up to 5 persons VEG','Up to 10 persons VEG','Up to 5 persons NON-VEG','Up to 10 persons NON-VEG'];
     $scope.laundryTypes = ['Up to 10 clothes - Normal wash','Up to 20 clothes - Normal wash','Up to 10 clothes - Dry wash','Up to 20 clothes - Dry wash'];  
     $scope.formSubmitted = false;
@@ -110,9 +106,6 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$
       }
     }
 
-  
-
-
       //Setting the check in and check out so that check in date is less than check out date    
       $scope.setCheckOutDate = function(){
           const minDateValue = minDate.value;
@@ -125,44 +118,26 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$
           minDate.max = maxDateValue;
       }
 
-      // $scope.addCustomerData = function(user, usertype, data){
-               
-      //   $.ajax({
-      //     url: 'API/save_data.php?',
-      //     method: 'POST',
-      //     data: {user_C:user, usertype:usertype, data: JSON.stringify(data)},
-      //     success: function(response) {
-      //       console.log(response);
-      //     }
-      //   });
-      // }
-
-      $scope.addOwnerData = function(user, usertype ,data){
-      
-
+      $scope.addOwnerData = function(data){
+        console.log(data, userId,usertype);
         $.ajax({
           url: 'API/save_data.php?',
         method: 'POST',
       
-        data: {  user_O:user,usertype:usertype,data:JSON.stringify(data) },
+        data: {  user_id:userId,data:JSON.stringify(data) },
         success: function(response) {
-         
-        }
+          console.log(response);
+        },
       });
-      
     }
-  
-   
   
       //Showing the charges form after validating the additional requirements form 
       $scope.submitAllData = function(){
       
       $scope.view =  "app/style/images/view.svg";
         if(usertype === "Owner"){
-        $scope.addOwnerData (user,usertype, $scope.form);
-        $('#charges').modal("show");
-        }else{
-          alert("Customer cannot Add Booking");
+          $scope.addOwnerData ($scope.form);
+          $('#charges').modal("show");
         }
           $scope.roomBookingDetailsForm = true;
             $scope.form = {
@@ -182,9 +157,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$
               roomSize:"",
               checkintime:"",
               expectedcheckouttime:"",
-              userType:"",
               view:"",
-              customer:[],
        
            };
 
@@ -192,7 +165,7 @@ app.controller('roomBookingController',['$scope', 'EmailService', '$timeout', '$
              $scope.subForm2.$setUntouched();
           }
           
-          if(!user){
+          if(!userId){
               window.location.href = page;
           }          
         }

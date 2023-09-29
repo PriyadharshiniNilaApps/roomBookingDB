@@ -1,19 +1,15 @@
 app.controller('viewBookingController', ['$scope', '$timeout', function ($scope, $timeout) {
- 
+   
     $(document).ready(function(){
-
-        $scope.values = null;
-        //Get Request function
-     var user = window.localStorage.getItem("user");
-     var usertype = window.localStorage.getItem("userType");
+    $scope.values = null;
+    var userId = window.localStorage.getItem("userId");
+    console.log(userId);
         $scope.getData = function(){
         $.ajax({
             url: 'API/get_data.php?', 
             method: 'GET',
-            data:{user:user, usertype:usertype},
+            data:{user_id:userId},
             success:function(response) {
-                console.log(user,usertype);
-                 console.log(response);
                 $scope.values=JSON.parse(response);
                 var table = $('#myTable').DataTable({
                     data:$scope.values,
@@ -93,24 +89,17 @@ app.controller('viewBookingController', ['$scope', '$timeout', function ($scope,
                     lengthChange: true,
                     
                 })
-                $('#search').on('keyup', function () {  
-                      var customSearchValue = $(this).val();   
-                       table.search(customSearchValue).draw();  
+                    $('#search').on('keyup', function () {  
+                        var customSearchValue = $(this).val();   
+                        table.search(customSearchValue).draw();  
                     });
 
                     $('#myTable').on('click','.view',function(){
                         $scope.rowData = JSON.parse($(this).attr('data-row'));
-                      
                         $scope.userComponent = $scope.rowData;
-                       
-                        console.log($scope.userComponent);
-                    
                         $timeout(function () {
                             $('#view-data').modal("show"); 
-                            }, 1000);  
-                          
-                          
-                       
+                        }, 1000);  
                     });
 
                     $('#myTable').on('click','div.menu',function(){
@@ -120,122 +109,119 @@ app.controller('viewBookingController', ['$scope', '$timeout', function ($scope,
                         $scope.idtype = [ 'Aadhar card', 'Voter ID', 'PAN CARD', 'Driving Licence'];
                         $scope.roomsizes = [ '1', '2', '3', '4' ];
                         $scope.roomtypes = ['Open','AC', 'NON - AC'];
-
                         $scope.userComponent = $scope.rowData;
-                       
-                        console.log($scope.userComponent);
                         $timeout(function () {
                             $('#edit-data').modal("show"); 
                             }, 1000);  
                           
-                });
+                    });
 
-                $('#myTable').on('click','.checkAll',function(){
-                    var isChecked = $(this).prop('checked');
+                    $('#myTable').on('click','.checkAll',function(){
+                        var isChecked = $(this).prop('checked');
+                        $('.checkbox').prop('checked', isChecked);    
+                    });
 
-                    // Check or uncheck all item checkboxes in the DataTable
-                    $('.checkbox').prop('checked', isChecked);
-                
-                      
+                    $('#myTable').on('click','.checkbox',function(){
+                        var allCheckboxes = $('.checkbox');
+                        var selectedCheckboxes = $('.checkbox:checked');
+                        $('.checkAll').prop('checked', allCheckboxes.length === selectedCheckboxes.length);
+                    }); 
+                 }   
             });
+         }
 
-            $('#myTable').on('click','.checkbox',function(){
+        $scope.getData();
+        console.log($scope.values);
+    })
 
-           
-                var allCheckboxes = $('.checkbox');
-                var selectedCheckboxes = $('.checkbox:checked');
-            
-                // Check the "Select All" checkbox if all item checkboxes are selected, otherwise uncheck it
-                $('.checkAll').prop('checked', allCheckboxes.length === selectedCheckboxes.length);
-              });
+    var userId = window.localStorage.getItem("userId");
 
-            }   
-        });
-   }
+    if(!userId){
+        window.location.href = '#/login';
+    }   
 
-    $scope.getData();
-    console.log($scope.values);
-})
-
-
-   $scope.submit = function(){
-
-   }
-var user = window.localStorage.getItem("user");
-var usertype = window.localStorage.getItem("userType");
-// $scope.back = false;
-//    $scope.backButton = function(){
-//     $scope.back = true;
-//    }
-if(!user){
-    window.location.href = '#/login';
-}   
-    
-// if($scope.back){
-//     window.location.href = '#/roomBooking';
-// }   
-     
-
-   if(usertype !== "Owner"){
-       window.location.href = '#/roomBooking';
-    }
-
-    // $('#datepicker-input').datepicker({
-    //     format: 'mm/dd/yyyy', // Date format
-    //     autoclose: true, // Close the datepicker when a date is selected
-    // });
     window.history.pushState(null, null, window.location.href);
-window.addEventListener('popstate', function (event) {
-  window.history.pushState(null, null, window.location.href);
-});
+    window.addEventListener('popstate', function (event) {
+    window.history.pushState(null, null, window.location.href);
+    });
 }])
 
 .component('viewData', { 
     templateUrl:'app/view/view-component.html',
-bindings:{
-    values:'<',
-   
-   },
- 
-   
+    bindings:{
+        values:'<',
+    },
 })
 
 .component('editData', { 
     templateUrl:'app/view/edit-component.html',
-    // controllerAs:'$ctrl',
+    bindings:{
+        values:'=',
+        options1:'=',
+        options2:'=',
+        options3:'=',
+        options4:'=',
+    },
+    controllerAs:'$ctrl',
+    controller:  function ($scope) {
+        var ctrl = this;
+        ctrl.dateFormat = function(data){
+            var dateString = data;
+            var date = new Date(dateString);
+            date.setMinutes(date.getMinutes() + 330);
+            var year = date.getUTCFullYear();
+            var month = (date.getUTCMonth() + 1).toString().padStart(2, '0'); // Add 1 to month since it's zero-based
+            var day = date.getUTCDate().toString().padStart(2, '0');
+            return year + '-' + month + '-' + day;
+        };
 
-    
-bindings:{
-    values:'=',
-    options1:'=',
-    options2:'=',
-    options3:'=',
-    options4:'=',
-    // submitData:'&',
-},
-controller: ['$http', function ($http) {
-    var ctrl = this;
+        ctrl.checkindate="";
+        ctrl.expectedcheckoutdate = "";
+       
+        $jq(document).ready(function(){
+            $jq('#checkindate').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true,
+              });
 
-    ctrl.submitData = function () {
-        var user = window.localStorage.getItem("user");
-        var usertype = window.localStorage.getItem("userType");
-        $.ajax({
-            url: 'API/save_data.php',
-          method: 'POST',
-          data: {  jsonData:JSON.stringify(ctrl.values), user:user, usertype:usertype },
-          success: function(response) {
-            console.log('Response:', response);
-          },
-          error:function(error){
-                console.log(error);
-          }
+              $jq('#expectedcheckoutdate').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true,
+              });
         });
+
+        $jq('#checkindate').on('changeDate', function (e) {
+            ctrl.values.checkindate =  ctrl.dateFormat(e.date);
+        });
+        
       
-    };
-}]
-
-
+        $jq('#expectedcheckoutdate').on('changeDate', function (e) {
+            ctrl.values.expectedcheckoutdate =  ctrl.dateFormat(e.date);
+        });
+    
+        ctrl.submitData = function () {
+            var userId = window.localStorage.getItem("userId");
+            $.ajax({
+                url: 'API/save_data.php',
+            method: 'POST',
+            data: {  jsonData:JSON.stringify(ctrl.values), user_id:userId},
+            success: function(response) {
+                console.log('Response:', response);
+                alert("Your data has been updated");
+            },
+            error:function(error){
+                    console.log(error);
+            }
+            });
+        
+        };
+    },
+    
 })
+
+
 
 
 
