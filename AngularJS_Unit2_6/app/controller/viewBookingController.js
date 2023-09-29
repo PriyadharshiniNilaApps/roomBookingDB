@@ -37,13 +37,13 @@ app.controller('viewBookingController', ['$scope', '$timeout', function ($scope,
                             title: 'VIEW', data: 'view',
                             render:function(data, type, full, meta){
                         
-                                return '<img src="' + data + '"  class="view" alt="View Image" data-row = \''+ JSON.stringify(full) +'\' >'
+                                return '<img src="' + data + '"  class="view" alt="View Image" data-row = \''+ JSON.stringify(full) +'\'  >'
                             }
                         },
                         {
                             title:'',
                             render:function(data,type, full, meta){
-                                return '<div class="menu" data-row = \''+ JSON.stringify(full) +'\'> <div class="dot"></div> <div class="dot"></div> <div class="dot"></div>  </div>';
+                                return '<div class="menu" data-row = \''+ JSON.stringify(full) +'\' row-index= \''+ meta.row +'\'> <div class="dot"></div> <div class="dot"></div> <div class="dot"></div>  </div>';
                             }
                         }
                     ],
@@ -97,6 +97,7 @@ app.controller('viewBookingController', ['$scope', '$timeout', function ($scope,
                     $('#myTable').on('click','.view',function(){
                         $scope.rowData = JSON.parse($(this).attr('data-row'));
                         $scope.userComponent = $scope.rowData;
+                       
                         $timeout(function () {
                             $('#view-data').modal("show"); 
                         }, 1000);  
@@ -105,6 +106,8 @@ app.controller('viewBookingController', ['$scope', '$timeout', function ($scope,
                     $('#myTable').on('click','div.menu',function(){
                         $scope.rowData = JSON.parse($(this).attr('data-row'));
                         $scope.userComponent = "";
+                        $scope.rowindex = $(this).attr('row-index');
+                        console.log($scope.rowindex)
                         $scope.gender = ['Male','Female','Transgender'];
                         $scope.idtype = [ 'Aadhar card', 'Voter ID', 'PAN CARD', 'Driving Licence'];
                         $scope.roomsizes = [ '1', '2', '3', '4' ];
@@ -161,6 +164,7 @@ app.controller('viewBookingController', ['$scope', '$timeout', function ($scope,
         options2:'=',
         options3:'=',
         options4:'=',
+        rowIndex:'=',
     },
     controllerAs:'$ctrl',
     controller:  function ($scope) {
@@ -210,6 +214,9 @@ app.controller('viewBookingController', ['$scope', '$timeout', function ($scope,
             success: function(response) {
                 console.log('Response:', response);
                 alert("Your data has been updated");
+                location.reload();
+                // console.log(ctrl.rowIndex);
+                // $('#myTable').DataTable().row(ctrl.rowIndex).data(ctrl.values).draw();
             },
             error:function(error){
                     console.log(error);

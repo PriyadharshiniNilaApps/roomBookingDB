@@ -260,6 +260,14 @@ table.dataTable thead .sorting {
     background-color: #666;
 }
 
+.datePicker{
+    background: url('../images/date-picker.svg');
+    background-repeat: no-repeat;
+    background-position: right ;
+    background-origin: content-box;
+  
+}
+
 
 
 
