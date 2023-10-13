@@ -9,7 +9,7 @@ app.controller('registerController', ['$scope', function ($scope) {
         email:"",
         phonenumber:"",
         password:"",
-        customers:null,
+     
     
         };
 
@@ -33,12 +33,16 @@ app.controller('registerController', ['$scope', function ($scope) {
                 $scope.register.userType = userType.value;
 
                 $.ajax({
-                    url: 'API/save_data.php?',
+                    url: 'API/Controller.php?',
                     method: 'POST',
                     data: {data: JSON.stringify($scope.register)},
                     success: function(response) {
+                        if(response == "email"){
                     message.innerText = `${userType.value} - ${username.value} Sign Up Successfully`;
-                    $('#authentication-success').modal("show");           
+                    $('#authentication-success').modal("show");     
+                        }else{
+                            alert(response);
+                        }     
                     }
                 });
             }
