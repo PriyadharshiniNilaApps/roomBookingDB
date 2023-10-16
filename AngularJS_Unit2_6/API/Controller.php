@@ -1,6 +1,5 @@
 <?php
 require_once 'Model.php';
-// header("Content-Type:application/json");
 
 class Controller {
     private $userModel;
@@ -9,19 +8,27 @@ class Controller {
         $this->userModel = new Model();
     }
 
-    public function getDetails() {
+    public function getCustomerDetails() {
 
     }
 
-    public function insertUserData($username, $email, $password, $phonenumber, $userType) {
-            $this->userModel->insertDetailsINDB($username, $email, $password, $phonenumber, $userType);
+    public function getUserData($name, $password){
+        $this->userModel->getDetailsINDB($name, $password);
     }
 
-    public function updateDetails() {
+    public function insertUserData($userData) {
+        $this->userModel->insertDetailsINDB($userData);
+    }
+
+    public function insertCustomerData(){
 
     }
 
-    public function deleteDetails() {
+    public function updateCustomerDetails() {
+
+    }
+
+    public function deleteCustomerDetails() {
 
     }
 }
@@ -29,43 +36,41 @@ class Controller {
 $controller = new Controller();
 
 
-$servername = "localhost"; 
-$username = "root"; 
-$password = ""; 
-$database = "Assessment_2"; 
 
-  $conn = new mysqli($servername, $username, $password, $database);
+if($_SERVER['REQUEST_METHOD'] === "POST"){
+    $data = file_get_contents('php://input');
+    $decodedData = json_decode($data, true);
+if(isset($decodedData['action'])){
+    if($decodedData['action'] === 'insertUserData'){   
+     $controller->insertUserData($decodedData);
+    }else if($decodedData['action'] == 'insertCustomerData'){
+        $controller->insertCustomerData();
+    }else if($decodedData['action'] == 'updateCustomerDetails'){
+        $controller->updateCustomerDetails();
+    }else{
+        echo "Unknown action";
+    }
+}else{
+        echo "Action not specified";
+}
 
-  if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-  }
-
-  $name = $_POST["username"];
-  $email = $_POST["email"];
-  $password = $_POST["password"];
-
-  $controller->insertDetails($name,$email,$password, $phonenumber, $userType);
-
-//   $stmt = $conn->prepare("SELECT * FROM my_table_1 WHERE email = ?");
-//   $stmt->bind_param("s", $email);
-//   $stmt->execute();
-//   $stmt->store_result();
-
-//   if($stmt->num_rows > 0){
-//     $response = "invalid credentials";
-//   }else{
-//     $stmt1 = $conn->prepare("INSERT INTO my_table_1 (username, email, password) VALUES (?, ?, ?)");
-//     $stmt1->bind_param("sss", $name, $email, $password);
-//     $stmt1-> execute();
-//     $stmt1-> close();
-//     $response = $email;
-//   }
-
- 
-
- 
-
-
-
+}else if($_SERVER['REQUEST_METHOD'] === "GET"){
+     if (isset($_GET['action'])) {
+        $action = $_GET['action'];
+        if ($action === 'getUserData') {
+           $name = $_GET['name'];
+           $password = $_GET['password'];
+           $controller->getUserData($name, $password);
+        }else if($_GET['action'] == 'getCustomerDetails'){
+             $controller->getCustomerDetails();
+        }else if($_GET['action'] == 'deleteCustomerDetails'){
+              $controller->deleteCustomerDetails();
+        }else{
+            echo "Unknown action";
+        }
+    }else{
+        echo "Action not specified";
+    }
+}
 
 ?>

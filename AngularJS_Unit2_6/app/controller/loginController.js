@@ -10,20 +10,26 @@ app.controller('loginController', ['$scope', '$timeout', function ($scope, $time
       if (username.value == "" || password.value == "") {
         alert("Enter all data");
       } else {
-      
+         const requestData = {
+          name: username.value,
+          password: password.value,
+          action: "getUserData"
+         }
         $.ajax({
-          url: "API/get_data.php",
-          method: "POST",
-          data: {username:username.value, password: password.value, userType:userType.value},
+          url: "API/Controller.php?name=" + username.value + "&password=" + password.value + "&action=getUserData",
+          type: "GET",
+          //  contentType: "application/json", 
+          // data: JSON.stringify(requestData),
 
           success:function(response) {
-            if(response == ""){
-              alert("Incorrect email or password");
-            }else{
+            console.log(response);
+            if(response){
               message.innerText = userType.value +  ' - ' + username.value + ' ' + "Sign In Successfully";
               localStorage.setItem("userId",response);
-              localStorage.setItem("userType",userType.value);
               $('#authentication-success').modal("show");
+            }else{
+              alert("Incorrect email or password");
+             
             }
           },     
         });

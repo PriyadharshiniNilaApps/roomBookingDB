@@ -9,7 +9,8 @@ app.controller('registerController', ['$scope', function ($scope) {
         email:"",
         phonenumber:"",
         password:"",
-     
+        action:"",
+       
     
         };
 
@@ -22,7 +23,6 @@ app.controller('registerController', ['$scope', function ($scope) {
         const reenterpassword = document.getElementById("reenterpassword");
         const message = document.getElementById('message');
         const userType = document.querySelector("input[name='options']:checked");
-             
         if(password.value != reenterpassword.value){
             alert("Password doesn't match!");
             $scope.checkPassword = true;
@@ -31,15 +31,16 @@ app.controller('registerController', ['$scope', function ($scope) {
             
             if(!$scope.checkPassword){
                 $scope.register.userType = userType.value;
+                $scope.register.action = "insertUserData"
 
                 $.ajax({
-                    url: 'API/Controller.php?',
-                    method: 'POST',
-                    data: {data: JSON.stringify($scope.register)},
+                    url: 'API/Controller.php',
+                    type: 'POST',
+                    data: JSON.stringify($scope.register),
                     success: function(response) {
-                        if(response == "email"){
-                    message.innerText = `${userType.value} - ${username.value} Sign Up Successfully`;
-                    $('#authentication-success').modal("show");     
+                        if(response){
+                             message.innerText = `${userType.value} - ${username.value} Sign Up Successfully`;
+                              $('#authentication-success').modal("show");     
                         }else{
                             alert(response);
                         }     

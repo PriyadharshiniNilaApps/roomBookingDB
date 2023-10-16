@@ -34,23 +34,5 @@ function processString($input) {
         return "Input string is empty or null.";
     }
 }
-$email = "someone@example.com";
 
-try {
-  //check if
-  if(filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE) {
-    //throw exception if email is not valid
-    throw new customException($email);
-  }
-}
-
-catch (customException $e) {
-  //display custom message
-  echo e;
-}
-
-
-$input = "123456";
-$result = processString($input);
-echo $result;
 ?>
