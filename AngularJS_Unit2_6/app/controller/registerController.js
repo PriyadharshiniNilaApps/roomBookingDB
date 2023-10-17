@@ -38,7 +38,7 @@ app.controller('registerController', ['$scope', function ($scope) {
                     type: 'POST',
                     data: JSON.stringify($scope.register),
                     success: function(response) {
-                        if(response){
+                        if(response == true){
                              message.innerText = `${userType.value} - ${username.value} Sign Up Successfully`;
                               $('#authentication-success').modal("show");     
                         }else{
