@@ -1,19 +1,36 @@
 <?php
 require_once 'Model.php';
+$invalid_request = array(
+    "status" => "Failed",
+    "message" => "Invalid Request",
+);
+
+$unknown_action = array(
+    "status" => "Failed",
+    "message" => "Unknown Action",
+);
+
+$action_not_specified = array(
+   "status" => "Failed",
+   "message" => "Action is not specified",
+);
+
+$invalid_input = array(
+    "status" => "Failed",
+    "message" => "Invalid input data",
+);
+
 
 class Controller {
     private $userModel;
-
+   
+ 
     public function __construct() {
         $this->userModel = new Model();
     }
 
     public function getAllBookingDetails($id) {
-        if(empty($id) && !isset($id)){
-            echo "Invalid input data";
-        }else{
-            $this->userModel->getBookingDetailsINDB($id);
-        }
+        $this->userModel->getBookingDetailsINDB($id);
     }
 
     public function getUserData($name, $password){
@@ -41,6 +58,8 @@ class Controller {
     }
 
     public function insertBookingData($BookingData){
+        //Date checking
+
         $allowedGenders = ['Male', 'Female', 'Transgender'];
         $allowedIdType =  [ 'Aadhar card', 'Voter ID', 'PAN CARD', 'Driving Licence'];
         $allowedRoomType = ['Open','AC', 'NON - AC'];
@@ -84,7 +103,8 @@ class Controller {
     }
 
     public function updateBookingDetails() {
-         
+         //Checking common function
+
     }
 
     public function deleteBookingDetail($booking_id) {
@@ -97,6 +117,7 @@ class Controller {
 }
 
 $controller = new Controller();
+
 
 if($_SERVER['REQUEST_METHOD'] === "POST"){
     $data = file_get_contents('php://input');
@@ -123,19 +144,24 @@ if(isset($decodedData['action'])){
            $password = $_GET['password'];
            $controller->getUserData($name, $password);
         }else if($action == 'getAllBookingDetails'){
-            $id = $_GET['id'];
-            $controller->getAllBookingDetails($id);
+            if(empty($_GET['id']) && !isset($_GET['id'])){
+                $response = json_encode($invalid_input);
+                echo $response;
+            }else{  
+                $id = trim($_GET['id']);
+                $controller->getAllBookingDetails($id);
+            }
         }else if($action == 'deleteBookingDetail'){
             $booking_id = $_GET['booking_id'];
             $controller->deleteBookingDetail($booking_id);
         }else{
-            echo "Unknown action";
+            echo json_encode($unknown_action);
         }
     }else{
-        echo "Action not specified";
+        echo json_encode($action_not_specified);
     }
 }else{
-    echo "Invalid request";
+    echo json_encode($invalid_request);
 }
 
 ?>

@@ -1,5 +1,6 @@
 <?php
 require_once 'Config.php';
+require_once 'Logger.php';
 
 class Model {
     private $conn;
@@ -42,6 +43,7 @@ class Model {
         $stmt->store_result();
 
         if($stmt->num_rows > 0){
+            Logger::logApi("Username {$userData['name']} already exists");
             $response = "Username already exists";
         }else{
             $stmt1 = $this->conn->prepare("INSERT INTO user_data (name, email, phonenumber, usertype, password) VALUES ( ?, ?, ?, ?, ?)");
@@ -84,7 +86,10 @@ class Model {
     }
 
     public function getBookingDetailsINDB($id){
-        $response = "No booking data found";
+        $response  = json_encode(array(
+            "status" => "Failed",
+            "message" => "No booking data found"
+        ));
         $stmt = $this->conn->prepare("SELECT id,fullname, gender,email, idtype,age,purpose, phonenumber, idnumber, roomtype, checkindate, expectedcheckoutdate, cateringType, laundryType, roomSize, checkintime, expectedcheckouttime FROM booking_data WHERE id = ?");
         $stmt->bind_param("s", $id);
         $stmt->execute();
