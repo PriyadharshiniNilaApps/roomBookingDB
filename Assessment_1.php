@@ -1,7 +1,7 @@
 <?php
 
 $digitArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-global $digitArray;
+
 function addDigits($input) {
     $digit = str_split($input);
     $sum = array_sum($digit);
@@ -9,6 +9,7 @@ function addDigits($input) {
 }
 
 function processString($input) {
+    global $digitArray;
     if (!empty($input) && isset($input)) {
         $str = trim($input);
         if (strlen($str) > 3) {
@@ -35,4 +36,6 @@ function processString($input) {
     }
 }
 
+$input = "06012000";
+echo processString($input);
 ?>
