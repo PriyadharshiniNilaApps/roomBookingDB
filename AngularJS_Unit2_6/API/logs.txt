@@ -1,21 +1,85 @@
-[2023-10-18 12:30:51] Username Priya already exists
-[2023-10-18 12:30:59] Username Priya already exists
-[2023-10-18 11:57:06] Database connection success
-[2023-10-18 12:01:19] Database connection success
-[2023-10-18 12:02:00] Database connection success
-[2023-10-18 12:02:17] Database connection success
-[2023-10-18 12:02:38] Database connection success
-[2023-10-18 12:02:49] Database connection success
-[2023-10-18 12:03:19] Database connection success
-[2023-10-18 12:03:38] Database connection success
-[2023-10-18 12:03:40] Database connection success
-[2023-10-18 12:04:02] Database connection success
-[2023-10-18 12:05:59] Database connection success
-[2023-10-18 12:06:07] Database connection success
-[2023-10-18 12:06:12] Database connection success
-[2023-10-18 12:06:17] Database connection success
-[2023-10-18 13:05:54] Database connection success
-[2023-10-18 13:08:45] Database connection success
-[2023-10-18 13:09:57] Database connection success
-[2023-10-18 13:10:06] Database connection success
-[2023-10-18 13:10:32] Database connection success
+
+[2023-10-19 12:11:00] Database connection success
+[2023-10-19 12:11:00] Database query  for insertUserDetails success
+[2023-10-19 12:11:34] Database connection success
+[2023-10-19 12:11:38] Database connection success
+[2023-10-19 12:11:38] Database query  for insertUserDetails success
+[2023-10-19 12:12:03] Database connection success
+[2023-10-19 12:12:08] Database connection success
+[2023-10-19 12:12:08] Database query  for insertUserDetails success
+[2023-10-19 12:19:13] Database connection success
+[2023-10-19 12:19:53] Database connection success
+[2023-10-19 12:20:28] Database connection success
+[2023-10-19 12:21:05] Database connection success
+[2023-10-19 12:25:21] Database connection success
+[2023-10-19 12:25:29] Database connection success
+[2023-10-19 12:25:41] Database connection success
+[2023-10-19 12:25:51] Database connection success
+[2023-10-19 12:27:42] Database connection success
+[2023-10-19 12:27:49] Database connection success
+[2023-10-19 12:28:43] Database connection success
+[2023-10-19 12:28:44] Database connection success
+[2023-10-19 12:28:51] Database connection success
+[2023-10-19 12:28:51] Database query  for insertUserDetails success
+[2023-10-19 12:29:08] Database connection success
+[2023-10-19 12:29:14] Database connection success
+[2023-10-19 12:29:14] Database query  for insertUserDetails success
+[2023-10-19 12:29:17] Database connection success
+[2023-10-19 12:36:45] Database connection success
+[2023-10-19 12:36:45] Database query  for insertUserDetails failedData too long for column 'password' at row 1
+[2023-10-19 12:36:53] Database connection success
+[2023-10-19 12:36:53] Database query  for insertUserDetails failedData too long for column 'password' at row 1
+[2023-10-19 12:37:01] Database connection success
+[2023-10-19 12:37:01] Database query  for insertUserDetails failedData too long for column 'password' at row 1
+[2023-10-19 12:37:14] Database connection success
+[2023-10-19 12:37:14] Database query  for insertUserDetails failedData too long for column 'password' at row 1
+[2023-10-19 12:37:30] Database connection success
+[2023-10-19 12:37:35] Database connection success
+[2023-10-19 12:37:35] Database query  for insertUserDetails failedData too long for column 'password' at row 1
+[2023-10-19 12:37:50] Database connection success
+[2023-10-19 12:37:50] Database query  for insertUserDetails failedData too long for column 'password' at row 1
+[2023-10-19 12:38:10] Database connection success
+[2023-10-19 12:38:10] Database query  for insertUserDetails failedData too long for column 'password' at row 1
+[2023-10-19 12:40:49] Database connection success
+[2023-10-19 12:40:49] Database query  for insertUserDetails failedData too long for column 'password' at row 1
+[2023-10-19 12:41:28] Database connection success
+[2023-10-19 12:41:28] Database query  for insertUserDetails failedData too long for column 'password' at row 1
+[2023-10-19 12:42:24] Database connection success
+[2023-10-19 12:42:24] Database query  for insertUserDetails failedData too long for column 'password' at row 1
+[2023-10-19 12:42:26] Database connection success
+[2023-10-19 12:42:26] Database query  for insertUserDetails failedData too long for column 'password' at row 1
+[2023-10-19 12:42:30] Database connection success
+[2023-10-19 12:42:30] Database query  for insertUserDetails failedData too long for column 'password' at row 1
+[2023-10-19 12:42:31] Database connection success
+[2023-10-19 12:42:31] Database query  for insertUserDetails failedData too long for column 'password' at row 1
+[2023-10-19 12:43:23] Database connection success
+[2023-10-19 12:43:23] Database query  for insertUserDetails success
+[2023-10-19 12:43:54] Database connection success
+[2023-10-19 12:43:54] Database query  for insertUserDetails success
+[2023-10-19 12:44:09] Database connection success
+[2023-10-19 12:44:09] Database query  for insertUserDetails success
+[2023-10-19 12:44:43] Database connection success
+[2023-10-19 12:44:43] Database query  for insertUserDetails success
+[2023-10-19 12:44:44] Database connection success
+[2023-10-19 12:50:03] Database connection success
+[2023-10-19 12:50:47] Database connection success
+[2023-10-19 12:51:02] Database connection success
+[2023-10-19 12:51:27] Database connection success
+[2023-10-19 12:51:46] Database connection success
+[2023-10-19 12:52:15] Database connection success
+[2023-10-19 12:53:03] Database connection success
+[2023-10-19 12:55:40] Database connection success
+[2023-10-19 12:56:38] Database connection success
+[2023-10-19 12:56:52] Database connection success
+[2023-10-19 12:56:52] Database query  for insertBookingDetails failedColumn 'fullname' cannot be null
+[2023-10-19 12:57:45] Database connection success
+[2023-10-19 12:57:45] Database query  for insertBookingDetails failedColumn 'fullname' cannot be null
+[2023-10-19 12:58:02] Database connection success
+[2023-10-19 12:58:02] Database query  for insertBookingDetails failedColumn 'fullname' cannot be null
+[2023-10-19 12:59:53] Database connection success
+[2023-10-19 12:59:53] Database query  for insertBookingDetails success
+[2023-10-19 13:04:55] Database connection success
+[2023-10-19 13:05:04] Database connection success
+[2023-10-19 13:05:04] Database query  for insertBookingDetails success
+[2023-10-19 13:06:52] Database connection success
+[2023-10-19 13:06:52] Database query  for updateDetails success

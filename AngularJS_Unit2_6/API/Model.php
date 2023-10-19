@@ -4,154 +4,158 @@ require_once 'Logger.php';
 
 class Model {
     private $conn;
-
+  
     public function __construct() {
         $db = new Config();
         $this->conn = $db->dbConnect();
     }
 
     public function getUserDetailsINDB($name, $password) {
-        $response = "No user found";
-        $stmt = $this->conn->prepare("SELECT id, name, email, phonenumber, usertype, password FROM user_data WHERE name = ? && password = ?");
-        $stmt->bind_param("ss", $name, $password);
-        $stmt->execute();
-        $stmt->bind_result($id, $name, $email, $phone_number, $user_type , $password);
-        $stmt->store_result();
-        if($stmt->num_rows > 0){
-            $results = array();
-            while($stmt->fetch()){
-                $row = array(
-                    'id' => $id,
-                    'name' => $name,
-                    'email' => $email,
-                    'phone_number' => $phone_number,
-                    'user_type' => $user_type,
-                    'password' => $password
-                );
-                $results[] = $row;
+        try{
+            $response = array();
+            $stmt = $this->conn->prepare("SELECT id, name, email, phonenumber, usertype, password FROM user_data WHERE name = ? && password = ?");
+            $stmt->bind_param("ss", $name, $password);
+            $stmt->execute();
+             $result = $stmt -> get_result();
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    $response[] = $row;
+                }
+                $stmt-> close();
+                Logger::log("Database query for getUserDetails success");
+                return $response;
+            }else{
+                Logger::log("User not found in the database");
+                return false;
             }
-            $response = json_encode($results);
-        }  
-        $stmt-> close();
-        echo $response;
+           
+        }catch(Exception $e){
+            Logger::log("Database query failed: ".$e->getMessage());
+        }
     }
   
     public function insertUserDetailsINDB($userData) {
+    try{
         $stmt = $this->conn->prepare("SELECT * FROM user_data WHERE name = ?");
         $stmt->bind_param("s", $userData['name']);
         $stmt->execute();
-        $stmt->store_result();
+        $result = $stmt->get_result();
 
-        if($stmt->num_rows > 0){
-            Logger::logApi("Username {$userData['name']} already exists");
-            $response = "Username already exists";
+        if($result->num_rows > 0){
+            Logger::log("User already exists in the database");
+           return false;
         }else{
-            $stmt1 = $this->conn->prepare("INSERT INTO user_data (name, email, phonenumber, usertype, password) VALUES ( ?, ?, ?, ?, ?)");
-            $stmt1->bind_param("ssiss", $userData['name'], $userData['email'], $userData['phonenumber'], $userData['userType'],$userData['password']);
-            $stmt1-> execute();
-          
-            $response = "User data is added";
+            $stmt = $this->conn->prepare("INSERT INTO user_data (name, email, phonenumber, usertype, password) VALUES ( ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssiss", $userData['name'], $userData['email'], $userData['phonenumber'], $userData['usertype'],$userData['password']);
+            $stmt-> execute();
+            $stmt->close();
+            Logger::log("Database query  for insertUserDetails success");
+            return true;
         }  
-        $stmt->close();
-        $stmt1-> close();
-        echo $response;
+       
+    }catch(Exception $e){
+        Logger::log("Database query  for insertUserDetails failed".$e->getMessage());
+   
     }
+}
 
     public function insertBookingDetailsINDB($BookingData){
-        $stmt = $this->conn->prepare("SELECT * FROM user_data WHERE id = ?");
-        $stmt->bind_param("i", $BookingData['id']);
+      try{
+        $stmt = $this->conn->prepare("SELECT * FROM booking_data WHERE email = ?");
+        $stmt->bind_param("s", $BookingData['email']);
         $stmt->execute();
-        $stmt->store_result();
-
+        $result = $stmt->get_result();
         if($stmt->num_rows == 0){
-            $response = "No user found";
+            $stmt = $this->conn->prepare("INSERT INTO booking_data (id,fullname, gender,email, idtype,age,purpose, phonenumber, idnumber, roomtype, checkindate, expectedcheckoutdate, cateringType, laundryType, roomSize, checkintime, expectedcheckouttime) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("issssisiisssssiss", $BookingData['id'], $BookingData['fullname'], $BookingData['gender'], $BookingData['email'],$BookingData['idtype'], $BookingData['age'], $BookingData['purpose'], $BookingData['phonenumber'], $BookingData['idnumber'], $BookingData['roomtype'],$BookingData['checkindate'], $BookingData['expectedcheckoutdate'], $BookingData['cateringtype'], $BookingData['laundrytype'], $BookingData['roomsize'],$BookingData['checkintime'], $BookingData['expectedcheckintime']);
+            $stmt-> execute();
+            $stmt->close();
+            Logger::log("Database query  for insertBookingDetails success");
+            return true;
         }else{
-            $stmt2 = $this->conn->prepare("SELECT * FROM booking_data WHERE email = ?");
-            $stmt2->bind_param("s", $BookingData['email']);
-            $stmt2->execute();
-            $stmt2->store_result();
-            if($stmt2->num_rows == 0){
-                $stmt1 = $this->conn->prepare("INSERT INTO booking_data (id,fullname, gender,email, idtype,age,purpose, phonenumber, idnumber, roomtype, checkindate, expectedcheckoutdate, cateringType, laundryType, roomSize, checkintime, expectedcheckouttime) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                $stmt1->bind_param("issssisiisssssiss", $BookingData['id'], $BookingData['fullName'], $BookingData['gender'], $BookingData['email'],$BookingData['idType'], $BookingData['age'], $BookingData['purpose'], $BookingData['phoneNumber'], $BookingData['idNumber'], $BookingData['roomType'],$BookingData['checkInDate'], $BookingData['expectedCheckOutDate'], $BookingData['cateringType'], $BookingData['laundryType'], $BookingData['roomSize'],$BookingData['checkInTime'], $BookingData['expectedCheckInTime']);
-                $stmt1-> execute();
-                $response = "User data is added";
-                $stmt1-> close(); 
-            }else{
-                $response = "Already booked"; 
-            }
-            $stmt2->close();
+            Logger::log("Already booked by the user");
+            return false; 
         }  
-        $stmt->close();
-        echo $response;
+      
+    }catch(Exception $e){
+       Logger::log("Database query  for insertBookingDetails failed".$e->getMessage());
+    
+    }
     }
 
     public function getBookingDetailsINDB($id){
-        $response  = json_encode(array(
-            "status" => "Failed",
-            "message" => "No booking data found"
-        ));
+        try{
+        $response  = array();
         $stmt = $this->conn->prepare("SELECT id,fullname, gender,email, idtype,age,purpose, phonenumber, idnumber, roomtype, checkindate, expectedcheckoutdate, cateringType, laundryType, roomSize, checkintime, expectedcheckouttime FROM booking_data WHERE id = ?");
         $stmt->bind_param("s", $id);
         $stmt->execute();
-        $stmt->bind_result($booking_id, $fullname, $gender, $email, $idtype , $age, $purpose, $phonenumber, $idnumber, $roomtype, $checkindate, $expectedcheckoutdate, $cateringtype, $laundrytype, $roomsize, $checkintime, $expectedcheckouttime);
-        $stmt->store_result();
-        if($stmt->num_rows > 0){
-            $results = array();
-            while($stmt->fetch()){
-                $row = array(
-                    'booking_id' => $booking_id,
-                    'fullName' => $fullname,
-                    'gender' => $gender,
-                    'email' => $email,
-                    'idType' => $idtype,
-                    'age' => $age,
-                    'purpose' => $purpose,
-                    'phoneNumber' => $phonenumber,
-                    'idNumber' => $idnumber,
-                    'roomType' => $roomtype,
-                    'checkInDate' => $checkindate,
-                    'expectedCheckInDate' => $expectedcheckoutdate,
-                    'cateringType' => $cateringtype,
-                    'laundryType' => $laundrytype,
-                    'roomSize' => $roomsize,
-                    'checkInTime' => $checkintime,
-                    'expectedCheckOutTime' => $expectedcheckouttime,
-
-                );
-                $results[] = $row;
+        $result = $stmt->get_result();
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $response[] = $row;
+                $stmt-> close();
+                Logger::log("Database query for getBookingDetails success");
+                return $response;
             }
-            $response = json_encode($results);
-        }  
-        $stmt-> close();
-        echo $response;
+        }else{
+            Logger::log("Not booking data found in the database");
+            return false;
+        }
+     
+    }catch(Exception $e){
+        Logger::log("Database query for getBookingDetails failed". $e->getMessage());
+     
     }
+}
 
-    public function updateDetailsINDB() {
-
+    public function updateDetailsINDB($BookingData) {
+        try{
+            $stmt = $this->conn->prepare("SELECT * FROM booking_data WHERE email = ?");
+            $stmt->bind_param("s", $BookingData['email']);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if($result->num_rows > 0){
+                $stmt = $this->conn->prepare("UPDATE booking_data SET id=?,fullname=?, gender=?, idtype=?,age=?,purpose=?, phonenumber=?, idnumber=?, roomtype=?, checkindate=?, expectedcheckoutdate=?, cateringType=?, laundryType=?, roomSize=?, checkintime=?, expectedcheckouttime=? WHERE email = ?");
+                $stmt->bind_param("issssisiisssssiss", $BookingData['id'], $BookingData['fullname'], $BookingData['gender'], $BookingData['idtype'], $BookingData['age'], $BookingData['purpose'], $BookingData['phonenumber'], $BookingData['idnumber'], $BookingData['roomtype'],$BookingData['checkindate'], $BookingData['expectedcheckoutdate'], $BookingData['cateringtype'], $BookingData['laundrytype'], $BookingData['roomsize'],$BookingData['checkintime'], $BookingData['expectedcheckintime'], $BookingData['email']);
+                $stmt-> execute();
+                $stmt->close();
+                Logger::log("Database query  for updateDetails success");
+               return true;
+            }else{
+                Logger::log("NO booking data found in the database");
+                return false; 
+            }  
+        }catch(Exception $e){
+           Logger::log("Database query  for updateDetails failed".$e->getMessage());
+        
+        }
     }
 
     public function deleteDetailsINDB($booking_id) {
+      try{
         $stmt = $this->conn->prepare("SELECT * FROM booking_data WHERE booking_id = ?");
         $stmt ->bind_param("i", $booking_id);
         $stmt ->execute();
-        $stmt ->store_result();
-        if($stmt ->num_rows > 0){
-            $stmt1 = $this->conn->prepare("DELETE FROM booking_data WHERE booking_id = ?");
-            $stmt1->bind_param("i", $booking_id);
-            $stmt1-> execute();
-            $stmt1-> close();
-            $response = "Booking is deleted";
+        $result = $stmt->get_result();
+        if($result ->num_rows > 0){
+            $stmt = $this->conn->prepare("DELETE FROM booking_data WHERE booking_id = ?");
+            $stmt->bind_param("i", $booking_id);
+            $stmt-> execute();
+            $stmt-> close();
+            Logger::log("Database query for deleteDetails success"); 
+            return true;
         }else{
-            $response = "No records found"; 
+            Logger::log("No Booking data found in the database");
+            return false;
         }
-        $stmt->close();
-        echo $response;  
+    }catch(Exception $e){
+        Looger::log("Database query for deleteDetails failed". $e-> getMessage());
+    }
     }
 
     public function __destruct(){
         $this->conn->close();
     }
 }
-
 
 ?>

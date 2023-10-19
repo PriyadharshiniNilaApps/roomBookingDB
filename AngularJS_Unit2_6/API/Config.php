@@ -5,16 +5,16 @@ class Config {
     private $username = "root";
     private $password = "";
     private $database = "Assessment_2";
-   
 
     public function dbConnect() {
+    try{
         $conn = new mysqli($this->host, $this->username, $this->password, $this->database);
-        if ($conn->connect_error) {
-            Logger::logApi("Database connection failed");
-            die("Connection failed: " . $conn->connect_error);   
-        }
-        Logger::logApi("Database connection success");
+        Logger::log("Database connection success");
         return $conn;
+    }catch(Exception $e){
+        Logger::log("Database connection failed".$e->getMessage());
+    }
+      
 
     }
 }
